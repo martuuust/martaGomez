@@ -1,17 +1,20 @@
 ﻿import { Component, signal, effect } from "@angular/core";
 import { RouterOutlet, RouterLink } from "@angular/router";
+import { TranslatePipe } from "../../i18n/translate.pipe";
+import { TranslationsService, type Lang } from "../../i18n/translations.service";
 
 @Component({
   selector: "app-shell",
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, TranslatePipe],
   templateUrl: "./shell.component.html",
   styleUrl: "./shell.component.css"
 })
 export class ShellComponent {
   isDarkMode = signal<boolean>(false);
+  menuOpen = signal<boolean>(false);
 
-  constructor() {
+  constructor(protected translations: TranslationsService) {
     effect(() => {
       const root = document.documentElement;
       if (this.isDarkMode()) {
@@ -30,5 +33,18 @@ export class ShellComponent {
 
   toggleTheme(): void {
     this.isDarkMode.update(prev => !prev);
+  }
+
+  toggleMenu(): void {
+    this.menuOpen.update(prev => !prev);
+  }
+
+  closeMenu(): void {
+    this.menuOpen.set(false);
+  }
+
+  toggleLang(): void {
+    const next: Lang = this.translations.currentLang() === "es" ? "en" : "es";
+    this.translations.setLang(next);
   }
 }

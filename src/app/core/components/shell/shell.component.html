@@ -1,16 +1,29 @@
 <div class="shell-container">
   <header class="app-header">
-    <div class="header-logo">
-      <a routerLink="/">MG</a>
+    <div class="header-left">
+      <button class="hamburger" (click)="toggleMenu()" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <div class="header-logo">
+        <a routerLink="/">MG</a>
+      </div>
     </div>
-    <nav class="nav-links">
-      <a routerLink="/" class="nav-item">Home</a>
-      <a routerLink="/projects" class="nav-item">Proyectos</a>
-      <a routerLink="/game" class="nav-item">Consola</a>
+    <nav class="nav-links" [class.open]="menuOpen()">
+      <a routerLink="/" class="nav-item" (click)="closeMenu()">{{ "nav.home" | translate }}</a>
+      <a routerLink="/about" class="nav-item" (click)="closeMenu()">{{ "nav.about" | translate }}</a>
+      <a routerLink="/projects" class="nav-item" (click)="closeMenu()">{{ "nav.projects" | translate }}</a>
+      <a routerLink="/contact" class="nav-item" (click)="closeMenu()">{{ "nav.contact" | translate }}</a>
     </nav>
-    <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme">
-      {{ isDarkMode() ? "☀️" : "🌙" }}
-    </button>
+    <div class="header-actions">
+      <button class="lang-toggle" (click)="toggleLang()" aria-label="Toggle language">
+        {{ translations.currentLang() === 'es' ? 'EN' : 'ES' }}
+      </button>
+      <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme">
+        {{ isDarkMode() ? "☀️" : "🌙" }}
+      </button>
+    </div>
   </header>
 
   <main class="app-main">
@@ -18,6 +31,6 @@
   </main>
 
   <footer class="app-footer">
-    <p>&copy; 2026 Marta Gomez. Hexagonal Portfolio.</p>
+    <p>{{ "footer.copyright" | translate }}</p>
   </footer>
 </div>

@@ -1,0 +1,14 @@
+{
+  "nav.home": "Home",
+  "nav.about": "About",
+  "nav.projects": "Projects",
+  "nav.contact": "Contact",
+  "footer.copyright": "© 2026 Marta Gomez. Hexagonal Portfolio.",
+  "home.description": "Main description pending",
+  "about.bio": "Bio pending",
+  "contact.title": "Contact",
+  "contact.form.name": "Name",
+  "contact.form.email": "Email",
+  "contact.form.message": "Message",
+  "contact.form.send": "Send"
+}

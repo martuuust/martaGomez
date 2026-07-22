@@ -1,4 +1,6 @@
-﻿/* Estilos globales y paleta de colores Pastel & Dark Mode */
+﻿@import "tailwindcss";
+
+/* Estilos globales y paleta de colores Pastel & Dark Mode */
 
 :root {
   /* Modo Claro - Paleta Pastel */

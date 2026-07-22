@@ -6,6 +6,5 @@ import { TranslatePipe } from "../../core/i18n/translate.pipe";
   standalone: true,
   imports: [TranslatePipe],
   templateUrl: "./home.component.html",
-  styleUrl: "./home.component.css",
 })
 export class HomeComponent {}

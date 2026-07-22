@@ -6,6 +6,5 @@ import { TranslatePipe } from "../../core/i18n/translate.pipe";
   standalone: true,
   imports: [TranslatePipe],
   templateUrl: "./contact.component.html",
-  styleUrl: "./contact.component.css",
 })
 export class ContactComponent {}

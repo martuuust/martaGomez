@@ -1,0 +1,186 @@
+<header
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500"
+  [class]="scrolled() ? 'py-2' : 'py-4'"
+>
+  <nav
+    class="glass mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full px-4 py-2.5 shadow-lg transition-all duration-500 sm:px-6"
+    [class]="scrolled() ? 'shadow-xl' : ''"
+    aria-label="Navegación principal"
+  >
+    <a
+      href="#inicio"
+      class="group flex items-center gap-3"
+      (click)="navigate('inicio'); $event.preventDefault()"
+      aria-label="Volver al inicio"
+    >
+      <span class="relative grid h-10 w-10 place-items-center">
+        <span
+          class="absolute inset-0 animate-spin-slow rounded-full"
+          style="
+            background: conic-gradient(
+              from 0deg,
+              transparent 0%,
+              var(--primary) 30%,
+              var(--secondary) 55%,
+              transparent 80%
+            );
+          "
+        ></span>
+        <span
+          class="absolute inset-[2px] rounded-full bg-base transition-colors"
+        ></span>
+        <span
+          class="relative font-display text-sm font-bold text-gradient"
+        >
+          MG
+        </span>
+      </span>
+      <span class="hidden flex-col leading-tight sm:flex">
+        <span class="font-display text-sm font-semibold">Marta Gómez</span>
+        <span class="text-[11px] text-ink-muted">Frontend & UI/UX</span>
+      </span>
+    </a>
+
+    <ul class="hidden items-center gap-1 lg:flex">
+      @for (link of links; track link.id) {
+        <li>
+          <a
+            href="#{{ link.id }}"
+            class="relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300"
+            [class]="
+              activeSection() === link.id
+                ? 'text-primary'
+                : 'text-ink-muted hover:text-ink'
+            "
+            (click)="navigate(link.id); $event.preventDefault()"
+          >
+            @if (activeSection() === link.id) {
+              <span
+                class="absolute inset-0 -z-10 rounded-full bg-primary-soft"
+              ></span>
+            }
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        (click)="themeService.toggle()"
+        [attr.aria-label]="
+          themeService.isDark() ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'
+        "
+        class="relative grid h-10 w-10 place-items-center overflow-hidden rounded-full border border-line transition-all duration-300 hover:border-primary/40 hover:bg-primary-soft"
+      >
+        <svg
+          class="absolute h-5 w-5 text-ink transition-all duration-500"
+          [class]="themeService.isDark() ? 'opacity-0 -rotate-90 scale-50' : 'opacity-100 rotate-0 scale-100'"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"></path>
+        </svg>
+        <svg
+          class="absolute h-5 w-5 text-ink transition-all duration-500"
+          [class]="themeService.isDark() ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Abrir menú"
+        class="grid h-10 w-10 place-items-center rounded-full border border-line transition-colors hover:bg-primary-soft lg:hidden"
+      >
+        <span class="relative block h-4 w-5">
+          <span
+            class="absolute left-0 top-0 block h-0.5 w-5 rounded-full bg-ink transition-all duration-300"
+            [class]="menuOpen() ? 'top-[7px] rotate-45' : ''"
+          ></span>
+          <span
+            class="absolute left-0 top-[7px] block h-0.5 w-5 rounded-full bg-ink transition-all duration-300"
+            [class]="menuOpen() ? 'opacity-0' : 'opacity-100'"
+          ></span>
+          <span
+            class="absolute left-0 top-[14px] block h-0.5 w-5 rounded-full bg-ink transition-all duration-300"
+            [class]="menuOpen() ? 'top-[7px] -rotate-45' : ''"
+          ></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+@if (menuOpen()) {
+  <div
+    class="fixed inset-0 z-40 lg:hidden"
+    style="animation: fade-in 0.3s ease forwards"
+    (click)="toggleMenu()"
+  >
+    <div class="glass h-full w-full bg-base/80"></div>
+  </div>
+
+  <div
+    class="fixed inset-x-4 top-24 z-50 lg:hidden"
+    style="animation: zoom-in 0.35s ease forwards"
+  >
+    <nav class="glass rounded-3xl p-6 shadow-2xl" aria-label="Menú móvil">
+      <ul class="flex flex-col gap-1">
+        @for (link of links; track link.id; let i = $index) {
+          <li style="animation: fade-up 0.5s ease {{ 0.08 * i }}s both">
+            <a
+              href="#{{ link.id }}"
+              class="group flex items-center justify-between rounded-2xl px-4 py-3.5 transition-colors"
+              [class]="
+                activeSection() === link.id
+                  ? 'bg-primary-soft text-primary'
+                  : 'text-ink hover:bg-primary-soft/60'
+              "
+              (click)="navigate(link.id); $event.preventDefault()"
+            >
+              <span class="font-display text-lg font-semibold">
+                {{ link.label }}
+              </span>
+              <svg
+                class="h-4 w-4 opacity-40 transition-transform group-hover:translate-x-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14m-6-6 6 6-6 6"></path>
+              </svg>
+            </a>
+          </li>
+        }
+      </ul>
+      <p
+        class="mt-6 flex items-center gap-2 border-t border-line pt-5 text-sm text-ink-muted"
+      >
+        <span
+          class="h-2 w-2 rounded-full bg-emerald-500"
+          style="animation: pulse-dot 2s ease-in-out infinite"
+        ></span>
+        Disponible para proyectos
+      </p>
+    </nav>
+  </div>
+}

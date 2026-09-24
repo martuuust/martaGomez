@@ -16,40 +16,12 @@
         Proyectos <span class="text-gradient">destacados</span>
       </h2>
       <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
-        Una selección de productos donde el diseño y la ingeniería se
-        encuentran. Filtra por categoría o abre cada proyecto para ver los
-        detalles.
+        Una selección de proyectos reales. Abre cada uno para ver los detalles.
       </p>
     </header>
 
-    <div class="mt-10 flex flex-wrap items-center justify-center gap-2">
-      @for (filter of filters; track filter.id) {
-        <button
-          type="button"
-          (click)="activeFilter.set(filter.id)"
-          class="relative rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300"
-          [class]="
-            activeFilter() === filter.id
-              ? 'text-white'
-              : 'text-ink-muted hover:text-ink'
-          "
-        >
-          @if (activeFilter() === filter.id) {
-            <span
-              class="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-primary to-secondary shadow-lg"
-            ></span>
-          } @else {
-            <span
-              class="absolute inset-0 -z-10 rounded-full border border-line bg-surface/60"
-            ></span>
-          }
-          {{ filter.label }}
-        </button>
-      }
-    </div>
-
     <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      @for (project of filteredProjects(); track project.id) {
+      @for (project of projects; track project.id) {
         <article
           appGsapHover
           [appGsapHoverGlare]="false"
@@ -92,25 +64,9 @@
           </a>
 
           <div class="flex flex-1 flex-col p-6">
-            <div class="flex items-start justify-between gap-3">
-              <h3 class="font-display text-lg font-semibold">
-                {{ project.title }}
-              </h3>
-              <span
-                class="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide uppercase"
-                [class]="
-                  project.category === 'web'
-                    ? 'bg-primary-soft text-primary'
-                    : project.category === 'mobile'
-                      ? 'bg-secondary-soft text-secondary'
-                      : project.category === 'uiux'
-                        ? 'bg-pink-500/10 text-pink-500'
-                        : 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
-                "
-              >
-                {{ filterLabel(project.category) }}
-              </span>
-            </div>
+            <h3 class="font-display text-lg font-semibold">
+              {{ project.title }}
+            </h3>
             <p class="mt-1 text-sm font-medium text-primary">
               {{ project.tagline }}
             </p>
@@ -143,30 +99,27 @@
                 </svg>
                 GitHub
               </a>
-              <a
-                [href]="project.demo"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              >
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <path d="M15 3h6v6"></path>
-                  <path d="M10 14 21 3"></path>
-                </svg>
-                Demo
-              </a>
+              @if (project.demo) {
+                <a
+                  [href]="project.demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-transform hover:scale-[1.02]"
+                >
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14 21 3"></path>
+                  </svg>
+                  Demo
+                </a>
+              }
             </div>
           </div>
         </article>
       }
     </div>
 
-    @if (filteredProjects().length === 0) {
-      <p class="mt-12 text-center text-sm text-ink-muted">
-        No hay proyectos en esta categoría todavía.
-      </p>
-    }
   } @placeholder {
     <div class="flex flex-col items-center gap-6 py-24" aria-label="Cargando proyectos">
       <div class="skeleton h-8 w-48 rounded-full"></div>
@@ -226,7 +179,7 @@
         </div>
         <div>
           <span class="rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold backdrop-blur">
-            {{ project.year }} · {{ filterLabel(project.category) }}
+            {{ project.year }}
           </span>
         </div>
       </div>
@@ -274,19 +227,21 @@
             </svg>
             Ver en GitHub
           </a>
-          <a
-            [href]="project.demo"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-          >
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <path d="M15 3h6v6"></path>
-              <path d="M10 14 21 3"></path>
-            </svg>
-            Live Demo
-          </a>
+          @if (project.demo) {
+            <a
+              [href]="project.demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.02]"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <path d="M15 3h6v6"></path>
+                <path d="M10 14 21 3"></path>
+              </svg>
+              Live Demo
+            </a>
+          }
         </div>
       </div>
     </div>

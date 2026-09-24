@@ -8,9 +8,7 @@ import {
 } from '@angular/core';
 import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
 import { PROJECTS } from '../../shared/data/portfolio.data';
-import type { Project, ProjectCategory } from '../../shared/models/portfolio.model';
-
-export type ProjectFilter = ProjectCategory | 'all';
+import type { Project } from '../../shared/models/portfolio.model';
 
 @Component({
   selector: 'app-projects',
@@ -21,26 +19,8 @@ export type ProjectFilter = ProjectCategory | 'all';
 export class ProjectsComponent {
   protected readonly projects = PROJECTS;
 
-  readonly activeFilter = signal<ProjectFilter>('all');
-
-  protected readonly filteredProjects = computed(() => {
-    const filter = this.activeFilter();
-    if (filter === 'all') {
-      return this.projects;
-    }
-    return this.projects.filter((project) => project.category === filter);
-  });
-
   protected readonly selectedProject = signal<Project | null>(null);
   protected readonly modalVisible = computed(() => this.selectedProject() !== null);
-
-  protected readonly filters: { id: ProjectFilter; label: string }[] = [
-    { id: 'all', label: 'Todos' },
-    { id: 'web', label: 'Web' },
-    { id: 'mobile', label: 'Mobile' },
-    { id: 'uiux', label: 'UI/UX' },
-    { id: 'ia', label: 'IA' },
-  ];
 
   private readonly destroyRef = inject(DestroyRef);
 
@@ -67,18 +47,5 @@ export class ProjectsComponent {
 
   private clearModal(): void {
     document.body.style.overflow = '';
-  }
-
-  protected filterLabel(category: ProjectCategory): string {
-    switch (category) {
-      case 'web':
-        return 'Web';
-      case 'mobile':
-        return 'Mobile';
-      case 'uiux':
-        return 'UI/UX';
-      case 'ia':
-        return 'IA';
-    }
   }
 }

@@ -101,6 +101,17 @@ Eliminado por innecesario:
 - CineMatch e Intermodular: `complete: false` hasta que Marta aporte texto + captura en `public/projects/`
 - Portfolio personal como caso corto completo
 
+## Fase 4 — Pulido (2026-09-24)
+
+- Meta description coherente (sin empresa); Open Graph + Twitter Card
+- Preview `public/og-image.png` (provisional; ideal 1200×630 propia)
+- Contraste AA: `--ink-muted` / `--primary` / `--button-text`; títulos con `text-ink`
+- Skip link; `:focus-visible`; inputs con ring; `lang="es"`; `main#contenido-principal`
+- Hero más compacto en móvil; menú móvil aria abrir/cerrar
+- `prefers-reduced-motion` unificado en CSS (+ GSAP F1)
+
+**Pendiente Marta:** OG definitiva si quieres otra; `og:url`/`og:image` absolutas al desplegar; CineMatch/Intermodular (F3).
+
 ## Notas
 
 - Sin backend propio: sitio estático de presentación.

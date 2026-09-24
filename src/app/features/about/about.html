@@ -16,44 +16,10 @@
     </h2>
   </header>
 
-  <div class="mt-12 grid gap-10 lg:grid-cols-5 lg:gap-14">
-    <div class="lg:col-span-3" appGsapReveal>
-      <p class="text-base leading-relaxed text-ink-muted sm:text-lg">
-        {{ person.bio }}
-      </p>
-      <ul class="mt-6 space-y-3 text-sm text-ink-muted sm:text-base">
-        <li class="flex items-start gap-3">
-          <svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 6 9 17l-5-5"></path>
-          </svg>
-          <span><span class="font-semibold text-ink">Trabajo en equipo:</span> colaboro de forma activa y clara en equipos multidisciplinares.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 6 9 17l-5-5"></path>
-          </svg>
-          <span><span class="font-semibold text-ink">Mejora continua:</span> siempre en aprendizaje para ofrecer soluciones mejores.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 6 9 17l-5-5"></path>
-          </svg>
-          <span><span class="font-semibold text-ink">Retos profesionales:</span> motivada por afrontar nuevos proyectos y tecnologías.</span>
-        </li>
-      </ul>
-    </div>
-
-    <div #statsWrap class="grid grid-cols-2 content-center gap-4 lg:col-span-2" appGsapReveal>
-      @for (stat of stats; track stat.label) {
-        <div class="glass group rounded-3xl p-6 text-center transition-transform duration-300 hover:-translate-y-1">
-          <p class="font-display text-4xl font-bold text-gradient sm:text-5xl">
-            <span class="stat-value" [attr.data-target]="stat.value">0</span
-            >{{ stat.suffix }}
-          </p>
-          <p class="mt-2 text-xs font-medium text-ink-muted sm:text-sm">
-            {{ stat.label }}
-          </p>
-        </div>
+  <div class="mt-12 max-w-3xl" appGsapReveal>
+    <div class="space-y-4 text-base leading-relaxed text-ink-muted sm:text-lg">
+      @for (paragraph of person.bio; track paragraph) {
+        <p>{{ paragraph }}</p>
       }
     </div>
   </div>

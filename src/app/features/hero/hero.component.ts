@@ -4,13 +4,12 @@ import {
   DestroyRef,
   ElementRef,
   inject,
-  signal,
   viewChild,
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
 import { ScrollService } from '../../core/services/scroll.service';
-import { HERO_ROLES, PERSON } from '../../shared/data/portfolio.data';
+import { PERSON } from '../../shared/data/portfolio.data';
 
 interface Particle {
   x: number;
@@ -75,17 +74,17 @@ class ParticleField {
 
   private seed(width: number, height: number): void {
     this.particles.length = 0;
-    const count = Math.min(180, Math.floor((width * height) / 7000));
+    const count = Math.min(120, Math.floor((width * height) / 9000));
     for (let i = 0; i < count; i++) {
       const isCream = Math.random() > 0.6;
       this.particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        r: Math.random() * 2.2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        r: Math.random() * 2 + 0.6,
         hue: isCream ? '252, 250, 199' : '168, 85, 247',
-        alpha: Math.random() * 0.65 + 0.25,
+        alpha: Math.random() * 0.55 + 0.2,
       });
     }
   }
@@ -108,8 +107,8 @@ class ParticleField {
         const dx = a.x - b.x;
         const dy = a.y - b.y;
         const dist = Math.hypot(dx, dy);
-        if (dist < 140) {
-          ctx.strokeStyle = `rgba(168, 85, 247, ${(1 - dist / 140) * 0.18})`;
+        if (dist < 120) {
+          ctx.strokeStyle = `rgba(168, 85, 247, ${(1 - dist / 120) * 0.14})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -144,23 +143,16 @@ class ParticleField {
 })
 export class HeroComponent implements AfterViewInit {
   protected readonly person = PERSON;
-  protected readonly roles = HERO_ROLES;
   protected readonly scrollService = inject(ScrollService);
 
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly canvas = viewChild<ElementRef<HTMLCanvasElement>>('particles');
-  private readonly headlineA = viewChild<ElementRef<HTMLHeadingElement>>('headlineA');
-  private readonly headlineB = viewChild<ElementRef<HTMLHeadingElement>>('headlineB');
-  private readonly roleLine = viewChild<ElementRef<HTMLSpanElement>>('roleLine');
-
-  protected readonly roleIndex = signal(0);
-  private roleTimer?: ReturnType<typeof setInterval>;
+  private readonly headline = viewChild<ElementRef<HTMLHeadingElement>>('headline');
 
   ngAfterViewInit(): void {
     this.setupParticles();
     this.setupEntrance();
-    this.setupRoleRotator();
   }
 
   private setupParticles(): void {
@@ -171,8 +163,7 @@ export class HeroComponent implements AfterViewInit {
   }
 
   private setupEntrance(): void {
-    this.splitWords(this.headlineA()?.nativeElement);
-    this.splitWords(this.headlineB()?.nativeElement, true);
+    this.splitWords(this.headline()?.nativeElement);
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
@@ -181,43 +172,16 @@ export class HeroComponent implements AfterViewInit {
     const context = gsap.context(() => {
       const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
       timeline
-        .from('.hero-badge', { opacity: 0, y: 24, duration: 0.6 }, 0.1)
-        .from('.hero-word', { opacity: 0, yPercent: 110, duration: 0.8, stagger: 0.08 }, 0.3)
-        .from('.hero-role-line', { opacity: 0, y: 16, duration: 0.6 }, 0.75)
-        .from('.hero-sub', { opacity: 0, y: 24, duration: 0.7 }, 0.9)
-        .from('.hero-cta', { opacity: 0, y: 24, duration: 0.6, stagger: 0.1 }, 1.05);
+        .from('.hero-word', { opacity: 0, yPercent: 110, duration: 0.8, stagger: 0.08 }, 0.15)
+        .from('.hero-role', { opacity: 0, y: 16, duration: 0.55 }, 0.55)
+        .from('.hero-sub', { opacity: 0, y: 20, duration: 0.6 }, 0.7)
+        .from('.hero-cta', { opacity: 0, y: 20, duration: 0.5, stagger: 0.08 }, 0.9);
     }, this.host.nativeElement);
 
     this.destroyRef.onDestroy(() => context.revert());
   }
 
-  private setupRoleRotator(): void {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
-    this.roleTimer = setInterval(() => {
-      const el = this.roleLine()?.nativeElement;
-      if (!el) {
-        return;
-      }
-      gsap.to(el, {
-        opacity: 0,
-        y: -12,
-        duration: 0.3,
-        onComplete: () => {
-          this.roleIndex.update((index) => (index + 1) % this.roles.length);
-          gsap.fromTo(
-            el,
-            { opacity: 0, y: 12 },
-            { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' },
-          );
-        },
-      });
-    }, 3000);
-    this.destroyRef.onDestroy(() => clearInterval(this.roleTimer));
-  }
-
-  private splitWords(el: HTMLElement | undefined, gradient = false): void {
+  private splitWords(el: HTMLElement | undefined): void {
     if (!el) {
       return;
     }
@@ -229,7 +193,7 @@ export class HeroComponent implements AfterViewInit {
       wrap.style.overflow = 'hidden';
       wrap.style.verticalAlign = 'bottom';
       const inner = document.createElement('span');
-      inner.className = gradient ? 'hero-word hero-word-gradient' : 'hero-word';
+      inner.className = 'hero-word';
       inner.textContent = word;
       wrap.appendChild(inner);
       el.appendChild(wrap);

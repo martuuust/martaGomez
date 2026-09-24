@@ -1,10 +1,16 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
 import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
 import { SKILLS } from '../../shared/data/portfolio.data';
-import type { SkillCategory } from '../../shared/models/portfolio.model';
+import type { Skill, SkillGroup } from '../../shared/models/portfolio.model';
 
-export type SkillFilter = SkillCategory | 'all';
+interface SkillSection {
+  id: SkillGroup;
+  title: string;
+  description: string;
+  skills: Skill[];
+  compact: boolean;
+}
 
 @Component({
   selector: 'app-skills',
@@ -12,35 +18,37 @@ export type SkillFilter = SkillCategory | 'all';
   templateUrl: './skills.html',
 })
 export class SkillsComponent {
-  protected readonly skills = SKILLS;
-
-  protected readonly activeCategory = signal<SkillFilter>('all');
-
-  protected readonly filteredSkills = computed(() => {
-    const category = this.activeCategory();
-    if (category === 'all') {
-      return this.skills;
-    }
-    return this.skills.filter((skill) => skill.category === category);
-  });
-
-  protected readonly counts = computed(() => ({
-    all: this.skills.length,
-    frontend: this.skills.filter((s) => s.category === 'frontend').length,
-    backend: this.skills.filter((s) => s.category === 'backend').length,
-    tools: this.skills.filter((s) => s.category === 'tools').length,
-    ai: this.skills.filter((s) => s.category === 'ai').length,
-  }));
-
-  protected readonly filters: { id: SkillFilter; label: string }[] = [
-    { id: 'all', label: 'Todos' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
-    { id: 'tools', label: 'Tools' },
-    { id: 'ai', label: 'IA' },
+  protected readonly sections: SkillSection[] = [
+    {
+      id: 'daily',
+      title: 'Uso a diario',
+      description: 'Stack del día a día en Onna Digital.',
+      skills: SKILLS.filter((s) => s.group === 'daily'),
+      compact: false,
+    },
+    {
+      id: 'worked',
+      title: 'He trabajado con',
+      description: 'Formación FP y proyectos en GitHub.',
+      skills: SKILLS.filter((s) => s.group === 'worked'),
+      compact: false,
+    },
+    {
+      id: 'exploring',
+      title: 'Explorando',
+      description: 'Herramientas con las que he practicado o experimentado.',
+      skills: SKILLS.filter((s) => s.group === 'exploring'),
+      compact: false,
+    },
+    {
+      id: 'ai',
+      title: 'IA aplicada',
+      description: 'Apoyo al desarrollo; no sustituyen el criterio técnico.',
+      skills: SKILLS.filter((s) => s.group === 'ai'),
+      compact: true,
+    },
   ];
 
-  /** Evita iconos negros/oscuros ilegibles sobre fondo dark. */
   protected iconColor(hex: string): string {
     const r = Number.parseInt(hex.slice(0, 2), 16);
     const g = Number.parseInt(hex.slice(2, 4), 16);

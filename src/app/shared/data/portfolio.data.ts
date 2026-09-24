@@ -78,7 +78,12 @@ export const PERSON = {
   email: '',
   location: 'Chiva, Valencia, España',
   available: true,
-  bio: 'Soy desarrolladora web con experiencia previa en el ámbito tecnológico. Disfruto creando soluciones digitales funcionales, resolviendo problemas y participando en proyectos que aporten valor real a los usuarios. Me considero una persona comprometida, proactiva y con facilidad para trabajar en equipo. Destaco por mi capacidad de adaptación, mi interés por la mejora continua y mi motivación por afrontar nuevos retos profesionales. Actualmente desarrollo aplicaciones web en un entorno profesional, donde continúo ampliando mis conocimientos y contribuyendo al desarrollo de nuevas funcionalidades y mejoras de producto.',
+  /** Frases concretas; sin placeholders de LinkedIn. */
+  bio: [
+    'Desarrolladora web en Onna Digital: Angular 21, PHP, Express y SQL, con Dolibarr como ERP y evolución hacia arquitectura hexagonal.',
+    'Formada en DAW y SMIR en el CIPFP Cheste. Antes trabajé en soporte técnico en ANDREU TOPS SL.',
+    'Publico proyectos en GitHub y uso IA como apoyo al desarrollo, no como sustituto del criterio técnico.',
+  ],
   linkedin: 'https://www.linkedin.com/in/marta-g%C3%B3mez-41a4a72a9/',
 };
 
@@ -88,13 +93,6 @@ export const NAV_LINKS: NavLink[] = [
   { id: 'habilidades', label: 'Habilidades' },
   { id: 'proyectos', label: 'Proyectos' },
   { id: 'contacto', label: 'Contacto' },
-];
-
-export const HERO_ROLES = [
-  'Soluciones digitales funcionales.',
-  'Angular, PHP y SQL.',
-  'Arquitectura hexagonal.',
-  'IA aplicada al desarrollo.',
 ];
 
 export const EXPERIENCE: TimelineEntry[] = [
@@ -140,48 +138,45 @@ export const EDUCATION: TimelineEntry[] = [
 ];
 
 /**
- * Stack real según GitHub (github.com/martuuust) + LinkedIn (experiencia Onna).
- * Sin tecnologías inventadas.
+ * Stack real según GitHub + LinkedIn/Onna.
+ * group: daily (Onna) | worked (FP/proyectos) | exploring | ai (peso visual menor).
  */
 export const SKILLS: Skill[] = [
-  // Languages & Frameworks (GitHub)
-  { name: 'Angular', category: 'frontend', icon: siAngular },
-  { name: 'JavaScript', category: 'frontend', icon: siJavascript },
-  { name: 'HTML5', category: 'frontend', icon: siHtml5 },
-  { name: 'CSS3', category: 'frontend', icon: siCss },
-  { name: 'Bootstrap', category: 'frontend', icon: siBootstrap },
-  { name: 'Java', category: 'backend', icon: siOpenjdk },
-  { name: 'PHP', category: 'backend', icon: siPhp },
-  // LinkedIn / Onna
-  { name: 'Express', category: 'backend', icon: siExpress },
-  // Databases & Cloud (GitHub)
-  { name: 'MySQL', category: 'backend', icon: siMysql },
-  { name: 'MongoDB', category: 'backend', icon: siMongodb },
-  { name: 'AWS', category: 'tools', icon: siAmazonaws },
-  { name: 'Docker', category: 'tools', icon: siDocker },
-  // Architecture & management (GitHub + LinkedIn)
-  { name: 'Dolibarr', category: 'backend', icon: siDolibarr },
-  { name: 'Git', category: 'tools', icon: siGit },
-  { name: 'GitLab', category: 'tools', icon: siGitlab },
-  { name: 'Figma', category: 'tools', icon: siFigma },
-  // AI & tooling (GitHub)
-  { name: 'OpenAI', category: 'ai', icon: siOpenai },
-  { name: 'Gemini', category: 'ai', icon: siGooglegemini },
-  { name: 'Claude', category: 'ai', icon: siClaude },
-  { name: 'Google AI Studio', category: 'ai', icon: siGoogle },
-  { name: 'Cursor', category: 'ai', icon: siCursor },
-  { name: 'Antigravity', category: 'ai', icon: siAntigravity },
-  { name: 'Stitch', category: 'ai', icon: siStitch },
-  { name: 'VirtualBox', category: 'tools', icon: siVirtualbox },
+  // Uso a diario — Onna
+  { name: 'Angular', category: 'frontend', group: 'daily', icon: siAngular },
+  { name: 'PHP', category: 'backend', group: 'daily', icon: siPhp },
+  { name: 'Express', category: 'backend', group: 'daily', icon: siExpress },
+  { name: 'MySQL', category: 'backend', group: 'daily', icon: siMysql },
+  { name: 'Dolibarr', category: 'backend', group: 'daily', icon: siDolibarr },
+  { name: 'Git', category: 'tools', group: 'daily', icon: siGit },
+  { name: 'GitLab', category: 'tools', group: 'daily', icon: siGitlab },
+  // He trabajado con — FP / repos
+  { name: 'JavaScript', category: 'frontend', group: 'worked', icon: siJavascript },
+  { name: 'HTML5', category: 'frontend', group: 'worked', icon: siHtml5 },
+  { name: 'CSS3', category: 'frontend', group: 'worked', icon: siCss },
+  { name: 'Bootstrap', category: 'frontend', group: 'worked', icon: siBootstrap },
+  { name: 'Java', category: 'backend', group: 'worked', icon: siOpenjdk },
+  { name: 'MongoDB', category: 'backend', group: 'worked', icon: siMongodb },
+  // Explorando — menor frecuencia
+  { name: 'AWS', category: 'tools', group: 'exploring', icon: siAmazonaws },
+  { name: 'Docker', category: 'tools', group: 'exploring', icon: siDocker },
+  { name: 'Figma', category: 'tools', group: 'exploring', icon: siFigma },
+  { name: 'VirtualBox', category: 'tools', group: 'exploring', icon: siVirtualbox },
+  // IA — grupo propio, sin el mismo peso visual
+  { name: 'OpenAI', category: 'ai', group: 'ai', icon: siOpenai },
+  { name: 'Gemini', category: 'ai', group: 'ai', icon: siGooglegemini },
+  { name: 'Claude', category: 'ai', group: 'ai', icon: siClaude },
+  { name: 'Google AI Studio', category: 'ai', group: 'ai', icon: siGoogle },
+  { name: 'Cursor', category: 'ai', group: 'ai', icon: siCursor },
+  { name: 'Antigravity', category: 'ai', group: 'ai', icon: siAntigravity },
+  { name: 'Stitch', category: 'ai', group: 'ai', icon: siStitch },
 ];
 
-/** Solo cifras verificables (LinkedIn / GitHub). */
-export const STATS: Stat[] = [
-  { label: 'Formaciones FP', value: 2, suffix: '' },
-  { label: 'Repos GitHub', value: 4, suffix: '' },
-  { label: 'Proyectos mostrados', value: 3, suffix: '' },
-  { label: 'Tecnologías listadas', value: SKILLS.length, suffix: '' },
-];
+/**
+ * Stats: sin cifras de relleno.
+ * TODO(Marta): confirma si quieres mostrar repos públicos u otros métricas reales.
+ */
+export const STATS: Stat[] = [];
 
 /** Repos públicos reales: github.com/martuuust */
 export const PROJECTS: Project[] = [

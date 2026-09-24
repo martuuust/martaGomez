@@ -15,156 +15,90 @@
       Habilidades <span class="text-gradient">técnicas</span>
     </h2>
     <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
-      Stack real según mi
-      <a
-        href="https://github.com/martuuust"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="font-semibold text-primary underline-offset-2 hover:underline"
-      >GitHub</a>
-      y experiencia en LinkedIn: lenguajes, bases de datos, cloud, IA y herramientas
-      del día a día.
+      Agrupadas por uso real: lo que toco cada día en Onna, lo que he usado en
+      formación y proyectos, y las herramientas de IA como apoyo.
     </p>
   </header>
 
-  <div
-    class="mt-10 flex flex-wrap items-center justify-center gap-2"
-    appGsapReveal
-  >
-    @for (filter of filters; track filter.id) {
-      <button
-        type="button"
-        (click)="activeCategory.set(filter.id)"
-        class="relative rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300"
-        [class]="
-          activeCategory() === filter.id
-            ? 'text-button-text'
-            : 'text-ink-muted hover:text-ink'
-        "
-      >
-        @if (activeCategory() === filter.id) {
-          <span
-            class="absolute inset-0 -z-10 rounded-full bg-button-bg shadow-md"
-          ></span>
-        } @else {
-          <span
-            class="absolute inset-0 -z-10 rounded-full border border-line bg-surface/60"
-          ></span>
-        }
-        {{ filter.label }}
-        <span class="ml-1 text-xs opacity-70">{{ counts()[filter.id] }}</span>
-      </button>
-    }
-  </div>
-
-  <div
-    class="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
-    appGsapReveal
-    [appGsapRevealDelay]="0.1"
-  >
-    @for (skill of filteredSkills(); track skill.name) {
-      <div
-        appGsapHover
-        [appGsapHoverTilt]="6"
-        class="group relative overflow-hidden rounded-2xl border border-line bg-surface px-4 py-3"
-      >
-        <span
-          class="pointer-events-none absolute -top-10 -right-10 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-          [style.background]="'#' + skill.icon.hex + '33'"
-        ></span>
-
-        <div class="flex items-center justify-center gap-3">
-          <span
-            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-line bg-surface-2 transition-transform duration-300 group-hover:scale-110"
-            [style.color]="skill.icon.imageSrc ? null : iconColor(skill.icon.hex)"
-          >
-            @if (skill.icon.imageSrc) {
-              <img
-                [src]="skill.icon.imageSrc"
-                [alt]="skill.icon.title"
-                class="h-5 w-5 object-contain"
-                loading="lazy"
-                width="20"
-                height="20"
-              />
-            } @else if (skill.icon.path) {
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
-                <path [attr.d]="skill.icon.path"></path>
-              </svg>
-            }
-          </span>
-          <h3
-            class="truncate font-display text-sm font-semibold text-slate-900 sm:text-base dark:text-slate-50"
-          >
-            {{ skill.name }}
+  <div class="mt-14 space-y-14">
+    @for (section of sections; track section.id) {
+      <div appGsapReveal>
+        <div class="max-w-2xl">
+          <h3 class="font-display text-xl font-semibold sm:text-2xl">
+            {{ section.title }}
           </h3>
+          <p class="mt-1 text-sm text-ink-muted">{{ section.description }}</p>
         </div>
+
+        @if (section.compact) {
+          <ul class="mt-6 flex flex-wrap gap-2">
+            @for (skill of section.skills; track skill.name) {
+              <li
+                class="inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1.5 text-sm text-slate-900 dark:text-slate-50"
+              >
+                @if (skill.icon.imageSrc) {
+                  <img
+                    [src]="skill.icon.imageSrc"
+                    [alt]=""
+                    class="h-4 w-4 object-contain"
+                    loading="lazy"
+                    width="16"
+                    height="16"
+                  />
+                } @else if (skill.icon.path) {
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-3.5 w-3.5"
+                    fill="currentColor"
+                    [style.color]="iconColor(skill.icon.hex)"
+                    aria-hidden="true"
+                  >
+                    <path [attr.d]="skill.icon.path"></path>
+                  </svg>
+                }
+                {{ skill.name }}
+              </li>
+            }
+          </ul>
+        } @else {
+          <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            @for (skill of section.skills; track skill.name) {
+              <div
+                appGsapHover
+                [appGsapHoverTilt]="6"
+                class="group relative overflow-hidden rounded-2xl border border-line bg-surface px-4 py-3"
+              >
+                <div class="flex items-center gap-3">
+                  <span
+                    class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-line bg-surface-2 transition-transform duration-300 group-hover:scale-110"
+                    [style.color]="skill.icon.imageSrc ? null : iconColor(skill.icon.hex)"
+                  >
+                    @if (skill.icon.imageSrc) {
+                      <img
+                        [src]="skill.icon.imageSrc"
+                        [alt]="skill.icon.title"
+                        class="h-5 w-5 object-contain"
+                        loading="lazy"
+                        width="20"
+                        height="20"
+                      />
+                    } @else if (skill.icon.path) {
+                      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                        <path [attr.d]="skill.icon.path"></path>
+                      </svg>
+                    }
+                  </span>
+                  <h4
+                    class="truncate font-display text-sm font-semibold text-slate-900 sm:text-base dark:text-slate-50"
+                  >
+                    {{ skill.name }}
+                  </h4>
+                </div>
+              </div>
+            }
+          </div>
+        }
       </div>
     }
-  </div>
-
-  <div class="mt-14 overflow-hidden" aria-hidden="true">
-    <div class="flex w-max animate-marquee">
-      @for (
-        skill of skills;
-        track skill.name
-      ) {
-        <span
-          class="mr-6 flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium whitespace-nowrap text-slate-900 dark:text-slate-50"
-        >
-          @if (skill.icon.imageSrc) {
-            <img
-              [src]="skill.icon.imageSrc"
-              [alt]=""
-              class="h-4 w-4 object-contain"
-              loading="lazy"
-              width="16"
-              height="16"
-            />
-          } @else if (skill.icon.path) {
-            <svg
-              viewBox="0 0 24 24"
-              class="h-4 w-4"
-              fill="currentColor"
-              [style.color]="iconColor(skill.icon.hex)"
-              aria-hidden="true"
-            >
-              <path [attr.d]="skill.icon.path"></path>
-            </svg>
-          }
-          {{ skill.name }}
-        </span>
-      }
-      @for (
-        skill of skills;
-        track 'dup-' + skill.name
-      ) {
-        <span
-          class="mr-6 flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium whitespace-nowrap text-slate-900 dark:text-slate-50"
-        >
-          @if (skill.icon.imageSrc) {
-            <img
-              [src]="skill.icon.imageSrc"
-              [alt]=""
-              class="h-4 w-4 object-contain"
-              loading="lazy"
-              width="16"
-              height="16"
-            />
-          } @else if (skill.icon.path) {
-            <svg
-              viewBox="0 0 24 24"
-              class="h-4 w-4"
-              fill="currentColor"
-              [style.color]="iconColor(skill.icon.hex)"
-              aria-hidden="true"
-            >
-              <path [attr.d]="skill.icon.path"></path>
-            </svg>
-          }
-          {{ skill.name }}
-        </span>
-      }
-    </div>
   </div>
 </section>

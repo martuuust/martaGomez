@@ -44,8 +44,8 @@ Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/mar
 - Rol: Desarrolladora Web | Angular | IA aplicada al desarrollo
 - Ubicación LinkedIn: Chiva, Valencia
 - Bio: texto About de LinkedIn
-- About: Experiencia (Onna Digital) y Formación (DAW + SMIR) en secciones separadas
-- Skills: stack real de [GitHub martuuust](https://github.com/martuuust) + LinkedIn/Onna (sin inventadas). Sin porcentajes. Categorías: frontend, backend, tools, ai.
+- About: Experiencia (Onna Digital) y Formación (DAW + SMIR) en secciones separadas; bio en 3 frases concretas; sin stats de relleno
+- Skills: grupos `daily` / `worked` / `exploring` / `ai` (IA en chips compactos). Sin marquee ni filtros por categoría.
 - Proyectos: repos públicos reales (CineMatch, ProyectoIntermodular, martaGomez). Sin categorías/filtros (todos web).
 - Stats: solo cifras verificables (FP, repos, proyectos mostrados, nº skills).
 - Contacto: sin email inventado → LinkedIn.
@@ -85,6 +85,13 @@ Eliminado por innecesario:
 - GSAP hover/reveal respetan reduced-motion
 
 **Web3Forms:** access key configurada en `environment*.ts` (destino: martygomez2000@gmail.com). El email no se publica en el portfolio.
+
+## Fase 2 — Quitar ruido (2026-09-24)
+
+- Hero: solo partículas; titular = Marta Gómez, rol, subtítulo; sin rotador ni blobs/rejilla/badge
+- Skills: sin marquee; grupos Uso a diario / He trabajado con / Explorando / IA (chips)
+- About: sin stats de relleno ni bullets genéricos; bio en 3 frases
+- TODO: confirmar métricas reales si se quieren stats de nuevo
 
 ## Notas
 

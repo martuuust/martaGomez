@@ -1,0 +1,81 @@
+# PROYECTO_martaGomez
+
+SSOT del portfolio de Marta Gómez.
+
+## Qué es
+
+SPA de portfolio personal (secciones: hero, about, skills, projects, contact, footer).
+
+## Stack
+
+| Capa | Tecnología | Versión aprox. |
+|------|------------|----------------|
+| Framework | Angular (standalone, zoneless) | ^21.2 |
+| Lenguaje | TypeScript | ~5.9 |
+| Estilos | Tailwind CSS + PostCSS | ^4.3 |
+| Animación | GSAP | ^3.15 |
+| Iconos | simple-icons | ^16 |
+| Reactividad | RxJS | ~7.8 |
+| Build | Angular CLI / `@angular/build:application` | ^21.2 |
+| Package manager | npm | 11.6 |
+| Formato | Prettier | ^3.8 |
+| Tests | Vitest (vía `ng test`, según README) | — |
+
+## Características Angular relevantes
+
+- **Zoneless**: `provideZonelessChangeDetection()` en `app.config.ts` (sin Zone.js).
+- **Browser-only**: builder `application` con entry `src/main.ts` (sin SSR configurado).
+- **Datos**: portfolio estático en `src/app/shared/data/portfolio.data.ts`.
+
+## Estructura clave
+
+```
+src/app/
+  features/   # hero, about, skills, projects, contact, navbar, footer
+  core/       # theme, scroll, directivas GSAP
+  shared/     # models + data del portfolio
+public/       # assets estáticos
+```
+
+## Contenido actual (alineado a LinkedIn)
+
+Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/marta-g%C3%B3mez-41a4a72a9/) (sync manual en `portfolio.data.ts`, sin API).
+
+- Rol: Desarrolladora Web | Angular | IA aplicada al desarrollo
+- Ubicación LinkedIn: Chiva, Valencia
+- Bio: texto About de LinkedIn
+- About: Experiencia (Onna Digital) y Formación (DAW + SMIR) en secciones separadas
+- Skills: stack real de [GitHub martuuust](https://github.com/martuuust) + LinkedIn/Onna (sin inventadas). Sin porcentajes. Categorías: frontend, backend, tools, ai.
+- Proyectos: repos públicos reales (CineMatch, ProyectoIntermodular, martaGomez). Sin categorías/filtros (todos web).
+- Stats: solo cifras verificables (FP, repos, proyectos mostrados, nº skills).
+- Contacto: sin email inventado → LinkedIn.
+
+**Nota:** LinkedIn no permite sync automática del CV completo; al cambiar el perfil hay que actualizar `portfolio.data.ts` a mano.
+
+## Dependencias causales (Nebula)
+
+- Si quitas **GSAP** → se rompen `gsap-reveal` / `gsap-hover` y contadores about.
+- Si cambias **Tailwind 4 / PostCSS** → se rompe el pipeline de estilos (`postcss.config.json` + `styles.css`).
+- Si editas **`portfolio.data.ts` / modelos** → se actualiza el contenido de todas las features que lo consumen.
+- Si quitas **zoneless** o reintroduces Zone.js → hay que alinear detección de cambios y providers en `app.config.ts`.
+- Si fusionas EXPERIENCE/EDUCATION de nuevo → hay que volver a unificar el template about (hoy son dos timelines).
+
+## Limpieza 2026-09-24
+
+Eliminado por innecesario:
+- Blobs animados duplicados en about/skills/contact/projects (1 glow estático; hero conserva 3 blobs con tokens)
+- `skills.css` + clases `skill-card`/`skill-name` (contraste vía `text-ink`)
+- `btn-solid` duplicado (queda `btn-cream` + `bg-button-bg`)
+- Overrides CSS `!important` de `.text-ink` / `.text-ink-muted` (restaurados: sin ellos el texto de skills era ilegible en dark)
+- Cards de skills: `bg-surface` + `text-slate-900 dark:text-slate-50` para contraste garantizado
+- Export muerto `TIMELINE` y `PERSON.headline`
+- Filtros de proyectos (solo había categoría web) + `ProjectCategory` + badges de categoría
+- Badges "Experiencia"/"Formación" redundantes con los títulos de sección
+- Sección testimonios ficticios (ya fuera del tree)
+- Datos inventados previos (email, %, proyectos relleno, VMware, Scroll indicator)
+
+## Notas
+
+- Sin backend propio: sitio estático de presentación.
+- Tests de componentes omitidos por schematics (`skipTests: true`).
+- Arranque local: `npm.cmd start` (PowerShell puede bloquear `npm.ps1`).

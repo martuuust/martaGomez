@@ -78,11 +78,14 @@ export const PERSON = {
   email: '',
   location: 'Chiva, Valencia, España',
   available: true,
-  /** Frases concretas; sin placeholders de LinkedIn. */
+  /**
+   * Sobre mí alineado al About de LinkedIn, sin nombrar empresas
+   * (eso va solo en Experiencia).
+   */
   bio: [
-    'Desarrolladora web con Angular 21, PHP, Express y SQL: aplicaciones con ERP, APIs entre servicios y evolución hacia arquitectura hexagonal.',
-    'Formada en DAW y SMIR en el CIPFP Cheste. Antes trabajé en soporte técnico en ANDREU TOPS SL.',
-    'Publico proyectos en GitHub y uso IA como apoyo al desarrollo, no como sustituto del criterio técnico.',
+    'Soy desarrolladora web con experiencia previa en el ámbito tecnológico. Me gusta crear soluciones digitales funcionales, resolver problemas y aportar valor real a quien las usa.',
+    'En el día a día trabajo con Angular, PHP, Express y SQL: desarrollo y consumo de APIs, integración con ERP y evolución hacia una arquitectura más mantenible.',
+    'Formada en DAW y SMIR. Soy proactiva, me adapto con facilidad y trabajo bien en equipo; busco seguir aprendiendo y afrontar nuevos retos profesionales.',
   ],
   linkedin: 'https://www.linkedin.com/in/marta-g%C3%B3mez-41a4a72a9/',
 };

@@ -27,6 +27,7 @@ import {
   siMysql,
   siOpenjdk,
   siPhp,
+  siTypescript,
   siVirtualbox,
 } from 'simple-icons';
 
@@ -52,19 +53,19 @@ const siOpenai: Skill['icon'] = {
   path: 'M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.365-1.973V11.6a.766.766 0 0 0 .388.681l5.834 3.369-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855-5.835-3.377L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.146.087-4.778 2.758a.795.795 0 0 0-.393.681zm1.097-2.365 2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z',
 };
 
-/** Herramientas del README de GitHub sin icono oficial en simple-icons. */
+/** Logos oficiales en public/icons (press kit Antigravity / gstatic Stitch). */
 const siAntigravity: Skill['icon'] = {
   title: 'Antigravity',
   slug: 'antigravity',
-  hex: 'A78BFA',
-  path: 'M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.8 5.7 20.8 8 13.6 2 9.2h7.6L12 2zm0 5.2L10.7 11H6.8l3.1 2.3-1.2 3.7L12 14.7l3.3 2.3-1.2-3.7 3.1-2.3h-3.9L12 7.2z',
+  hex: '4285F4',
+  imageSrc: '/icons/antigravity.png',
 };
 
-const siStich: Skill['icon'] = {
-  title: 'Stich',
-  slug: 'stich',
-  hex: '34D399',
-  path: 'M7 4h10a3 3 0 0 1 3 3v2H4V7a3 3 0 0 1 3-3zm-3 7h16v2H4v-2zm0 4h16v2a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-2zm5-9.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM9 14.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z',
+const siStitch: Skill['icon'] = {
+  title: 'Stitch',
+  slug: 'stitch',
+  hex: 'EA4335',
+  imageSrc: '/icons/stitch.png',
 };
 
 /** Datos alineados con LinkedIn: https://www.linkedin.com/in/marta-gómez-41a4a72a9/ */
@@ -170,7 +171,7 @@ export const SKILLS: Skill[] = [
   { name: 'Google AI Studio', category: 'ai', icon: siGoogle },
   { name: 'Cursor', category: 'ai', icon: siCursor },
   { name: 'Antigravity', category: 'ai', icon: siAntigravity },
-  { name: 'Stich', category: 'ai', icon: siStich },
+  { name: 'Stitch', category: 'ai', icon: siStitch },
   { name: 'VirtualBox', category: 'tools', icon: siVirtualbox },
 ];
 
@@ -192,7 +193,7 @@ export const PROJECTS: Project[] = [
       'Aplicación web pública en el perfil de GitHub. Stack principal en TypeScript, con demo desplegada en Vercel.',
     highlights: ['Repositorio público en GitHub', 'Demo en Vercel', 'TypeScript'],
     tags: ['TypeScript'],
-    icon: siJavascript,
+    icon: siTypescript,
     gradient: 'from-violet-600 via-purple-500 to-cyan-400',
     glyph: 'CM',
     github: 'https://github.com/martuuust/cineMatch',
@@ -207,7 +208,7 @@ export const PROJECTS: Project[] = [
       'Repositorio público del proyecto intermodular (formación). Código en TypeScript disponible en GitHub.',
     highlights: ['Repositorio público en GitHub', 'TypeScript'],
     tags: ['TypeScript'],
-    icon: siOpenjdk,
+    icon: siTypescript,
     gradient: 'from-emerald-600 via-teal-500 to-cyan-400',
     glyph: 'PI',
     github: 'https://github.com/martuuust/ProyectoIntermodular',

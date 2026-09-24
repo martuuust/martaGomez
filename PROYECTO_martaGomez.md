@@ -74,6 +74,18 @@ Eliminado por innecesario:
 - Sección testimonios ficticios (ya fuera del tree)
 - Datos inventados previos (email, %, proyectos relleno, VMware, Scroll indicator)
 
+## Fase 1 — Bugs (2026-09-24)
+
+- About: contadores muestran valor final con `prefers-reduced-motion`
+- Contact: Web3Forms (`environment.web3formsAccessKey`); sin key → aviso honesto + CTAs LinkedIn/GitHub (sin mensaje de “no hay email”)
+- Un solo `<main>` (hero ya no anida otro)
+- Projects: sin `@defer`; modal con focus trap, `aria-labelledby`, Escape, tarjeta = `<button>`
+- Iconos: Antigravity + Stitch desde `public/icons/` (press kit / gstatic); proyectos TS usan `siTypescript`
+- Limpieza: `signal` en skills, `gsap.context` con scope en hero/reveal, ThemeService try/catch localStorage
+- GSAP hover/reveal respetan reduced-motion
+
+**Pendiente Marta:** access key Web3Forms en `src/environments/environment*.ts`.
+
 ## Notas
 
 - Sin backend propio: sitio estático de presentación.

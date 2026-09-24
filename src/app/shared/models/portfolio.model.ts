@@ -4,7 +4,10 @@ export interface BrandIcon {
   title: string;
   slug: string;
   hex: string;
-  path: string;
+  /** Path SVG (simple-icons). Omitir si usas imageSrc. */
+  path?: string;
+  /** Logo raster/SVG en /public (marcas con branding oficial). */
+  imageSrc?: string;
 }
 
 export interface NavLink {

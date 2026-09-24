@@ -29,8 +29,14 @@ export class GsapHoverDirective implements AfterViewInit, OnDestroy {
   private rotateY!: (value: number) => void;
   private glare?: HTMLElement;
   private timeline?: gsap.core.Tween;
+  private reducedMotion = false;
 
   ngAfterViewInit(): void {
+    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.reducedMotion) {
+      return;
+    }
+
     const el = this.host.nativeElement;
     gsap.set(el, { transformPerspective: 900, willChange: 'transform' });
 
@@ -44,6 +50,9 @@ export class GsapHoverDirective implements AfterViewInit, OnDestroy {
 
   @HostListener('pointerenter')
   onEnter(): void {
+    if (this.reducedMotion) {
+      return;
+    }
     this.timeline = gsap.to(this.host.nativeElement, {
       scale: this.appGsapHoverScale,
       duration: 0.45,
@@ -56,6 +65,9 @@ export class GsapHoverDirective implements AfterViewInit, OnDestroy {
 
   @HostListener('pointermove', ['$event'])
   onMove(event: PointerEvent): void {
+    if (this.reducedMotion || !this.rotateX || !this.rotateY) {
+      return;
+    }
     const { left, top, width, height } = this.host.nativeElement.getBoundingClientRect();
     const px = (event.clientX - left) / width - 0.5;
     const py = (event.clientY - top) / height - 0.5;
@@ -74,6 +86,9 @@ export class GsapHoverDirective implements AfterViewInit, OnDestroy {
 
   @HostListener('pointerleave')
   onLeave(): void {
+    if (this.reducedMotion) {
+      return;
+    }
     const el = this.host.nativeElement;
     this.timeline?.kill();
     gsap.to(el, {

@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   Component,
   DestroyRef,
   ElementRef,
@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class AboutComponent implements AfterViewInit {
+export class AboutComponent {
   protected readonly person = PERSON;
   protected readonly stats = STATS;
   protected readonly experience = EXPERIENCE;
@@ -28,18 +28,28 @@ export class AboutComponent implements AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly statsWrap = viewChild<ElementRef<HTMLElement>>('statsWrap');
 
-  ngAfterViewInit(): void {
-    this.animateCounters();
+  constructor() {
+    afterNextRender(() => this.animateCounters());
   }
 
   private animateCounters(): void {
     const wrap = this.statsWrap()?.nativeElement;
-    if (!wrap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!wrap) {
+      return;
+    }
+
+    const values = gsap.utils.toArray<HTMLElement>('.stat-value', wrap);
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduced) {
+      for (const el of values) {
+        el.textContent = el.dataset['target'] ?? '0';
+      }
       return;
     }
 
     const context = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.stat-value').forEach((el) => {
+      values.forEach((el) => {
         const target = Number(el.dataset['target'] ?? '0');
         const counter = { value: 0 };
         gsap.to(counter, {

@@ -23,6 +23,12 @@ export class GsapRevealDirective implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     const el = this.host.nativeElement;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.set(el, { autoAlpha: 1, x: 0, y: 0 });
+      return;
+    }
+
     const delta =
       this.appGsapRevealFrom === 'left'
         ? { x: -64 }
@@ -46,7 +52,7 @@ export class GsapRevealDirective implements AfterViewInit, OnDestroy {
           scrollTrigger: { trigger: el, start: 'top 85%', once: true },
         },
       );
-    });
+    }, el);
   }
 
   ngOnDestroy(): void {

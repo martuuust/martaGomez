@@ -76,11 +76,22 @@
         <div class="flex items-center justify-center gap-3">
           <span
             class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-line bg-surface-2 transition-transform duration-300 group-hover:scale-110"
-            [style.color]="iconColor(skill.icon.hex)"
+            [style.color]="skill.icon.imageSrc ? null : iconColor(skill.icon.hex)"
           >
-            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
-              <path [attr.d]="skill.icon.path"></path>
-            </svg>
+            @if (skill.icon.imageSrc) {
+              <img
+                [src]="skill.icon.imageSrc"
+                [alt]="skill.icon.title"
+                class="h-5 w-5 object-contain"
+                loading="lazy"
+                width="20"
+                height="20"
+              />
+            } @else if (skill.icon.path) {
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                <path [attr.d]="skill.icon.path"></path>
+              </svg>
+            }
           </span>
           <h3
             class="truncate font-display text-sm font-semibold text-slate-900 sm:text-base dark:text-slate-50"
@@ -95,38 +106,62 @@
   <div class="mt-14 overflow-hidden" aria-hidden="true">
     <div class="flex w-max animate-marquee">
       @for (
-        skill of skills();
+        skill of skills;
         track skill.name
       ) {
         <span
           class="mr-6 flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium whitespace-nowrap text-slate-900 dark:text-slate-50"
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="h-4 w-4"
-            fill="currentColor"
-            [style.color]="iconColor(skill.icon.hex)"
-          >
-            <path [attr.d]="skill.icon.path"></path>
-          </svg>
+          @if (skill.icon.imageSrc) {
+            <img
+              [src]="skill.icon.imageSrc"
+              [alt]=""
+              class="h-4 w-4 object-contain"
+              loading="lazy"
+              width="16"
+              height="16"
+            />
+          } @else if (skill.icon.path) {
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="currentColor"
+              [style.color]="iconColor(skill.icon.hex)"
+              aria-hidden="true"
+            >
+              <path [attr.d]="skill.icon.path"></path>
+            </svg>
+          }
           {{ skill.name }}
         </span>
       }
       @for (
-        skill of skills();
+        skill of skills;
         track 'dup-' + skill.name
       ) {
         <span
           class="mr-6 flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium whitespace-nowrap text-slate-900 dark:text-slate-50"
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="h-4 w-4"
-            fill="currentColor"
-            [style.color]="iconColor(skill.icon.hex)"
-          >
-            <path [attr.d]="skill.icon.path"></path>
-          </svg>
+          @if (skill.icon.imageSrc) {
+            <img
+              [src]="skill.icon.imageSrc"
+              [alt]=""
+              class="h-4 w-4 object-contain"
+              loading="lazy"
+              width="16"
+              height="16"
+            />
+          } @else if (skill.icon.path) {
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="currentColor"
+              [style.color]="iconColor(skill.icon.hex)"
+              aria-hidden="true"
+            >
+              <path [attr.d]="skill.icon.path"></path>
+            </svg>
+          }
           {{ skill.name }}
         </span>
       }

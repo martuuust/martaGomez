@@ -148,6 +148,7 @@ export class HeroComponent implements AfterViewInit {
   protected readonly scrollService = inject(ScrollService);
 
   private readonly destroyRef = inject(DestroyRef);
+  private readonly host = inject(ElementRef<HTMLElement>);
   private readonly canvas = viewChild<ElementRef<HTMLCanvasElement>>('particles');
   private readonly headlineA = viewChild<ElementRef<HTMLHeadingElement>>('headlineA');
   private readonly headlineB = viewChild<ElementRef<HTMLHeadingElement>>('headlineB');
@@ -173,6 +174,10 @@ export class HeroComponent implements AfterViewInit {
     this.splitWords(this.headlineA()?.nativeElement);
     this.splitWords(this.headlineB()?.nativeElement, true);
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     const context = gsap.context(() => {
       const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
       timeline
@@ -181,7 +186,7 @@ export class HeroComponent implements AfterViewInit {
         .from('.hero-role-line', { opacity: 0, y: 16, duration: 0.6 }, 0.75)
         .from('.hero-sub', { opacity: 0, y: 24, duration: 0.7 }, 0.9)
         .from('.hero-cta', { opacity: 0, y: 24, duration: 0.6, stagger: 0.1 }, 1.05);
-    });
+    }, this.host.nativeElement);
 
     this.destroyRef.onDestroy(() => context.revert());
   }

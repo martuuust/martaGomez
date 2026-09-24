@@ -17,7 +17,11 @@ export class ThemeService {
       const root = document.documentElement;
       root.classList.toggle('dark', theme === 'dark');
       root.style.colorScheme = theme;
-      localStorage.setItem(STORAGE_KEY, theme);
+      try {
+        localStorage.setItem(STORAGE_KEY, theme);
+      } catch {
+        // Safari privado / storage bloqueado: el tema sigue en memoria.
+      }
     });
   }
 
@@ -26,9 +30,13 @@ export class ThemeService {
   }
 
   private readInitialTheme(): Theme {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'light' || stored === 'dark') {
-      return stored;
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === 'light' || stored === 'dark') {
+        return stored;
+      }
+    } catch {
+      // ignore
     }
     return 'dark';
   }

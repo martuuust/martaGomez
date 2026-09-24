@@ -44,7 +44,7 @@ Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/mar
 - Rol: Desarrolladora Web | Angular | IA aplicada al desarrollo
 - Ubicación LinkedIn: Chiva, Valencia
 - Bio: texto About de LinkedIn
-- About: Experiencia (Onna Digital) y Formación (DAW + SMIR) en secciones separadas; bio en 3 frases concretas; sin stats de relleno
+- About: Experiencia (Onna Digital) y Formación (DAW + SMR) en secciones separadas; bio en 3 frases concretas; sin stats de relleno
 - Skills: grupos `daily` / `worked` / `exploring` / `ai` (IA en chips compactos). Sin marquee ni filtros por categoría.
 - Proyectos: repos públicos reales (CineMatch, ProyectoIntermodular, martaGomez). Sin categorías/filtros (todos web).
 - Stats: solo cifras verificables (FP, repos, proyectos mostrados, nº skills).

@@ -85,7 +85,7 @@ export const PERSON = {
   bio: [
     'Soy desarrolladora web con experiencia previa en el ámbito tecnológico. Me gusta crear soluciones digitales funcionales, resolver problemas y aportar valor real a quien las usa.',
     'En el día a día trabajo con Angular, PHP, Express y SQL: desarrollo y consumo de APIs, integración con ERP y evolución hacia una arquitectura más mantenible.',
-    'Formada en DAW (Desarrollo de Aplicaciones Web) y SMIR (Sistemas Microinformáticos y Redes). Soy proactiva, me adapto con facilidad y trabajo bien en equipo; busco seguir aprendiendo y afrontar nuevos retos profesionales.',
+    'Formada en DAW (Desarrollo de Aplicaciones Web) y SMR (Sistemas Microinformáticos y Redes). Soy proactiva, me adapto con facilidad y trabajo bien en equipo; busco seguir aprendiendo y afrontar nuevos retos profesionales.',
   ],
   linkedin: 'https://www.linkedin.com/in/marta-g%C3%B3mez-41a4a72a9/',
 };
@@ -131,7 +131,7 @@ export const EDUCATION: TimelineEntry[] = [
   },
   {
     period: '2022 — 2024',
-    title: 'Técnico en Sistemas Microinformáticos y Redes (SMIR)',
+    title: 'Técnico en Sistemas Microinformáticos y Redes (SMR)',
     company: 'CIPFP Cheste',
     description:
       'Formación profesional de grado medio en sistemas microinformáticos y redes: montaje de equipos, sistemas operativos, redes y seguridad.',

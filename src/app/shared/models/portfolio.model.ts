@@ -29,21 +29,17 @@ export interface TimelineEntry {
   tags: string[];
 }
 
-export type SkillCategory = 'frontend' | 'backend' | 'tools';
+export type SkillCategory = 'frontend' | 'backend' | 'tools' | 'ai';
 
 export interface Skill {
   name: string;
   category: SkillCategory;
-  level: number;
   icon: BrandIcon;
 }
-
-export type ProjectCategory = 'web' | 'mobile' | 'uiux' | 'ia';
 
 export interface Project {
   id: string;
   title: string;
-  category: ProjectCategory;
   tagline: string;
   description: string;
   highlights: string[];
@@ -52,7 +48,7 @@ export interface Project {
   gradient: string;
   glyph: string;
   github: string;
-  demo: string;
+  demo?: string;
   year: string;
 }
 

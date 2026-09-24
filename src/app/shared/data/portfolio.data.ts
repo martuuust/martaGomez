@@ -8,30 +8,26 @@ import type {
 } from '../models/portfolio.model';
 import {
   siAngular,
-  siCypress,
+  siBootstrap,
+  siClaude,
+  siCss,
+  siCursor,
   siDocker,
+  siDolibarr,
+  siExpress,
   siFigma,
-  siFirebase,
   siGit,
   siGithub,
-  siGmail,
+  siGitlab,
+  siGoogle,
+  siGooglegemini,
   siHtml5,
   siJavascript,
-  siJest,
   siMongodb,
-  siNestjs,
-  siNextdotjs,
-  siNodedotjs,
-  siPostgresql,
-  siPrisma,
-  siReact,
-  siRedux,
-  siSass,
-  siStorybook,
-  siTailwindcss,
-  siTypescript,
-  siVite,
-  siX,
+  siMysql,
+  siOpenjdk,
+  siPhp,
+  siVirtualbox,
 } from 'simple-icons';
 
 const siLinkedin: Skill['icon'] = {
@@ -41,15 +37,48 @@ const siLinkedin: Skill['icon'] = {
   path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z',
 };
 
+/** Iconos no disponibles en simple-icons (marcas retiradas). */
+const siAmazonaws: Skill['icon'] = {
+  title: 'Amazon AWS',
+  slug: 'amazonaws',
+  hex: 'FF9900',
+  path: 'M18.75 18.5c-2.2 1.28-5.39 1.96-8.13 1.96-3.85 0-7.32-1.42-9.95-3.79-.21-.19-.02-.45.23-.3 2.86 1.66 6.39 2.66 10.04 2.66 2.46 0 5.17-.51 7.66-1.57.38-.16.69.25.15.54zm1.12-1.28c-.28-.36-1.86-.17-2.57-.09-.21.03-.24-.16-.05-.3 1.24-.87 3.28-.62 3.51-.33.24.3-.06 2.35-1.22 3.33-.18.15-.35.07-.27-.11.26-.6.85-1.95.6-2.5zM6.76 11.99c0 .8.08 1.45.25 1.96.16.5.42.92.76 1.24.34.32.77.56 1.28.71l-.6 1.8a4.3 4.3 0 0 1-1.7-.75 3.7 3.7 0 0 1-1.2-1.4A5.2 5.2 0 0 1 5 12c0-.9.14-1.7.41-2.4.28-.7.67-1.3 1.18-1.78.5-.48 1.11-.85 1.82-1.1.7-.26 1.48-.38 2.33-.38.8 0 1.5.12 2.1.37.6.24 1.08.58 1.47 1.02V6.3h2.3v10.6h-2.3v-1.3a3.4 3.4 0 0 1-1.35 1.15c-.55.28-1.2.42-1.95.42-1.05 0-1.95-.2-2.7-.6-.75-.4-1.32-.98-1.72-1.74-.4-.76-.6-1.68-.6-2.76zm5.4-.95c0-.55-.1-1.02-.28-1.42a2.1 2.1 0 0 0-.78-.92 2 2 0 0 0-1.12-.33c-.45 0-.84.11-1.18.33-.34.22-.6.53-.78.92-.18.4-.28.86-.28 1.4 0 .55.1 1.03.28 1.42.18.4.44.7.78.92.34.22.73.33 1.18.33.42 0 .8-.1 1.12-.32.33-.22.6-.52.78-.91.18-.4.28-.87.28-1.42z',
+};
+
+const siOpenai: Skill['icon'] = {
+  title: 'OpenAI',
+  slug: 'openai',
+  hex: '412991',
+  path: 'M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.365-1.973V11.6a.766.766 0 0 0 .388.681l5.834 3.369-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855-5.835-3.377L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.146.087-4.778 2.758a.795.795 0 0 0-.393.681zm1.097-2.365 2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z',
+};
+
+/** Herramientas del README de GitHub sin icono oficial en simple-icons. */
+const siAntigravity: Skill['icon'] = {
+  title: 'Antigravity',
+  slug: 'antigravity',
+  hex: 'A78BFA',
+  path: 'M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.8 5.7 20.8 8 13.6 2 9.2h7.6L12 2zm0 5.2L10.7 11H6.8l3.1 2.3-1.2 3.7L12 14.7l3.3 2.3-1.2-3.7 3.1-2.3h-3.9L12 7.2z',
+};
+
+const siStich: Skill['icon'] = {
+  title: 'Stich',
+  slug: 'stich',
+  hex: '34D399',
+  path: 'M7 4h10a3 3 0 0 1 3 3v2H4V7a3 3 0 0 1 3-3zm-3 7h16v2H4v-2zm0 4h16v2a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-2zm5-9.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM9 14.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z',
+};
+
+/** Datos alineados con LinkedIn: https://www.linkedin.com/in/marta-gómez-41a4a72a9/ */
 export const PERSON = {
   name: 'Marta Gómez',
   firstName: 'Marta',
   lastName: 'Gómez',
-  role: 'Frontend Developer & UI/UX Designer',
-  email: 'hola@martagomez.dev',
-  location: 'Madrid, España',
+  role: 'Desarrolladora Web',
+  /** Sin email público verificado: contacto vía LinkedIn. */
+  email: '',
+  location: 'Chiva, Valencia, España',
   available: true,
-  bio: 'Diseño y construyo experiencias digitales que combinan rendimiento extremo con estética cuidada. Especialista en Angular y en convertir interfaces complejas en momentos memorables.',
+  bio: 'Soy desarrolladora web con experiencia previa en el ámbito tecnológico. Disfruto creando soluciones digitales funcionales, resolviendo problemas y participando en proyectos que aporten valor real a los usuarios. Me considero una persona comprometida, proactiva y con facilidad para trabajar en equipo. Destaco por mi capacidad de adaptación, mi interés por la mejora continua y mi motivación por afrontar nuevos retos profesionales. Actualmente desarrollo aplicaciones web en un entorno profesional, donde continúo ampliando mis conocimientos y contribuyendo al desarrollo de nuevas funcionalidades y mejoras de producto.',
+  linkedin: 'https://www.linkedin.com/in/marta-g%C3%B3mez-41a4a72a9/',
 };
 
 export const NAV_LINKS: NavLink[] = [
@@ -61,215 +90,150 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const HERO_ROLES = [
-  'Interfaces que enamoran.',
-  'Código limpio y escalable.',
-  'Microinteracciones memorables.',
-  'UX con intención.',
+  'Soluciones digitales funcionales.',
+  'Angular, PHP y SQL.',
+  'Arquitectura hexagonal.',
+  'IA aplicada al desarrollo.',
 ];
 
-export const STATS: Stat[] = [
-  { label: 'Años de experiencia', value: 6, suffix: '+' },
-  { label: 'Proyectos completados', value: 48, suffix: '' },
-  { label: 'Tecnologías dominadas', value: 20, suffix: '+' },
-  { label: 'Clientes satisfechos', value: 27, suffix: '' },
+export const EXPERIENCE: TimelineEntry[] = [
+  {
+    period: 'mar. 2026 — Actualidad',
+    title: 'Desarrolladora Web',
+    company: 'Onna Digital',
+    description:
+      'Participo en el desarrollo de una aplicación orientada al acceso para distribuidores. Trabajo con Dolibarr como ERP para la gestión y almacenamiento de la información. Colaboro en GitLab con ramas y buenas prácticas de control de versiones. Stack: Angular 21, PHP, Express y SQL; desarrollo y consumo de endpoints entre servicios. Evolución de la arquitectura desde un enfoque por capas (DAL y Domain) hacia arquitectura hexagonal, mejorando organización, escalabilidad y mantenibilidad.',
+    type: 'work',
+    tags: ['Angular 21', 'PHP', 'Express', 'SQL', 'Dolibarr', 'GitLab'],
+  },
+  {
+    period: 'mar. 2024 — jun. 2024',
+    title: 'Técnico en Sistemas Microinformáticos y Redes',
+    company: 'ANDREU TOPS SL',
+    description:
+      'Gestión y resolución de incidencias técnicas, montaje y reparación de equipos, instalación y configuración de sistemas operativos y software corporativo, administración de usuarios en SAP y configuración de videoconferencia en salas.',
+    type: 'work',
+    tags: ['SAP', 'Sistemas operativos', 'Hardware', 'Soporte'],
+  },
 ];
 
-export const TIMELINE: TimelineEntry[] = [
+export const EDUCATION: TimelineEntry[] = [
   {
-    period: '2023 — Actualidad',
-    title: 'Frontend Lead',
-    company: 'Nova Digital Studio',
+    period: '2024 — 2026',
+    title: 'Técnico Superior en Desarrollo de Aplicaciones Web (DAW)',
+    company: 'CIPFP Cheste',
     description:
-      'Lidero un equipo de 5 personas construyendo productos SaaS con Angular y NX. Definí el design system y elevé el rendimiento LCP un 42%.',
-    type: 'work',
-    tags: ['Angular', 'NX', 'Signals', 'Design System'],
-  },
-  {
-    period: '2021 — 2023',
-    title: 'Frontend Developer',
-    company: 'Kiwitek',
-    description:
-      'Desarrollé dashboards analíticos en tiempo real y migré la plataforma a un stack zoneless y orientado a signals.',
-    type: 'work',
-    tags: ['React', 'TypeScript', 'D3.js', 'Node.js'],
-  },
-  {
-    period: '2020 — 2021',
-    title: 'UI/UX Designer & Developer',
-    company: 'Freelance',
-    description:
-      'Diseñé y desarrollé webs corporativas y tiendas online end-to-end para pymes y startups en fase temprana.',
-    type: 'work',
-    tags: ['Figma', 'HTML/CSS', 'Tailwind', 'SEO'],
-  },
-  {
-    period: '2018 — 2020',
-    title: 'Bootcamp Full-Stack',
-    company: '42 Madrid',
-    description:
-      'Formación intensiva en desarrollo de software: arquitectura web, bases de datos y metodologías ágiles.',
+      'Formación profesional de grado superior en desarrollo de aplicaciones web: programación, bases de datos, entornos de desarrollo y diseño de interfaces.',
     type: 'education',
-    tags: ['JavaScript', 'Python', 'SQL', 'Agile'],
+    tags: ['Java', 'JavaScript', 'PHP', 'SQL', 'HTML/CSS'],
+  },
+  {
+    period: '2022 — 2024',
+    title: 'Técnico en Sistemas Microinformáticos y Redes (SMIR)',
+    company: 'CIPFP Cheste',
+    description:
+      'Formación profesional de grado medio en sistemas microinformáticos y redes: montaje de equipos, sistemas operativos, redes y seguridad.',
+    type: 'education',
+    tags: ['Redes', 'Sistemas operativos', 'Hardware', 'Seguridad'],
   },
 ];
 
+/**
+ * Stack real según GitHub (github.com/martuuust) + LinkedIn (experiencia Onna).
+ * Sin tecnologías inventadas.
+ */
 export const SKILLS: Skill[] = [
-  { name: 'Angular', category: 'frontend', level: 95, icon: siAngular },
-  { name: 'TypeScript', category: 'frontend', level: 92, icon: siTypescript },
-  { name: 'JavaScript', category: 'frontend', level: 90, icon: siJavascript },
-  { name: 'HTML5', category: 'frontend', level: 96, icon: siHtml5 },
-  { name: 'CSS3 / Sass', category: 'frontend', level: 93, icon: siSass },
-  { name: 'Tailwind CSS', category: 'frontend', level: 94, icon: siTailwindcss },
-  { name: 'React', category: 'frontend', level: 82, icon: siReact },
-  { name: 'Next.js', category: 'frontend', level: 78, icon: siNextdotjs },
-  { name: 'Redux', category: 'frontend', level: 80, icon: siRedux },
-  { name: 'Vite', category: 'frontend', level: 85, icon: siVite },
-  { name: 'Node.js', category: 'backend', level: 80, icon: siNodedotjs },
-  { name: 'NestJS', category: 'backend', level: 74, icon: siNestjs },
-  { name: 'Prisma', category: 'backend', level: 72, icon: siPrisma },
-  { name: 'MongoDB', category: 'backend', level: 76, icon: siMongodb },
-  { name: 'PostgreSQL', category: 'backend', level: 78, icon: siPostgresql },
-  { name: 'Firebase', category: 'backend', level: 81, icon: siFirebase },
-  { name: 'Docker', category: 'tools', level: 75, icon: siDocker },
-  { name: 'Git', category: 'tools', level: 90, icon: siGit },
-  { name: 'Jest', category: 'tools', level: 84, icon: siJest },
-  { name: 'Cypress', category: 'tools', level: 79, icon: siCypress },
-  { name: 'Storybook', category: 'tools', level: 82, icon: siStorybook },
-  { name: 'Figma', category: 'tools', level: 88, icon: siFigma },
+  // Languages & Frameworks (GitHub)
+  { name: 'Angular', category: 'frontend', icon: siAngular },
+  { name: 'JavaScript', category: 'frontend', icon: siJavascript },
+  { name: 'HTML5', category: 'frontend', icon: siHtml5 },
+  { name: 'CSS3', category: 'frontend', icon: siCss },
+  { name: 'Bootstrap', category: 'frontend', icon: siBootstrap },
+  { name: 'Java', category: 'backend', icon: siOpenjdk },
+  { name: 'PHP', category: 'backend', icon: siPhp },
+  // LinkedIn / Onna
+  { name: 'Express', category: 'backend', icon: siExpress },
+  // Databases & Cloud (GitHub)
+  { name: 'MySQL', category: 'backend', icon: siMysql },
+  { name: 'MongoDB', category: 'backend', icon: siMongodb },
+  { name: 'AWS', category: 'tools', icon: siAmazonaws },
+  { name: 'Docker', category: 'tools', icon: siDocker },
+  // Architecture & management (GitHub + LinkedIn)
+  { name: 'Dolibarr', category: 'backend', icon: siDolibarr },
+  { name: 'Git', category: 'tools', icon: siGit },
+  { name: 'GitLab', category: 'tools', icon: siGitlab },
+  { name: 'Figma', category: 'tools', icon: siFigma },
+  // AI & tooling (GitHub)
+  { name: 'OpenAI', category: 'ai', icon: siOpenai },
+  { name: 'Gemini', category: 'ai', icon: siGooglegemini },
+  { name: 'Claude', category: 'ai', icon: siClaude },
+  { name: 'Google AI Studio', category: 'ai', icon: siGoogle },
+  { name: 'Cursor', category: 'ai', icon: siCursor },
+  { name: 'Antigravity', category: 'ai', icon: siAntigravity },
+  { name: 'Stich', category: 'ai', icon: siStich },
+  { name: 'VirtualBox', category: 'tools', icon: siVirtualbox },
 ];
 
+/** Solo cifras verificables (LinkedIn / GitHub). */
+export const STATS: Stat[] = [
+  { label: 'Formaciones FP', value: 2, suffix: '' },
+  { label: 'Repos GitHub', value: 4, suffix: '' },
+  { label: 'Proyectos mostrados', value: 3, suffix: '' },
+  { label: 'Tecnologías listadas', value: SKILLS.length, suffix: '' },
+];
+
+/** Repos públicos reales: github.com/martuuust */
 export const PROJECTS: Project[] = [
   {
-    id: 'pulse',
-    title: 'Pulse Analytics',
-    category: 'web',
-    tagline: 'Dashboard de analítica en tiempo real',
+    id: 'cinematch',
+    title: 'CineMatch',
+    tagline: 'Proyecto web en TypeScript',
     description:
-      'Plataforma SaaS para visualizar métricas de producto en tiempo real con streaming de datos y charts animados.',
-    highlights: [
-      'Streaming de datos en tiempo real con WebSockets',
-      'Más de 20 visualizaciones animadas y personalizables',
-      'Modo oscuro completo y accesible (WCAG AA)',
-      'Rendimiento 60fps con virtualización de datos',
-    ],
-    tags: ['Angular', 'TypeScript', 'D3.js', 'Tailwind', 'WebSockets'],
-    icon: siAngular,
+      'Aplicación web pública en el perfil de GitHub. Stack principal en TypeScript, con demo desplegada en Vercel.',
+    highlights: ['Repositorio público en GitHub', 'Demo en Vercel', 'TypeScript'],
+    tags: ['TypeScript'],
+    icon: siJavascript,
     gradient: 'from-violet-600 via-purple-500 to-cyan-400',
-    glyph: 'PA',
-    github: 'https://github.com/martagomez/pulse-analytics',
-    demo: 'https://pulse-demo.martagomez.dev',
+    glyph: 'CM',
+    github: 'https://github.com/martuuust/cineMatch',
+    demo: 'https://cine-match-psi.vercel.app',
+    year: '2026',
+  },
+  {
+    id: 'proyecto-intermodular',
+    title: 'Proyecto Intermodular',
+    tagline: 'Proyecto académico en TypeScript',
+    description:
+      'Repositorio público del proyecto intermodular (formación). Código en TypeScript disponible en GitHub.',
+    highlights: ['Repositorio público en GitHub', 'TypeScript'],
+    tags: ['TypeScript'],
+    icon: siOpenjdk,
+    gradient: 'from-emerald-600 via-teal-500 to-cyan-400',
+    glyph: 'PI',
+    github: 'https://github.com/martuuust/ProyectoIntermodular',
     year: '2025',
   },
   {
-    id: 'aurora',
-    title: 'Aurora UI Kit',
-    category: 'uiux',
-    tagline: 'Design system con 90+ componentes',
+    id: 'martagomez',
+    title: 'Portfolio Marta Gómez',
+    tagline: 'Portfolio personal',
     description:
-      'Librería de componentes accesibles con tokens de diseño, theming dinámico y documentación viva con Storybook.',
-    highlights: [
-      '90+ componentes con soporte completo de temas',
-      'Tokens de diseño generados desde Figma via Style Dictionary',
-      'A11y por defecto: foco, ARIA y navegación por teclado',
-      'Publicado como paquete npm con tree-shaking',
-    ],
-    tags: ['Angular', 'Tailwind', 'Storybook', 'Figma', 'Tokens'],
-    icon: siStorybook,
-    gradient: 'from-pink-500 via-fuchsia-500 to-violet-500',
-    glyph: 'AU',
-    github: 'https://github.com/martagomez/aurora-ui',
-    demo: 'https://aurora-ui.martagomez.dev',
-    year: '2025',
-  },
-  {
-    id: 'flow',
-    title: 'Flow Tasks',
-    category: 'mobile',
-    tagline: 'App de productividad offline-first',
-    description:
-      'Aplicación móvil híbrida para gestión de tareas con sincronización offline y notificaciones inteligentes.',
-    highlights: [
-      'Arquitectura offline-first con sincronización conflict-free',
-      'Notifications push con recordatorios predictivos',
-      'Interfaz adaptable a una mano con gestos nativos',
-      'Score de rendimiento Lighthouse 98/100',
-    ],
-    tags: ['Angular', 'Capacitor', 'PWA', 'IndexedDB', 'Ionic'],
-    icon: siReact,
-    gradient: 'from-cyan-500 via-teal-500 to-emerald-400',
-    glyph: 'FT',
-    github: 'https://github.com/martagomez/flow-tasks',
-    demo: 'https://flow-tasks.martagomez.dev',
-    year: '2024',
-  },
-  {
-    id: 'nube',
-    title: 'Nube CMS',
-    category: 'web',
-    tagline: 'Editor visual headless para equipos',
-    description:
-      'CMS headless con editor de bloques visual, preview en vivo y generación estática distribuida por edge.',
-    highlights: [
-      'Editor de bloques drag-and-drop con preview en vivo',
-      'Builds estáticos distribuidos en el edge (sub-50ms TTFB)',
-      'API GraphQL tipada y auto-generada',
-      'Sistema de roles y control de versiones',
-    ],
-    tags: ['Next.js', 'GraphQL', 'TypeScript', 'Prisma', 'Vercel'],
-    icon: siNextdotjs,
-    gradient: 'from-slate-700 via-slate-600 to-slate-400',
-    glyph: 'NC',
-    github: 'https://github.com/martagomez/nube-cms',
-    demo: 'https://nube-cms.martagomez.dev',
-    year: '2024',
-  },
-  {
-    id: 'lumen',
-    title: 'Lumen AI Copilot',
-    category: 'ia',
-    tagline: 'Asistente de código para equipos',
-    description:
-      'Extensión y web app que asiste a equipos de desarrollo con refactors guiados y detección de deuda técnica.',
-    highlights: [
-      'Detección y visualización de deuda técnica en vivo',
-      'Refactors guiados paso a paso con diff preview',
-      'Fine-tuning sobre el estilo de código del equipo',
-      'Integración con GitHub, GitLab y Bitbucket',
-    ],
-    tags: ['Angular', 'Python', 'OpenAI', 'FastAPI', 'WebSockets'],
-    icon: siNodedotjs,
-    gradient: 'from-indigo-500 via-blue-500 to-cyan-400',
-    glyph: 'LA',
-    github: 'https://github.com/martagomez/lumen-ai',
-    demo: 'https://lumen-ai.martagomez.dev',
-    year: '2023',
-  },
-  {
-    id: 'bazar',
-    title: 'Bazar Market',
-    category: 'mobile',
-    tagline: 'Marketplace social para creadores',
-    description:
-      'Marketplace PWA para artistas y creadores con checkout integrado y feeds sociales personalizados.',
-    highlights: [
-      'PWA instalable con modo offline y add-to-home',
-      'Checkout con pagos y carrito persistente',
-      'Recomendaciones basadas en comportamiento real',
-      'Animaciones de marca fluidas con GSAP',
-    ],
-    tags: ['React', 'Tailwind', 'Stripe', 'GSAP', 'Firebase'],
-    icon: siFirebase,
-    gradient: 'from-orange-500 via-amber-500 to-yellow-400',
-    glyph: 'BM',
-    github: 'https://github.com/martagomez/bazar-market',
-    demo: 'https://bazar-market.martagomez.dev',
-    year: '2023',
+      'Portfolio personal de desarrollo web. Angular 21 (zoneless, signals), Tailwind CSS y animaciones con GSAP.',
+    highlights: ['Angular 21', 'Tailwind CSS', 'GSAP'],
+    tags: ['Angular', 'Tailwind', 'GSAP'],
+    icon: siAngular,
+    gradient: 'from-fuchsia-600 via-purple-500 to-violet-400',
+    glyph: 'MG',
+    github: 'https://github.com/martuuust/martaGomez',
+    year: '2026',
   },
 ];
 
 export const SOCIALS: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com/martagomez', icon: siGithub },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/martagomez', icon: siLinkedin },
-  { label: 'X / Twitter', href: 'https://x.com/martagomez', icon: siX },
-  { label: 'Email', href: 'mailto:hola@martagomez.dev', icon: siGmail },
+  { label: 'GitHub', href: 'https://github.com/martuuust', icon: siGithub },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/marta-g%C3%B3mez-41a4a72a9/',
+    icon: siLinkedin,
+  },
 ];

@@ -26,8 +26,8 @@
     </span>
 
     <p class="max-w-md text-sm leading-relaxed text-ink-muted">
-      Hecho con <span class="text-primary">Angular 21</span>, Tailwind CSS y
-      GSAP. Código limpio, animaciones con intención y un café de por medio.
+      Hecho con <span class="text-primary">Angular</span>, Tailwind CSS y
+      GSAP. Código limpio, buenas prácticas y ganas de seguir aprendiendo.
     </p>
 
     <p class="text-xs text-ink-muted">
@@ -39,7 +39,7 @@
     type="button"
     (click)="scrollService.scrollToTop()"
     [attr.aria-label]="'Volver arriba'"
-    class="fixed right-5 bottom-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-primary to-secondary text-white shadow-xl transition-all duration-500"
+    class="fixed right-5 bottom-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-primary text-white shadow-xl transition-all duration-500 hover:opacity-90"
     [class]="
       showTop()
         ? 'translate-y-0 opacity-100'

@@ -22,7 +22,7 @@ export class SkillsComponent {
     {
       id: 'daily',
       title: 'Uso a diario',
-      description: 'Stack del día a día en Onna Digital.',
+      description: 'Stack del día a día en el trabajo.',
       skills: SKILLS.filter((s) => s.group === 'daily'),
       compact: false,
     },

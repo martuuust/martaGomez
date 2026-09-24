@@ -80,7 +80,7 @@ export const PERSON = {
   available: true,
   /** Frases concretas; sin placeholders de LinkedIn. */
   bio: [
-    'Desarrolladora web en Onna Digital: Angular 21, PHP, Express y SQL, con Dolibarr como ERP y evolución hacia arquitectura hexagonal.',
+    'Desarrolladora web con Angular 21, PHP, Express y SQL: aplicaciones con ERP, APIs entre servicios y evolución hacia arquitectura hexagonal.',
     'Formada en DAW y SMIR en el CIPFP Cheste. Antes trabajé en soporte técnico en ANDREU TOPS SL.',
     'Publico proyectos en GitHub y uso IA como apoyo al desarrollo, no como sustituto del criterio técnico.',
   ],

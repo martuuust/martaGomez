@@ -75,16 +75,17 @@ class ParticleField {
 
   private seed(width: number, height: number): void {
     this.particles.length = 0;
-    const count = Math.min(70, Math.floor((width * height) / 16000));
+    const count = Math.min(180, Math.floor((width * height) / 7000));
     for (let i = 0; i < count; i++) {
+      const isCream = Math.random() > 0.6;
       this.particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        r: Math.random() * 1.6 + 0.6,
-        hue: Math.random() > 0.5 ? '139, 92, 246' : '34, 211, 238',
-        alpha: Math.random() * 0.5 + 0.2,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        r: Math.random() * 2.2 + 0.8,
+        hue: isCream ? '252, 250, 199' : '168, 85, 247',
+        alpha: Math.random() * 0.65 + 0.25,
       });
     }
   }
@@ -107,8 +108,8 @@ class ParticleField {
         const dx = a.x - b.x;
         const dy = a.y - b.y;
         const dist = Math.hypot(dx, dy);
-        if (dist < 130) {
-          ctx.strokeStyle = `rgba(139, 92, 246, ${(1 - dist / 130) * 0.12})`;
+        if (dist < 140) {
+          ctx.strokeStyle = `rgba(168, 85, 247, ${(1 - dist / 140) * 0.18})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -179,8 +180,7 @@ export class HeroComponent implements AfterViewInit {
         .from('.hero-word', { opacity: 0, yPercent: 110, duration: 0.8, stagger: 0.08 }, 0.3)
         .from('.hero-role-line', { opacity: 0, y: 16, duration: 0.6 }, 0.75)
         .from('.hero-sub', { opacity: 0, y: 24, duration: 0.7 }, 0.9)
-        .from('.hero-cta', { opacity: 0, y: 24, duration: 0.6, stagger: 0.1 }, 1.05)
-        .from('.hero-scroll', { opacity: 0, duration: 0.6 }, 1.35);
+        .from('.hero-cta', { opacity: 0, y: 24, duration: 0.6, stagger: 0.1 }, 1.05);
     });
 
     this.destroyRef.onDestroy(() => context.revert());

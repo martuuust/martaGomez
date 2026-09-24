@@ -23,42 +23,47 @@
     class="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-5 text-center sm:px-8"
   >
     <span
-      class="hero-badge glass inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 text-xs font-medium sm:text-sm"
+      class="hero-badge inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-4 py-1.5 text-xs font-semibold text-ink-muted shadow-sm backdrop-blur"
     >
       <span
         class="h-2 w-2 rounded-full bg-emerald-500"
-        style="--dot-color: rgba(16, 185, 129, 0.5); animation: pulse-dot 2s ease-in-out infinite"
+        style="animation: pulse-dot 2s ease-in-out infinite"
       ></span>
-      Disponible para nuevos proyectos
-      <span class="text-ink-muted">· {{ person.location }}</span>
+      Disponible para nuevos proyectos · {{ person.location }}
     </span>
 
     <h1
-      class="mt-8 font-display text-[2.6rem] leading-[1.06] font-bold tracking-tight sm:text-6xl lg:text-7xl"
+      class="hero-title mt-8 max-w-4xl font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl sm:leading-[1.15] lg:text-7xl"
     >
-      <span #headlineA class="block">Diseño y construyo</span>
-      <span #headlineB class="block pb-1">experiencias que emocionan.</span>
+      <span #headlineA class="block">Desarrollo</span>
+      <span #headlineB class="block text-gradient">soluciones digitales</span>
+      <span class="block">funcionales y escalables.</span>
     </h1>
 
-    <p class="hero-role-line mt-6 font-display text-lg font-medium sm:text-2xl">
-      <span class="text-ink-muted">Soy </span>
-      <span class="text-primary">{{ person.name }}</span>
-      <span class="text-ink-muted"> — </span>
-      <span #roleLine class="inline-block text-gradient">
+    <p
+      class="hero-role-line mt-6 inline-flex flex-wrap items-center justify-center gap-2 font-display text-lg font-semibold text-ink sm:text-2xl"
+    >
+      <span>Soy</span>
+      <span class="text-primary font-bold">{{ person.name }}</span>
+      <span class="text-ink-muted">—</span>
+      <span
+        #roleLine
+        class="inline-block rounded-full bg-primary-soft px-4 py-1 text-primary text-base sm:text-xl font-bold"
+      >
         {{ roles[roleIndex()] }}
       </span>
     </p>
 
     <p class="hero-sub mt-5 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-base">
-      {{ person.role }} especializada en Angular. Convierto ideas complejas en
-      interfaces rápidas, accesibles y memorables.
+      {{ person.role }} en Onna Digital. Angular, PHP y SQL en el día a día,
+      con foco en código limpio y valor real para los usuarios.
     </p>
 
     <div class="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
       <a
         appGsapHover
         href="#proyectos"
-        class="hero-cta group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl glow-primary"
+        class="hero-cta btn-cream group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold shadow-lg transition-all hover:shadow-xl"
         (click)="scrollService.scrollToSection('proyectos'); $event.preventDefault()"
       >
         Ver proyectos
@@ -77,31 +82,11 @@
       <a
         appGsapHover
         href="#contacto"
-        class="hero-cta inline-flex items-center gap-2 rounded-full border border-line bg-surface/50 px-7 py-3.5 text-sm font-semibold text-ink backdrop-blur transition-colors hover:border-primary/50 hover:text-primary"
+        class="hero-cta inline-flex items-center gap-2 rounded-full border border-primary/30 bg-surface/60 px-7 py-3.5 text-sm font-semibold text-ink backdrop-blur transition-all hover:border-primary hover:bg-primary-soft"
         (click)="scrollService.scrollToSection('contacto'); $event.preventDefault()"
       >
         Contactar
       </a>
     </div>
   </main>
-
-  <button
-    type="button"
-    class="hero-scroll mx-auto mt-10 flex flex-col items-center gap-2 text-ink-muted transition-colors hover:text-primary"
-    (click)="scrollService.scrollToSection('sobre-mi')"
-    aria-label="Bajar a la sección sobre mí"
-  >
-    <span class="text-[11px] tracking-[0.2em] uppercase">Scroll</span>
-    <svg
-      class="h-5 w-5 animate-bounce-soft"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="M12 5v14m-6-6 6 6 6-6"></path>
-    </svg>
-  </button>
 </section>

@@ -39,9 +39,15 @@ export class ContactComponent {
 
     const { name, email, subject, message } = this.form.getRawValue();
     const body = `Hola Marta,\n\n${message}\n\n— ${name} (${email})`;
-    window.location.href = `mailto:${this.person.email}?subject=${encodeURIComponent(
-      subject ?? '',
-    )}&body=${encodeURIComponent(body)}`;
+
+    if (this.person.email) {
+      window.location.href = `mailto:${this.person.email}?subject=${encodeURIComponent(
+        subject ?? '',
+      )}&body=${encodeURIComponent(body)}`;
+    } else {
+      // Sin email público: abrir LinkedIn (no inventar dirección)
+      window.open(this.person.linkedin, '_blank', 'noopener,noreferrer');
+    }
 
     this.sent.set(true);
     this.form.reset();

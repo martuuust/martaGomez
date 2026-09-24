@@ -17,6 +17,8 @@
   --color-secondary: var(--secondary);
   --color-secondary-soft: var(--secondary-soft);
   --color-line: var(--line);
+  --color-button-bg: var(--button-bg);
+  --color-button-text: var(--button-text);
 
   --animate-blob: blob 20s ease-in-out infinite;
   --animate-blob-slow: blob 26s ease-in-out infinite reverse;
@@ -29,31 +31,37 @@
 }
 
 :root {
-  --base: #f6f7fb;
+  --base: #f8f6fc;
   --surface: #ffffff;
-  --surface-2: #eef1f8;
-  --glass: rgba(255, 255, 255, 0.72);
+  --surface-2: #f1edfb;
+  --glass: rgba(255, 255, 255, 0.82);
   --ink: #0f172a;
-  --ink-muted: #4b5a75;
-  --primary: #6d28d9;
-  --primary-soft: rgba(109, 40, 217, 0.12);
-  --secondary: #0e7490;
-  --secondary-soft: rgba(14, 116, 144, 0.12);
-  --line: rgba(15, 23, 42, 0.1);
+  --ink-muted: #52527a;
+  --primary: #9333ea;
+  --primary-soft: rgba(147, 51, 234, 0.14);
+  --secondary: rgb(252, 250, 199);
+  --secondary-soft: rgba(252, 250, 199, 0.3);
+  --line: rgba(147, 51, 234, 0.12);
+  --button-bg: var(--primary);
+  --button-bg-hover: color-mix(in srgb, var(--primary) 88%, #000);
+  --button-text: #ffffff;
 }
 
 .dark {
-  --base: #0f172a;
-  --surface: #141e36;
-  --surface-2: #1b2742;
-  --glass: rgba(30, 41, 59, 0.55);
-  --ink: #f1f5f9;
-  --ink-muted: #94a3b8;
-  --primary: #8b5cf6;
-  --primary-soft: rgba(139, 92, 246, 0.18);
-  --secondary: #22d3ee;
-  --secondary-soft: rgba(34, 211, 238, 0.16);
-  --line: rgba(255, 255, 255, 0.1);
+  --base: #0f0b18;
+  --surface: #18122b;
+  --surface-2: #231b3d;
+  --glass: rgba(24, 18, 43, 0.7);
+  --ink: #f8fafc;
+  --ink-muted: #a5a2cb;
+  --primary: #c084fc;
+  --primary-soft: rgba(192, 132, 252, 0.2);
+  --secondary: rgb(252, 250, 199);
+  --secondary-soft: rgba(252, 250, 199, 0.25);
+  --line: rgba(192, 132, 252, 0.15);
+  --button-bg: var(--primary);
+  --button-bg-hover: color-mix(in srgb, var(--primary) 88%, #000);
+  --button-text: #ffffff;
 }
 
 @theme {
@@ -153,6 +161,16 @@
   border: 1px solid var(--line);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  color: var(--ink);
+}
+
+/* text-ink debe seguir --ink del tema (.dark), no un valor congelado */
+.text-ink {
+  color: var(--ink) !important;
+}
+
+.text-ink-muted {
+  color: var(--ink-muted) !important;
 }
 
 @utility text-gradient {
@@ -213,6 +231,24 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+
+.btn-cream,
+.bg-button-bg {
+  background-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 16px -2px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.btn-cream:hover,
+.bg-button-bg:hover {
+  background-color: color-mix(in srgb, var(--primary) 88%, #000);
+  color: #fff;
+  box-shadow: 0 8px 24px -2px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.text-button-text {
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: reduce) {

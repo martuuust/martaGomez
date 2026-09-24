@@ -84,7 +84,7 @@ Eliminado por innecesario:
 - Limpieza: `signal` en skills, `gsap.context` con scope en hero/reveal, ThemeService try/catch localStorage
 - GSAP hover/reveal respetan reduced-motion
 
-**Pendiente Marta:** access key Web3Forms en `src/environments/environment*.ts`.
+**Web3Forms:** access key configurada en `environment*.ts` (destino: martygomez2000@gmail.com). El email no se publica en el portfolio.
 
 ## Notas
 

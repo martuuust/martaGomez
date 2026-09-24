@@ -1,9 +1,5 @@
 export const environment = {
   production: false,
-  /**
-   * TODO(Marta): pega tu access key de Web3Forms
-   * (https://web3forms.com → Create Access Key → email de destino).
-   * Sin clave el formulario muestra estado "no configurado" y no inventa envío.
-   */
-  web3formsAccessKey: '',
+  /** Access key Web3Forms → martygomez2000@gmail.com */
+  web3formsAccessKey: '30bc4fa4-576a-4faa-94a1-35e4c5bc7955',
 };

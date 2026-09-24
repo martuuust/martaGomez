@@ -15,8 +15,15 @@
       Habilidades <span class="text-gradient">técnicas</span>
     </h2>
     <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
-      Un stack elegido con intención: sólido en el frontend, suficiente en el
-      backend y afilado en las herramientas del día a día.
+      Stack real según mi
+      <a
+        href="https://github.com/martuuust"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-semibold text-primary underline-offset-2 hover:underline"
+      >GitHub</a>
+      y experiencia en LinkedIn: lenguajes, bases de datos, cloud, IA y herramientas
+      del día a día.
     </p>
   </header>
 
@@ -31,13 +38,13 @@
         class="relative rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300"
         [class]="
           activeCategory() === filter.id
-            ? 'text-white'
+            ? 'text-button-text'
             : 'text-ink-muted hover:text-ink'
         "
       >
         @if (activeCategory() === filter.id) {
           <span
-            class="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-primary to-secondary shadow-lg"
+            class="absolute inset-0 -z-10 rounded-full bg-button-bg shadow-md"
           ></span>
         } @else {
           <span
@@ -51,7 +58,7 @@
   </div>
 
   <div
-    class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+    class="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
     appGsapReveal
     [appGsapRevealDelay]="0.1"
   >
@@ -59,45 +66,27 @@
       <div
         appGsapHover
         [appGsapHoverTilt]="6"
-        class="glass group relative overflow-hidden rounded-3xl p-5"
+        class="group relative overflow-hidden rounded-2xl border border-line bg-surface px-4 py-3"
       >
         <span
           class="pointer-events-none absolute -top-10 -right-10 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
           [style.background]="'#' + skill.icon.hex + '33'"
         ></span>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center justify-center gap-3">
           <span
-            class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-line bg-surface-2 transition-transform duration-300 group-hover:scale-110"
-            [style.color]="'#' + skill.icon.hex"
+            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-line bg-surface-2 transition-transform duration-300 group-hover:scale-110"
+            [style.color]="iconColor(skill.icon.hex)"
           >
-            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
               <path [attr.d]="skill.icon.path"></path>
             </svg>
           </span>
-          <div class="min-w-0 flex-1">
-            <div class="flex items-baseline justify-between gap-2">
-              <h3 class="truncate font-display text-base font-semibold">
-                {{ skill.name }}
-              </h3>
-              <span class="text-xs font-semibold text-primary">
-                {{ skill.level }}%
-              </span>
-            </div>
-            <div
-              class="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-2"
-              role="progressbar"
-              [attr.aria-valuenow]="skill.level"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              [attr.aria-label]="skill.name + ': nivel ' + skill.level"
-            >
-              <div
-                class="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-[width] duration-1000 ease-out"
-                [style.width.%]="started() ? skill.level : 0"
-              ></div>
-            </div>
-          </div>
+          <h3
+            class="truncate font-display text-sm font-semibold text-slate-900 sm:text-base dark:text-slate-50"
+          >
+            {{ skill.name }}
+          </h3>
         </div>
       </div>
     }
@@ -110,13 +99,13 @@
         track skill.name
       ) {
         <span
-          class="glass mr-6 flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap"
+          class="mr-6 flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium whitespace-nowrap text-slate-900 dark:text-slate-50"
         >
           <svg
             viewBox="0 0 24 24"
             class="h-4 w-4"
             fill="currentColor"
-            [style.color]="'#' + skill.icon.hex"
+            [style.color]="iconColor(skill.icon.hex)"
           >
             <path [attr.d]="skill.icon.path"></path>
           </svg>
@@ -128,13 +117,13 @@
         track 'dup-' + skill.name
       ) {
         <span
-          class="glass mr-6 flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap"
+          class="mr-6 flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium whitespace-nowrap text-slate-900 dark:text-slate-50"
         >
           <svg
             viewBox="0 0 24 24"
             class="h-4 w-4"
             fill="currentColor"
-            [style.color]="'#' + skill.icon.hex"
+            [style.color]="iconColor(skill.icon.hex)"
           >
             <path [attr.d]="skill.icon.path"></path>
           </svg>

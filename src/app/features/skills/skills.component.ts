@@ -15,7 +15,6 @@ export type SkillFilter = SkillCategory | 'all';
   selector: 'app-skills',
   imports: [GsapHoverDirective, GsapRevealDirective],
   templateUrl: './skills.html',
-  styleUrl: './skills.css',
 })
 export class SkillsComponent {
   private readonly skillsSource = signal(SKILLS);
@@ -43,6 +42,7 @@ export class SkillsComponent {
       frontend: all.filter((s) => s.category === 'frontend').length,
       backend: all.filter((s) => s.category === 'backend').length,
       tools: all.filter((s) => s.category === 'tools').length,
+      ai: all.filter((s) => s.category === 'ai').length,
     };
   });
 
@@ -51,11 +51,18 @@ export class SkillsComponent {
     { id: 'frontend', label: 'Frontend' },
     { id: 'backend', label: 'Backend' },
     { id: 'tools', label: 'Tools' },
+    { id: 'ai', label: 'IA' },
   ];
 
-  protected readonly started = signal(false);
-
-  constructor() {
-    requestAnimationFrame(() => requestAnimationFrame(() => this.started.set(true)));
+  /** Evita iconos negros/oscuros ilegibles sobre fondo dark. */
+  protected iconColor(hex: string): string {
+    const r = Number.parseInt(hex.slice(0, 2), 16);
+    const g = Number.parseInt(hex.slice(2, 4), 16);
+    const b = Number.parseInt(hex.slice(4, 6), 16);
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    if (luminance < 0.45) {
+      return `color-mix(in srgb, #${hex} 40%, white)`;
+    }
+    return `#${hex}`;
   }
 }

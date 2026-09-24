@@ -27,7 +27,6 @@ import {
   siMysql,
   siOpenjdk,
   siPhp,
-  siTypescript,
   siVirtualbox,
 } from 'simple-icons';
 
@@ -181,50 +180,74 @@ export const SKILLS: Skill[] = [
  */
 export const STATS: Stat[] = [];
 
-/** Repos públicos reales: github.com/martuuust */
+/**
+ * Casos de estudio. Onna: arquitectura pública (LinkedIn), sin datos confidenciales.
+ * CineMatch / Intermodular: solo hechos de GitHub hasta que Marta complete el caso.
+ */
 export const PROJECTS: Project[] = [
+  {
+    id: 'onna-distribuidores',
+    title: 'Portal de distribuidores',
+    tagline: 'Caso laboral · Onna Digital',
+    problem:
+      'Hacía falta una aplicación de acceso para distribuidores, con la información gestionada en un ERP y una base técnica por capas (DAL y Domain) que complicaba la evolución del producto.',
+    whatIDid:
+      'Participo en el desarrollo full-stack: frontend con Angular 21, servicios en PHP y Express, SQL, y Dolibarr como ERP. Trabajo en GitLab con ramas y buenas prácticas. Contribuyo a la migración hacia arquitectura hexagonal para separar mejor dominio, infraestructura y presentación.',
+    result:
+      'Una base más organizada y mantenible: comunicación clara entre servicios vía endpoints y una arquitectura preparada para escalar sin acoplar de más las capas.',
+    stack: ['Angular 21', 'PHP', 'Express', 'SQL', 'Dolibarr', 'GitLab'],
+    gradient: 'from-violet-700 via-purple-600 to-indigo-500',
+    glyph: 'OD',
+    year: '2026',
+    complete: true,
+  },
   {
     id: 'cinematch',
     title: 'CineMatch',
-    tagline: 'Proyecto web en TypeScript',
-    description:
-      'Aplicación web pública en el perfil de GitHub. Stack principal en TypeScript, con demo desplegada en Vercel.',
-    highlights: ['Repositorio público en GitHub', 'Demo en Vercel', 'TypeScript'],
-    tags: ['TypeScript'],
-    icon: siTypescript,
+    tagline: 'Proyecto personal · TypeScript',
+    // TODO(Marta): problema que resuelve, qué hiciste, resultado y captura
+    problem: '',
+    whatIDid: '',
+    result: '',
+    stack: ['TypeScript'],
     gradient: 'from-violet-600 via-purple-500 to-cyan-400',
     glyph: 'CM',
     github: 'https://github.com/martuuust/cineMatch',
     demo: 'https://cine-match-psi.vercel.app',
     year: '2026',
+    complete: false,
   },
   {
     id: 'proyecto-intermodular',
     title: 'Proyecto Intermodular',
-    tagline: 'Proyecto académico en TypeScript',
-    description:
-      'Repositorio público del proyecto intermodular (formación). Código en TypeScript disponible en GitHub.',
-    highlights: ['Repositorio público en GitHub', 'TypeScript'],
-    tags: ['TypeScript'],
-    icon: siTypescript,
+    tagline: 'Proyecto académico · TypeScript',
+    // TODO(Marta): problema que resuelve, qué hiciste, resultado y captura
+    problem: '',
+    whatIDid: '',
+    result: '',
+    stack: ['TypeScript'],
     gradient: 'from-emerald-600 via-teal-500 to-cyan-400',
     glyph: 'PI',
     github: 'https://github.com/martuuust/ProyectoIntermodular',
     year: '2025',
+    complete: false,
   },
   {
     id: 'martagomez',
-    title: 'Portfolio Marta Gómez',
-    tagline: 'Portfolio personal',
-    description:
-      'Portfolio personal de desarrollo web. Angular 21 (zoneless, signals), Tailwind CSS y animaciones con GSAP.',
-    highlights: ['Angular 21', 'Tailwind CSS', 'GSAP'],
-    tags: ['Angular', 'Tailwind', 'GSAP'],
-    icon: siAngular,
+    title: 'Portfolio personal',
+    tagline: 'Este sitio · Angular 21',
+    problem:
+      'Necesitaba un portfolio propio, honesto y mantenible, sin datos inventados y con una base técnica actual (Angular zoneless, Tailwind, GSAP).',
+    whatIDid:
+      'Diseñé e implementé la SPA: secciones, tema claro/oscuro, formularios con Web3Forms, casos de estudio y datos centralizados en TypeScript.',
+    result:
+      'Un sitio desplegable que presenta experiencia, stack y proyectos reales, con accesibilidad básica y animaciones respetuosas con reduced-motion.',
+    stack: ['Angular 21', 'Tailwind CSS', 'GSAP', 'Web3Forms'],
     gradient: 'from-fuchsia-600 via-purple-500 to-violet-400',
     glyph: 'MG',
     github: 'https://github.com/martuuust/martaGomez',
     year: '2026',
+    complete: true,
   },
 ];
 

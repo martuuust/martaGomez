@@ -46,7 +46,7 @@ Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/mar
 - Bio: texto About de LinkedIn
 - About: Experiencia (Onna Digital) y Formación (DAW + SMR) en secciones separadas; bio en 3 frases concretas; sin stats de relleno
 - Skills: grupos `daily` / `worked` / `exploring` / `ai` (IA en chips compactos). Sin marquee ni filtros por categoría.
-- Proyectos: repos públicos reales (CineMatch, ProyectoIntermodular, martaGomez). Sin categorías/filtros (todos web).
+- Proyectos: casos de estudio (problema → qué hice → stack → resultado). Primero Onna (portal distribuidores). CineMatch e Intermodular pendientes de contenido/capturas.
 - Stats: solo cifras verificables (FP, repos, proyectos mostrados, nº skills).
 - Contacto: sin email inventado → LinkedIn.
 
@@ -92,6 +92,14 @@ Eliminado por innecesario:
 - Skills: sin marquee; grupos Uso a diario / He trabajado con / Explorando / IA (chips)
 - About: sin stats de relleno ni bullets genéricos; bio en 3 frases
 - TODO: confirmar métricas reales si se quieren stats de nuevo
+
+## Fase 3 — Casos de estudio (2026-09-24)
+
+- Modelo `Project`: problem / whatIDid / result / stack / image / complete
+- UI tarjetas + modal en formato caso de estudio
+- Caso 1: Portal de distribuidores (Onna), arquitectura sin datos confidenciales
+- CineMatch e Intermodular: `complete: false` hasta que Marta aporte texto + captura en `public/projects/`
+- Portfolio personal como caso corto completo
 
 ## Notas
 

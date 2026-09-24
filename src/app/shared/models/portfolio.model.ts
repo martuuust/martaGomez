@@ -48,15 +48,20 @@ export interface Project {
   id: string;
   title: string;
   tagline: string;
-  description: string;
-  highlights: string[];
-  tags: string[];
-  icon: BrandIcon;
+  /** Caso de estudio */
+  problem: string;
+  whatIDid: string;
+  result: string;
+  stack: string[];
+  /** Captura en /public/projects/… */
+  image?: string;
   gradient: string;
   glyph: string;
-  github: string;
-  demo?: string;
   year: string;
+  github?: string;
+  demo?: string;
+  /** false = falta contenido de Marta (no inventar). */
+  complete: boolean;
 }
 
 export interface SocialLink {

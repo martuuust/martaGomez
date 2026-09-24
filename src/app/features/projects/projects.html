@@ -9,110 +9,123 @@
 
   <header class="mx-auto max-w-2xl text-center">
     <span class="font-display text-xs font-semibold tracking-[0.25em] text-primary uppercase">
-      Work
+      Casos
     </span>
     <h2 class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-5xl">
-      Proyectos <span class="text-gradient">destacados</span>
+      Casos de <span class="text-gradient">estudio</span>
     </h2>
     <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
-      Una selección de proyectos reales. Abre cada uno para ver los detalles.
+      Problema, qué hice, stack y resultado. Sin inventar métricas ni capturas.
     </p>
   </header>
 
-  <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
     @for (project of projects; track project.id) {
       <article
         appGsapHover
         [appGsapHoverGlare]="false"
-        [appGsapHoverTilt]="5"
+        [appGsapHoverTilt]="4"
         class="glass group relative flex flex-col overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-2xl"
       >
         <button
           type="button"
           class="absolute inset-0 z-10 cursor-pointer rounded-3xl text-left"
           (click)="openProject(project, $event)"
-          [attr.aria-label]="'Ver detalles de ' + project.title"
+          [attr.aria-label]="'Ver caso de estudio: ' + project.title"
         ></button>
 
         <div class="relative aspect-[16/10] overflow-hidden" aria-hidden="true">
-          <div
-            class="flex h-full w-full flex-col justify-between bg-gradient-to-br p-6 text-white"
-            [class]="project.gradient"
-          >
-            <div class="flex items-start justify-between">
-              @if (project.icon.path) {
-                <svg viewBox="0 0 24 24" class="h-8 w-8 opacity-90" fill="currentColor">
-                  <path [attr.d]="project.icon.path"></path>
-                </svg>
-              }
-              <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold backdrop-blur">
-                {{ project.year }}
-              </span>
+          @if (project.image) {
+            <img
+              [src]="project.image"
+              [alt]="'Captura de ' + project.title"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              loading="lazy"
+            />
+          } @else {
+            <div
+              class="flex h-full w-full flex-col justify-between bg-gradient-to-br p-6 text-white"
+              [class]="project.gradient"
+            >
+              <div class="flex items-start justify-between">
+                <span
+                  class="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 font-display text-lg font-bold backdrop-blur"
+                >
+                  {{ project.glyph }}
+                </span>
+                <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold backdrop-blur">
+                  {{ project.year }}
+                </span>
+              </div>
+              <p class="text-sm font-medium opacity-90">
+                {{ project.complete ? 'Ver caso completo' : 'Enlace al repo · caso pendiente' }}
+              </p>
             </div>
-
-            <div>
-              <span
-                class="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 font-display text-lg font-bold backdrop-blur"
-              >
-                {{ project.glyph }}
-              </span>
-            </div>
-
-            <div class="flex gap-2 text-xs font-medium opacity-0 transition-all duration-300 group-hover:opacity-100">
-              <span class="rounded-full bg-white/20 px-3 py-1 backdrop-blur">
-                Ver detalles
-              </span>
-            </div>
-          </div>
+          }
         </div>
 
         <div class="relative z-20 flex flex-1 flex-col p-6 pointer-events-none">
-          <h3 class="font-display text-lg font-semibold">
-            {{ project.title }}
-          </h3>
-          <p class="mt-1 text-sm font-medium text-primary">
-            {{ project.tagline }}
-          </p>
-          <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-muted">
-            {{ project.description }}
-          </p>
-
-          <div class="mt-4 flex flex-wrap gap-1.5">
-            @for (tag of project.tags.slice(0, 3); track tag) {
-              <span class="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium">
-                {{ tag }}
+          <div class="flex flex-wrap items-center gap-2">
+            <h3 class="font-display text-lg font-semibold sm:text-xl">
+              {{ project.title }}
+            </h3>
+            @if (!project.complete) {
+              <span class="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-700 uppercase dark:text-amber-300">
+                Pendiente
               </span>
             }
-            @if (project.tags.length > 3) {
+          </div>
+          <p class="mt-1 text-sm font-medium text-primary">{{ project.tagline }}</p>
+
+          @if (project.complete) {
+            <p class="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-muted">
+              {{ project.problem }}
+            </p>
+          } @else {
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              Repositorio público. El caso de estudio (problema, qué hice, resultado y
+              captura) se completará con contenido real.
+            </p>
+          }
+
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            @for (tech of project.stack.slice(0, 4); track tech) {
+              <span class="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium">
+                {{ tech }}
+              </span>
+            }
+            @if (project.stack.length > 4) {
               <span class="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium text-ink-muted">
-                +{{ project.tags.length - 3 }}
+                +{{ project.stack.length - 4 }}
               </span>
             }
           </div>
 
           <div class="mt-5 flex items-center gap-3 pt-4 pointer-events-auto">
-            <a
-              [href]="project.github"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
-              (click)="$event.stopPropagation()"
-            >
-              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
-              </svg>
-              GitHub
-            </a>
+            @if (project.github) {
+              <a
+                [href]="project.github"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
+                (click)="$event.stopPropagation()"
+              >
+                GitHub
+              </a>
+            }
             @if (project.demo) {
               <a
                 [href]="project.demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-transform hover:scale-[1.02]"
+                class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
                 (click)="$event.stopPropagation()"
               >
                 Demo
               </a>
+            }
+            @if (!project.github && !project.demo) {
+              <span class="text-xs text-ink-muted">Caso laboral · sin repo público</span>
             }
           </div>
         </div>
@@ -142,32 +155,53 @@
       style="animation: zoom-in 0.35s ease forwards"
       (click)="$event.stopPropagation()"
     >
-      <div
-        class="relative flex h-44 flex-col justify-between bg-gradient-to-br p-6 text-white sm:h-52"
-        [class]="project.gradient"
-      >
-        <div class="flex items-start justify-between">
-          @if (project.icon.path) {
-            <svg viewBox="0 0 24 24" class="h-9 w-9" fill="currentColor" aria-hidden="true">
-              <path [attr.d]="project.icon.path"></path>
-            </svg>
-          }
+      <div class="relative overflow-hidden">
+        @if (project.image) {
+          <img
+            [src]="project.image"
+            [alt]="'Captura de ' + project.title"
+            class="h-48 w-full object-cover sm:h-56"
+          />
+        } @else {
+          <div
+            class="relative flex h-44 flex-col justify-between bg-gradient-to-br p-6 text-white sm:h-52"
+            [class]="project.gradient"
+          >
+            <div class="flex items-start justify-between">
+              <span
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 font-display text-lg font-bold backdrop-blur"
+              >
+                {{ project.glyph }}
+              </span>
+              <button
+                type="button"
+                (click)="closeProject()"
+                class="grid h-10 w-10 place-items-center rounded-full bg-white/20 text-white backdrop-blur transition-transform hover:rotate-90"
+                aria-label="Cerrar detalles"
+              >
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 6 6 18M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <span class="rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold backdrop-blur self-start">
+              {{ project.year }}
+            </span>
+          </div>
+        }
+
+        @if (project.image) {
           <button
             type="button"
             (click)="closeProject()"
-            class="ml-auto grid h-10 w-10 place-items-center rounded-full bg-white/20 text-white backdrop-blur transition-transform hover:rotate-90"
+            class="absolute top-4 right-4 grid h-10 w-10 place-items-center rounded-full bg-black/50 text-white backdrop-blur transition-transform hover:rotate-90"
             aria-label="Cerrar detalles"
           >
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
               <path d="M18 6 6 18M6 6l12 12"></path>
             </svg>
           </button>
-        </div>
-        <div>
-          <span class="rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold backdrop-blur">
-            {{ project.year }}
-          </span>
-        </div>
+        }
       </div>
 
       <div class="p-6 sm:p-8">
@@ -178,47 +212,81 @@
           {{ project.title }}
         </h3>
         <p class="mt-1 text-sm font-medium text-primary">{{ project.tagline }}</p>
-        <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
-          {{ project.description }}
-        </p>
 
-        <h4 class="mt-6 font-display text-sm font-semibold tracking-wide uppercase">
-          Lo más destacado
-        </h4>
-        <ul class="mt-3 space-y-2.5">
-          @for (highlight of project.highlights; track highlight) {
-            <li class="flex items-start gap-3 text-sm text-ink-muted">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 6 9 17l-5-5"></path>
-              </svg>
-              {{ highlight }}
-            </li>
-          }
-        </ul>
-
-        <div class="mt-6 flex flex-wrap gap-2">
-          @for (tag of project.tags; track tag) {
-            <span class="rounded-full border border-line px-3 py-1 text-xs font-medium">
-              {{ tag }}
-            </span>
-          }
-        </div>
+        @if (project.complete) {
+          <div class="mt-8 space-y-6">
+            <section>
+              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+                Problema
+              </h4>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">
+                {{ project.problem }}
+              </p>
+            </section>
+            <section>
+              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+                Qué hice
+              </h4>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">
+                {{ project.whatIDid }}
+              </p>
+            </section>
+            <section>
+              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+                Stack
+              </h4>
+              <div class="mt-3 flex flex-wrap gap-2">
+                @for (tech of project.stack; track tech) {
+                  <span class="rounded-full border border-line px-3 py-1 text-xs font-medium">
+                    {{ tech }}
+                  </span>
+                }
+              </div>
+            </section>
+            <section>
+              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+                Resultado
+              </h4>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">
+                {{ project.result }}
+              </p>
+            </section>
+          </div>
+        } @else {
+          <div
+            class="mt-6 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-200"
+            role="status"
+          >
+            <!-- TODO(Marta): completa problem / whatIDid / result / image en portfolio.data.ts -->
+            Caso de estudio pendiente. Por ahora solo hay el enlace al repositorio
+            (y demo si existe). Necesito: qué hace, qué problema resuelve y una captura.
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2">
+            @for (tech of project.stack; track tech) {
+              <span class="rounded-full border border-line px-3 py-1 text-xs font-medium">
+                {{ tech }}
+              </span>
+            }
+          </div>
+        }
 
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            [href]="project.github"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
-          >
-            Ver en GitHub
-          </a>
+          @if (project.github) {
+            <a
+              [href]="project.github"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
+            >
+              Ver en GitHub
+            </a>
+          }
           @if (project.demo) {
             <a
               [href]="project.demo"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.02]"
+              class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
             >
               Live Demo
             </a>

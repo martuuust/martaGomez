@@ -19,35 +19,26 @@
   <div class="mt-12 grid gap-10 lg:grid-cols-5 lg:gap-14">
     <div class="lg:col-span-3" appGsapReveal>
       <p class="text-base leading-relaxed text-ink-muted sm:text-lg">
-        Soy {{ person.name }}, {{ person.role }} afincada en
-        {{ person.location }}. Durante los últimos 6 años he ayudado a startups
-        y grandes marcas a convertir sus ideas en productos digitales que la
-        gente <span class="font-semibold text-ink">disfruta usar</span>.
-      </p>
-      <p class="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
-        Creo en la intersección entre <span class="font-semibold text-ink">diseño y código</span>:
-        un componente bien diseñado sin animación sutil es como una película sin
-        banda sonora. Por eso cuido cada detalle, desde el token de color hasta
-        el último frame de una microinteracción.
+        {{ person.bio }}
       </p>
       <ul class="mt-6 space-y-3 text-sm text-ink-muted sm:text-base">
         <li class="flex items-start gap-3">
           <svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
-          <span><span class="font-semibold text-ink">Mobile-first:</span> diseño pensado para el pulgar, escalado a desktop.</span>
+          <span><span class="font-semibold text-ink">Trabajo en equipo:</span> colaboro de forma activa y clara en equipos multidisciplinares.</span>
         </li>
         <li class="flex items-start gap-3">
           <svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
-          <span><span class="font-semibold text-ink">Rendimiento obsesivo:</span> Core Web Vitals como requisito, no como meta.</span>
+          <span><span class="font-semibold text-ink">Mejora continua:</span> siempre en aprendizaje para ofrecer soluciones mejores.</span>
         </li>
         <li class="flex items-start gap-3">
           <svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
-          <span><span class="font-semibold text-ink">Accesibilidad:</span> cada producto debe poder usarse por cualquiera.</span>
+          <span><span class="font-semibold text-ink">Retos profesionales:</span> motivada por afrontar nuevos proyectos y tecnologías.</span>
         </li>
       </ul>
     </div>
@@ -68,40 +59,61 @@
   </div>
 
   <div class="mt-16 sm:mt-20">
-    <h3 class="font-display text-xl font-semibold sm:text-2xl">
-      Experiencia & formación
-    </h3>
+    <h3 class="font-display text-xl font-semibold sm:text-2xl">Experiencia</h3>
 
     <ol class="relative mt-10 space-y-8 border-l border-line pl-8">
-      @for (entry of timeline; track entry.company + entry.period) {
+      @for (entry of experience; track entry.company + entry.period) {
         <li appGsapReveal [appGsapRevealFrom]="'left'" class="relative">
           <span
             class="absolute top-1.5 -left-[41px] grid h-6 w-6 place-items-center rounded-full border border-line bg-base"
           >
-            <span
-              class="h-2.5 w-2.5 rounded-full"
-              [class]="entry.type === 'work' ? 'bg-primary' : 'bg-secondary'"
-            ></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-primary"></span>
           </span>
 
           <div
             class="glass rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1"
           >
-            <div class="flex flex-wrap items-center gap-3">
-              <span
-                class="rounded-full px-3 py-1 text-[11px] font-semibold"
-                [class]="
-                  entry.type === 'work'
-                    ? 'bg-primary-soft text-primary'
-                    : 'bg-secondary-soft text-secondary'
-                "
-              >
-                {{ typeLabel(entry) }}
-              </span>
-              <span class="text-xs font-medium text-ink-muted">
-                {{ entry.period }}
-              </span>
+            <span class="text-xs font-medium text-ink-muted">
+              {{ entry.period }}
+            </span>
+            <h4 class="mt-3 font-display text-lg font-semibold sm:text-xl">
+              {{ entry.title }}
+            </h4>
+            <p class="text-sm font-medium text-primary">{{ entry.company }}</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+              {{ entry.description }}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              @for (tag of entry.tags; track tag) {
+                <span class="rounded-full border border-line px-3 py-1 text-[11px] font-medium">
+                  {{ tag }}
+                </span>
+              }
             </div>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+
+  <div class="mt-16 sm:mt-20">
+    <h3 class="font-display text-xl font-semibold sm:text-2xl">Formación</h3>
+
+    <ol class="relative mt-10 space-y-8 border-l border-line pl-8">
+      @for (entry of education; track entry.company + entry.period + entry.title) {
+        <li appGsapReveal [appGsapRevealFrom]="'left'" class="relative">
+          <span
+            class="absolute top-1.5 -left-[41px] grid h-6 w-6 place-items-center rounded-full border border-line bg-base"
+          >
+            <span class="h-2.5 w-2.5 rounded-full bg-secondary"></span>
+          </span>
+
+          <div
+            class="glass rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1"
+          >
+            <span class="text-xs font-medium text-ink-muted">
+              {{ entry.period }}
+            </span>
             <h4 class="mt-3 font-display text-lg font-semibold sm:text-xl">
               {{ entry.title }}
             </h4>

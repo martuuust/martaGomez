@@ -9,8 +9,7 @@ import {
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
-import { PERSON, STATS, TIMELINE } from '../../shared/data/portfolio.data';
-import type { TimelineEntry } from '../../shared/models/portfolio.model';
+import { EDUCATION, EXPERIENCE, PERSON, STATS } from '../../shared/data/portfolio.data';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +22,8 @@ gsap.registerPlugin(ScrollTrigger);
 export class AboutComponent implements AfterViewInit {
   protected readonly person = PERSON;
   protected readonly stats = STATS;
-  protected readonly timeline = TIMELINE;
+  protected readonly experience = EXPERIENCE;
+  protected readonly education = EDUCATION;
 
   private readonly destroyRef = inject(DestroyRef);
   private readonly statsWrap = viewChild<ElementRef<HTMLElement>>('statsWrap');
@@ -55,9 +55,5 @@ export class AboutComponent implements AfterViewInit {
     }, wrap);
 
     this.destroyRef.onDestroy(() => context.revert());
-  }
-
-  protected typeLabel(entry: TimelineEntry): string {
-    return entry.type === 'work' ? 'Experiencia' : 'Formación';
   }
 }

@@ -4,58 +4,64 @@
 >
   <canvas
     #particles
-    class="absolute inset-0 -z-10 h-full w-full"
+    class="absolute inset-0 -z-10 h-full w-full opacity-50"
     aria-hidden="true"
   ></canvas>
 
   <div
-    class="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-5 text-center sm:px-8"
+    class="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-10 px-5 py-6 text-center sm:px-8 sm:gap-14"
   >
-    <h1
-      #headline
-      class="hero-title max-w-4xl font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl sm:leading-[1.1] lg:text-7xl"
-    >
-      Marta Gómez
-    </h1>
-
-    <p class="hero-role mt-5 font-display text-xl font-semibold text-primary sm:text-2xl">
-      {{ person.role }}
-    </p>
-
-    <p class="hero-sub mt-5 max-w-xl text-sm leading-relaxed text-ink-muted sm:text-base">
-      Angular, PHP y SQL: aplicaciones reales, código mantenible y arquitectura
-      que pueda crecer.
-    </p>
-
-    <div class="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-      <a
-        appGsapHover
-        href="#proyectos"
-        class="hero-cta btn-cream group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold shadow-lg transition-all hover:shadow-xl"
-        (click)="scrollService.scrollToSection('proyectos'); $event.preventDefault()"
+    <div class="w-full max-w-4xl">
+      <h1
+        #headline
+        class="hero-title max-w-4xl font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl sm:leading-[1.1] lg:text-7xl"
       >
-        Ver proyectos
-        <svg
-          class="h-4 w-4 transition-transform group-hover:translate-x-1"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
+        Marta Gómez
+      </h1>
+
+      <p class="hero-role mt-5 font-display text-xl font-semibold text-primary sm:text-2xl">
+        {{ person.role }}
+      </p>
+
+      <p class="hero-sub mt-5 max-w-xl mx-auto text-sm leading-relaxed text-ink-muted sm:text-base">
+        Angular, PHP y SQL: aplicaciones reales, código mantenible y arquitectura
+        que pueda crecer.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+        <a
+          appGsapHover
+          href="#proyectos"
+          class="hero-cta btn-cream group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold shadow-lg transition-all hover:shadow-xl"
+          (click)="scrollService.scrollToSection('proyectos'); $event.preventDefault()"
         >
-          <path d="M5 12h14m-6-6 6 6-6 6"></path>
-        </svg>
-      </a>
-      <a
-        appGsapHover
-        href="#contacto"
-        class="hero-cta inline-flex items-center gap-2 rounded-full border border-primary/30 bg-surface/60 px-7 py-3.5 text-sm font-semibold text-ink backdrop-blur transition-all hover:border-primary hover:bg-primary-soft"
-        (click)="scrollService.scrollToSection('contacto'); $event.preventDefault()"
-      >
-        Contactar
-      </a>
+          Ver proyectos
+          <svg
+            class="h-4 w-4 transition-transform group-hover:translate-x-1"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14m-6-6 6 6-6 6"></path>
+          </svg>
+        </a>
+        <a
+          appGsapHover
+          href="#contacto"
+          class="hero-cta inline-flex items-center gap-2 rounded-full border border-primary/30 bg-surface/60 px-7 py-3.5 text-sm font-semibold text-ink backdrop-blur transition-all hover:border-primary hover:bg-primary-soft"
+          (click)="scrollService.scrollToSection('contacto'); $event.preventDefault()"
+        >
+          Contactar
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-terminal w-full" appGsapReveal>
+      <app-terminal></app-terminal>
     </div>
   </div>
 </section>

@@ -8,8 +8,10 @@ import {
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
+import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
 import { ScrollService } from '../../core/services/scroll.service';
 import { PERSON } from '../../shared/data/portfolio.data';
+import { TerminalComponent } from './terminal.component';
 
 interface Particle {
   x: number;
@@ -137,7 +139,7 @@ class ParticleField {
 
 @Component({
   selector: 'app-hero',
-  imports: [GsapHoverDirective],
+  imports: [GsapHoverDirective, GsapRevealDirective, TerminalComponent],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })

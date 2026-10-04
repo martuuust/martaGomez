@@ -19,3 +19,23 @@
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
   opacity: 0.6;
 }
+
+.hero-terminal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.hero-terminal ::ng-deep app-terminal {
+  width: 100%;
+  max-width: 56rem;
+  display: block;
+  transform-origin: 50% 100%;
+  transform: rotateX(6deg);
+  transition: transform 0.5s ease;
+}
+
+.hero-terminal:hover ::ng-deep app-terminal {
+  transform: rotateX(0deg);
+}

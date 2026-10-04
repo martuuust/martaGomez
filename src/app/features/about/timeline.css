@@ -1,0 +1,11 @@
+:host { display: block; }
+
+code .kw { color: #c084fc; font-weight: 600; }
+code .ty { color: #67e8f9; font-weight: 600; }
+code .fn { color: #f472b6; font-weight: 600; }
+code .st { color: #fde68a; }
+code .nu { color: #fca5a5; }
+code .cm { color: #64748b; font-style: italic; }
+code .op { color: #a5b4fc; }
+code .pn { color: #86efac; }
+code .co { color: #22d3ee; }

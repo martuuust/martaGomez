@@ -25,78 +25,28 @@
   </div>
 
   <div class="mt-16 sm:mt-20">
-    <h3 class="font-display text-xl font-semibold text-ink sm:text-2xl">Experiencia</h3>
+    <div class="flex flex-wrap items-end justify-between gap-3" appGsapReveal>
+      <h3 class="font-display text-xl font-semibold text-ink sm:text-2xl">Experiencia</h3>
+      <p class="text-xs text-ink-muted">
+        Haz clic en <span class="font-semibold text-primary">▼</span> para ver logros y fragmentos
+      </p>
+    </div>
 
-    <ol class="relative mt-10 space-y-8 border-l border-line pl-8">
-      @for (entry of experience; track entry.company + entry.period) {
-        <li appGsapReveal [appGsapRevealFrom]="'left'" class="relative">
-          <span
-            class="absolute top-1.5 -left-[41px] grid h-6 w-6 place-items-center rounded-full border border-line bg-base"
-          >
-            <span class="h-2.5 w-2.5 rounded-full bg-primary"></span>
-          </span>
-
-          <div
-            class="glass rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1"
-          >
-            <span class="text-xs font-medium text-ink-muted">
-              {{ entry.period }}
-            </span>
-            <h4 class="mt-3 font-display text-lg font-semibold text-ink sm:text-xl">
-              {{ entry.title }}
-            </h4>
-            <p class="text-sm font-medium text-primary">{{ entry.company }}</p>
-            <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-              {{ entry.description }}
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              @for (tag of entry.tags; track tag) {
-                <span class="rounded-full border border-line px-3 py-1 text-[11px] font-medium">
-                  {{ tag }}
-                </span>
-              }
-            </div>
-          </div>
-        </li>
-      }
-    </ol>
+    <div class="mt-10">
+      <app-timeline [entries]="experience" title="Experiencia"></app-timeline>
+    </div>
   </div>
 
   <div class="mt-16 sm:mt-20">
-    <h3 class="font-display text-xl font-semibold text-ink sm:text-2xl">Formación</h3>
+    <div class="flex flex-wrap items-end justify-between gap-3" appGsapReveal>
+      <h3 class="font-display text-xl font-semibold text-ink sm:text-2xl">Formación</h3>
+      <p class="text-xs text-ink-muted">
+        Proyectos académicos reales · ampliación autodidacta
+      </p>
+    </div>
 
-    <ol class="relative mt-10 space-y-8 border-l border-line pl-8">
-      @for (entry of education; track entry.company + entry.period + entry.title) {
-        <li appGsapReveal [appGsapRevealFrom]="'left'" class="relative">
-          <span
-            class="absolute top-1.5 -left-[41px] grid h-6 w-6 place-items-center rounded-full border border-line bg-base"
-          >
-            <span class="h-2.5 w-2.5 rounded-full bg-secondary"></span>
-          </span>
-
-          <div
-            class="glass rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1"
-          >
-            <span class="text-xs font-medium text-ink-muted">
-              {{ entry.period }}
-            </span>
-            <h4 class="mt-3 font-display text-lg font-semibold text-ink sm:text-xl">
-              {{ entry.title }}
-            </h4>
-            <p class="text-sm font-medium text-primary">{{ entry.company }}</p>
-            <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-              {{ entry.description }}
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              @for (tag of entry.tags; track tag) {
-                <span class="rounded-full border border-line px-3 py-1 text-[11px] font-medium">
-                  {{ tag }}
-                </span>
-              }
-            </div>
-          </div>
-        </li>
-      }
-    </ol>
+    <div class="mt-10">
+      <app-timeline [entries]="education" title="Formación"></app-timeline>
+    </div>
   </div>
 </section>

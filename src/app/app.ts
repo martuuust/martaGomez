@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AboutComponent } from './features/about/about.component';
+import { HexArchitectureComponent } from './features/about/hex-architecture.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { HeroComponent } from './features/hero/hero.component';
@@ -13,6 +14,7 @@ import { SkillsComponent } from './features/skills/skills.component';
     NavbarComponent,
     HeroComponent,
     AboutComponent,
+    HexArchitectureComponent,
     SkillsComponent,
     ProjectsComponent,
     ContactComponent,

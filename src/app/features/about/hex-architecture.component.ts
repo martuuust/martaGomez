@@ -152,7 +152,7 @@ const FLOWS: HexFlow[] = [
   template: `
     <section
       id="arquitectura"
-      class="relative mx-auto max-w-6xl scroll-mt-20 px-5 py-12 sm:px-8 sm:py-16"
+      class="relative mx-auto max-w-7xl scroll-mt-20 px-4 py-12 sm:px-6 sm:py-16"
     >
       <div
         class="absolute top-24 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-[130px]"

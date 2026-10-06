@@ -132,6 +132,9 @@ Eliminado por innecesario:
   • Casos reales sincronizados y verificados (`CineMatch` con demo en Vercel, `Portfolio personal` y `Proyecto Intermodular` DAW).
   • Modal de caso de estudio reestructurado en 4 secciones numeradas (`01 Reto & Contexto`, `02 Solución Técnica & Qué Hice`, `03 Stack & Ecosistema`, `04 Resultado & Mantenibilidad`).
 - Optimización de espaciado y márgenes:
+  • Reducción de márgenes laterales (vacíos a los lados): ampliación del contenedor principal de `max-w-6xl` (1152px) a `max-w-7xl` (1280px) en navbar, hero, about, arquitectura, skills, proyectos, contacto y footer.
+  • Reducción del padding horizontal de `px-5 sm:px-8` a `px-4 sm:px-6` (y `px-3 sm:px-4` en navbar).
+  • Distribución simétrica en About: Experiencia y Formación organizadas en 2 columnas en desktop (`lg:grid-cols-2`), aprovechando el ancho útil y eliminando el espacio vacío en el margen derecho.
   • Reducción de padding vertical entre secciones de `py-20 sm:py-28` a `py-12 sm:py-16` para eliminar vacíos de scroll excesivos.
   • Ajuste de márgenes superiores de contenidos (`mt-14`/`mt-12` a `mt-8 sm:mt-10`), espaciado en Hero (`pt-20 sm:pt-24`, gaps compactos) y footer (`py-8 sm:py-10`).
   • `scroll-mt-20` sincronizado para alineación perfecta con la navbar flotante.

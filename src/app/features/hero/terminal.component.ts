@@ -78,7 +78,7 @@ const ALL_COMMAND_NAMES = COMMANDS.map((c) => c.input.split(' ')[0]).concat(['cl
   template: `
     <div
       #terminalRef
-      class="pointer-events-auto relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-line bg-[#0a0612]/95 text-sm shadow-2xl backdrop-blur-xl dark:bg-[#050208]/95"
+      class="pointer-events-auto relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-line bg-[#0a0612]/95 text-sm shadow-2xl backdrop-blur-xl dark:bg-[#050208]/95"
       role="region"
       aria-label="Terminal interactiva de Marta Gómez"
     >

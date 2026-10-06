@@ -10,6 +10,7 @@ import { gsap } from 'gsap';
 import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
 import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
 import { ScrollService } from '../../core/services/scroll.service';
+import { DownloadCvComponent } from '../../shared/components/download-cv.component';
 import { PERSON } from '../../shared/data/portfolio.data';
 import { TerminalComponent } from './terminal.component';
 
@@ -139,7 +140,12 @@ class ParticleField {
 
 @Component({
   selector: 'app-hero',
-  imports: [GsapHoverDirective, GsapRevealDirective, TerminalComponent],
+  imports: [
+    GsapHoverDirective,
+    GsapRevealDirective,
+    TerminalComponent,
+    DownloadCvComponent,
+  ],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })

@@ -66,6 +66,10 @@
     </ul>
 
     <div class="flex items-center gap-2">
+      <div class="hidden md:block">
+        <app-download-cv variant="outline" compact label="CV" align="right" />
+      </div>
+
       <button
         type="button"
         (click)="themeService.toggle()"

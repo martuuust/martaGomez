@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { firstValueFrom } from 'rxjs';
 import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
 import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
+import { DownloadCvComponent } from '../../shared/components/download-cv.component';
 import { PERSON, SOCIALS } from '../../shared/data/portfolio.data';
 import { environment } from '../../../environments/environment';
 
@@ -11,7 +12,7 @@ type SubmitStatus = 'idle' | 'sending' | 'ok' | 'error';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, GsapHoverDirective, GsapRevealDirective],
+  imports: [ReactiveFormsModule, GsapHoverDirective, GsapRevealDirective, DownloadCvComponent],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })

@@ -2,10 +2,11 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { ScrollService } from '../../core/services/scroll.service';
 import { ThemeService } from '../../core/services/theme.service';
 import { NAV_LINKS } from '../../shared/data/portfolio.data';
+import { DownloadCvComponent } from '../../shared/components/download-cv.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [DownloadCvComponent],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })

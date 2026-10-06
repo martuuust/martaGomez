@@ -153,12 +153,20 @@ export class CvGeneratorService {
 
     ctx.y = 42;
 
-    // MATRIZ SKILLS (ordenado por frecuencia de proyectos reales)
-    this.drawHeading(ctx, 'Stack técnico — frecuencia uso real', accent);
+    // MATRIZ SKILLS (organizado por áreas técnicas)
+    this.drawHeading(ctx, 'Stack técnico por áreas', accent);
+    const categoryLabels: Record<string, string> = {
+      ai: 'Inteligencia Artificial',
+      languages: 'Lenguajes',
+      frameworks: 'Frameworks y Librerías',
+      database: 'Bases de Datos y ERP',
+      tools: 'Herramientas y DevOps',
+    };
     const groups = new Map<string, string[]>();
     for (const s of SKILLS) {
-      if (!groups.has(s.group)) groups.set(s.group, []);
-      groups.get(s.group)!.push(s.name);
+      const label = categoryLabels[s.category] ?? s.category;
+      if (!groups.has(label)) groups.set(label, []);
+      groups.get(label)!.push(s.name);
     }
     let colY = ctx.y;
     const colW = (CONTENT_W - 10) / 2;
@@ -548,11 +556,9 @@ export class CvGeneratorService {
       name: s.name,
       usage:
         0.35 +
-        (s.group === 'daily'
+        (s.category === 'languages' || s.category === 'frameworks' || s.name === 'Cursor' || s.name === 'Claude'
           ? 0.65
-          : s.group === 'worked'
-            ? 0.4
-            : 0.15) *
+          : 0.35) *
           scale,
     }));
     let x = MARGIN_L;

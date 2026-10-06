@@ -32,15 +32,11 @@ export interface TimelineEntry {
   tags: string[];
 }
 
-export type SkillCategory = 'frontend' | 'backend' | 'tools' | 'ai';
-
-/** Agrupación por uso real (no por buzzword). */
-export type SkillGroup = 'daily' | 'worked' | 'exploring' | 'ai';
+export type SkillCategory = 'ai' | 'languages' | 'frameworks' | 'database' | 'tools';
 
 export interface Skill {
   name: string;
   category: SkillCategory;
-  group: SkillGroup;
   icon: BrandIcon;
 }
 

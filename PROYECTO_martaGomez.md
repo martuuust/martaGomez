@@ -44,8 +44,14 @@ Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/mar
 - Rol: Desarrolladora Web | Angular | IA aplicada al desarrollo
 - Ubicación LinkedIn: Chiva, Valencia
 - Bio: texto About de LinkedIn
-- About: Experiencia (Onna Digital) y Formación (DAW + SMR) en secciones separadas; bio en 3 frases concretas; sin stats de relleno
-- Skills: grupos `daily` / `worked` / `exploring` / `ai` (IA en chips compactos). Sin marquee ni filtros por categoría.
+- About: Experiencia (Onna Digital) y Formación (DAW con Angular, Figma, Stitch AI e IA como Antigravity, Cursor y Claude; SMR) en secciones separadas; bio en 3 frases concretas; sin stats de relleno
+- Skills: organizadas por áreas técnicas (`ai`, `languages`, `frameworks`, `database`, `tools`):
+  • **Inteligencia Artificial**: Cursor, Claude, Stitch AI, Antigravity, OpenAI, Gemini, Google AI Studio
+  • **Lenguajes**: JavaScript, PHP, Java, HTML5, CSS3
+  • **Frameworks y Librerías**: Angular, Express, Bootstrap
+  • **Bases de Datos y ERP**: MySQL, MongoDB, Dolibarr
+  • **Herramientas y DevOps**: Git, GitLab, Docker, Figma, VirtualBox
+  (Se eliminó AWS por solicitud). Tarjetas completas con efecto hover 3D y badge 'IA' para herramientas generativas.
 - Proyectos: casos de estudio (problema → qué hice → stack → resultado). Primero Onna (portal distribuidores). CineMatch e Intermodular pendientes de contenido/capturas.
 - Stats: solo cifras verificables (FP, repos, proyectos mostrados, nº skills).
 - Contacto: sin email inventado → LinkedIn.
@@ -60,6 +66,11 @@ Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/mar
 - Si alteras el input `compact` de `DownloadCvComponent` sin `booleanAttribute` → se rompe la invocación sin binding explícito `<app-download-cv compact />` en templates.
 - Si quitas **zoneless** o reintroduces Zone.js → hay que alinear detección de cambios y providers en `app.config.ts`.
 - Si fusionas EXPERIENCE/EDUCATION de nuevo → hay que volver a unificar el template about (hoy son dos timelines).
+
+## Arquitectura (Hexagonal / Clean Architecture)
+
+- Sección interactiva en `HexArchitectureComponent`: presenta la metodología de ingeniería de software de Marta (puertos y adaptadores, Dependency Rule, separación dominio/aplicación/infraestructura).
+- Enfoque agnóstico y profesional para CV web: no vincula la explicación teórica/metodológica a empresas concretas ni métricas internas, resaltando el valor técnico para cualquier reclutador o proyecto.
 
 ## Limpieza 2026-09-24
 

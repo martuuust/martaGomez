@@ -37,14 +37,6 @@ const siLinkedin: Skill['icon'] = {
   path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z',
 };
 
-/** Iconos no disponibles en simple-icons (marcas retiradas). */
-const siAmazonaws: Skill['icon'] = {
-  title: 'Amazon AWS',
-  slug: 'amazonaws',
-  hex: 'FF9900',
-  path: 'M18.75 18.5c-2.2 1.28-5.39 1.96-8.13 1.96-3.85 0-7.32-1.42-9.95-3.79-.21-.19-.02-.45.23-.3 2.86 1.66 6.39 2.66 10.04 2.66 2.46 0 5.17-.51 7.66-1.57.38-.16.69.25.15.54zm1.12-1.28c-.28-.36-1.86-.17-2.57-.09-.21.03-.24-.16-.05-.3 1.24-.87 3.28-.62 3.51-.33.24.3-.06 2.35-1.22 3.33-.18.15-.35.07-.27-.11.26-.6.85-1.95.6-2.5zM6.76 11.99c0 .8.08 1.45.25 1.96.16.5.42.92.76 1.24.34.32.77.56 1.28.71l-.6 1.8a4.3 4.3 0 0 1-1.7-.75 3.7 3.7 0 0 1-1.2-1.4A5.2 5.2 0 0 1 5 12c0-.9.14-1.7.41-2.4.28-.7.67-1.3 1.18-1.78.5-.48 1.11-.85 1.82-1.1.7-.26 1.48-.38 2.33-.38.8 0 1.5.12 2.1.37.6.24 1.08.58 1.47 1.02V6.3h2.3v10.6h-2.3v-1.3a3.4 3.4 0 0 1-1.35 1.15c-.55.28-1.2.42-1.95.42-1.05 0-1.95-.2-2.7-.6-.75-.4-1.32-.98-1.72-1.74-.4-.76-.6-1.68-.6-2.76zm5.4-.95c0-.55-.1-1.02-.28-1.42a2.1 2.1 0 0 0-.78-.92 2 2 0 0 0-1.12-.33c-.45 0-.84.11-1.18.33-.34.22-.6.53-.78.92-.18.4-.28.86-.28 1.4 0 .55.1 1.03.28 1.42.18.4.44.7.78.92.34.22.73.33 1.18.33.42 0 .8-.1 1.12-.32.33-.22.6-.52.78-.91.18-.4.28-.87.28-1.42z',
-};
-
 const siOpenai: Skill['icon'] = {
   title: 'OpenAI',
   slug: 'openai',
@@ -61,7 +53,7 @@ const siAntigravity: Skill['icon'] = {
 };
 
 const siStitch: Skill['icon'] = {
-  title: 'Stitch',
+  title: 'Stitch AI',
   slug: 'stitch',
   hex: 'EA4335',
   imageSrc: '/icons/stitch.png',
@@ -84,7 +76,7 @@ export const PERSON = {
   bio: [
     'Soy desarrolladora web con experiencia previa en el ámbito tecnológico. Me gusta crear soluciones digitales funcionales, resolver problemas y aportar valor real a quien las usa.',
     'En el día a día trabajo con Angular, PHP, Express y SQL: desarrollo y consumo de APIs, integración con ERP y evolución hacia una arquitectura más mantenible.',
-    'Formada en DAW (Desarrollo de Aplicaciones Web) y SMR (Sistemas Microinformáticos y Redes). Soy proactiva, me adapto con facilidad y trabajo bien en equipo; busco seguir aprendiendo y afrontar nuevos retos profesionales.',
+    'Formada en DAW y SMR, integro herramientas de IA (Antigravity, Cursor, Claude) junto con Figma y Stitch AI para potenciar el diseño, prototipado y desarrollo de software. Busco seguir aprendiendo y afrontar nuevos retos profesionales.',
   ],
   linkedin: 'https://www.linkedin.com/in/marta-g%C3%B3mez-41a4a72a9/',
 };
@@ -125,9 +117,21 @@ export const EDUCATION: TimelineEntry[] = [
     title: 'Técnico Superior en Desarrollo de Aplicaciones Web (DAW)',
     company: 'CIPFP Cheste',
     description:
-      'Formación profesional de grado superior en desarrollo de aplicaciones web: programación, bases de datos, entornos de desarrollo y diseño de interfaces.',
+      'Formación profesional de grado superior en desarrollo de aplicaciones web: diseño de interfaces y prototipado con Figma y Stitch AI, desarrollo frontend moderno con Angular, además de programación, bases de datos y entornos de desarrollo. Integración de IA aplicada (Antigravity, Cursor, Claude) para agilizar flujos de trabajo.',
     type: 'education',
-    tags: ['Java', 'JavaScript', 'PHP', 'SQL', 'HTML/CSS'],
+    tags: [
+      'Angular',
+      'Figma',
+      'Stitch AI',
+      'Antigravity',
+      'Cursor',
+      'Claude',
+      'Java',
+      'JavaScript',
+      'PHP',
+      'SQL',
+      'HTML/CSS',
+    ],
   },
   {
     period: '2022 — 2024',
@@ -141,38 +145,42 @@ export const EDUCATION: TimelineEntry[] = [
 ];
 
 /**
- * Stack real según GitHub + LinkedIn/Onna.
- * group: daily (Onna) | worked (FP/proyectos) | exploring | ai (peso visual menor).
+ * Stack técnico organizado por categorías funcionales:
+ * ai (Inteligencia Artificial), languages (Lenguajes), frameworks, database, tools.
  */
 export const SKILLS: Skill[] = [
-  // Uso a diario — Onna
-  { name: 'Angular', category: 'frontend', group: 'daily', icon: siAngular },
-  { name: 'PHP', category: 'backend', group: 'daily', icon: siPhp },
-  { name: 'Express', category: 'backend', group: 'daily', icon: siExpress },
-  { name: 'MySQL', category: 'backend', group: 'daily', icon: siMysql },
-  { name: 'Dolibarr', category: 'backend', group: 'daily', icon: siDolibarr },
-  { name: 'Git', category: 'tools', group: 'daily', icon: siGit },
-  { name: 'GitLab', category: 'tools', group: 'daily', icon: siGitlab },
-  // He trabajado con — FP / repos
-  { name: 'JavaScript', category: 'frontend', group: 'worked', icon: siJavascript },
-  { name: 'HTML5', category: 'frontend', group: 'worked', icon: siHtml5 },
-  { name: 'CSS3', category: 'frontend', group: 'worked', icon: siCss },
-  { name: 'Bootstrap', category: 'frontend', group: 'worked', icon: siBootstrap },
-  { name: 'Java', category: 'backend', group: 'worked', icon: siOpenjdk },
-  { name: 'MongoDB', category: 'backend', group: 'worked', icon: siMongodb },
-  // Explorando — menor frecuencia
-  { name: 'AWS', category: 'tools', group: 'exploring', icon: siAmazonaws },
-  { name: 'Docker', category: 'tools', group: 'exploring', icon: siDocker },
-  { name: 'Figma', category: 'tools', group: 'exploring', icon: siFigma },
-  { name: 'VirtualBox', category: 'tools', group: 'exploring', icon: siVirtualbox },
-  // IA — grupo propio, sin el mismo peso visual
-  { name: 'OpenAI', category: 'ai', group: 'ai', icon: siOpenai },
-  { name: 'Gemini', category: 'ai', group: 'ai', icon: siGooglegemini },
-  { name: 'Claude', category: 'ai', group: 'ai', icon: siClaude },
-  { name: 'Google AI Studio', category: 'ai', group: 'ai', icon: siGoogle },
-  { name: 'Cursor', category: 'ai', group: 'ai', icon: siCursor },
-  { name: 'Antigravity', category: 'ai', group: 'ai', icon: siAntigravity },
-  { name: 'Stitch', category: 'ai', group: 'ai', icon: siStitch },
+  // Inteligencia Artificial
+  { name: 'Cursor', category: 'ai', icon: siCursor },
+  { name: 'Claude', category: 'ai', icon: siClaude },
+  { name: 'Stitch AI', category: 'ai', icon: siStitch },
+  { name: 'Antigravity', category: 'ai', icon: siAntigravity },
+  { name: 'OpenAI', category: 'ai', icon: siOpenai },
+  { name: 'Gemini', category: 'ai', icon: siGooglegemini },
+  { name: 'Google AI Studio', category: 'ai', icon: siGoogle },
+
+  // Lenguajes
+  { name: 'JavaScript', category: 'languages', icon: siJavascript },
+  { name: 'PHP', category: 'languages', icon: siPhp },
+  { name: 'Java', category: 'languages', icon: siOpenjdk },
+  { name: 'HTML5', category: 'languages', icon: siHtml5 },
+  { name: 'CSS3', category: 'languages', icon: siCss },
+
+  // Frameworks y Librerías
+  { name: 'Angular', category: 'frameworks', icon: siAngular },
+  { name: 'Express', category: 'frameworks', icon: siExpress },
+  { name: 'Bootstrap', category: 'frameworks', icon: siBootstrap },
+
+  // Bases de Datos y ERP
+  { name: 'MySQL', category: 'database', icon: siMysql },
+  { name: 'MongoDB', category: 'database', icon: siMongodb },
+  { name: 'Dolibarr', category: 'database', icon: siDolibarr },
+
+  // Herramientas y DevOps
+  { name: 'Git', category: 'tools', icon: siGit },
+  { name: 'GitLab', category: 'tools', icon: siGitlab },
+  { name: 'Docker', category: 'tools', icon: siDocker },
+  { name: 'Figma', category: 'tools', icon: siFigma },
+  { name: 'VirtualBox', category: 'tools', icon: siVirtualbox },
 ];
 
 /**

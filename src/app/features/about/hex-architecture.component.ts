@@ -40,14 +40,14 @@ const LAYERS: HexLayer[] = [
     short: 'Domain',
     accent: '#a855f7',
     description:
-      'Corazón del negocio. Entidades, value objects y reglas puras — sin dependencias externas, ni de Angular ni de SQL. Aquí vive lo que no cambia aunque cambien el framework o el ERP.',
+      'El núcleo del negocio. Entidades, value objects y reglas puras — totalmente independientes de frameworks, bases de datos o servicios externos. Aquí reside la lógica esencial.',
     responsibilities: [
-      'Entidades de negocio (Distribuidor, Pedido, Albarán)',
-      'Value objects (Email, Dinero, FechaOperación)',
-      'Interfaces de repositorios (puertos)',
-      'Servicios de dominio y reglas invariantes',
+      'Entidades de negocio y reglas invariantes',
+      'Value Objects tipados e inmutables',
+      'Puertos e interfaces de repositorios',
+      'Servicios de dominio puros',
     ],
-    tech: ['TypeScript puro', 'Interfaces', 'Enums', 'Políticas puras'],
+    tech: ['TypeScript puro', 'Interfaces', 'Enums', 'Políticas de negocio'],
     icon: '♦',
   },
   {
@@ -57,14 +57,14 @@ const LAYERS: HexLayer[] = [
     short: 'App',
     accent: '#22d3ee',
     description:
-      'Casos de uso. Orquesta el dominio, no contiene lógica de negocio. Conoce los puertos del dominio pero no cómo se implementan (MySQL, Dolibarr, mock).',
+      'Casos de uso. Orquestan las entidades del dominio sin contener lógica de negocio propia. Definen los flujos de la aplicación interactuando a través de interfaces y puertos.',
     responsibilities: [
-      'Casos de uso: AltaDistribuidor, ConsultarStock, CerrarPedido',
-      'Command/Query handlers (DDD táctico)',
+      'Casos de uso y flujos de la aplicación',
+      'Command / Query handlers (CQRS táctico)',
       'Puertos de entrada (driving ports)',
-      'Validadores de DTOs de entrada',
+      'Validación y transformación de DTOs',
     ],
-    tech: ['Angular services', 'Express route handlers', 'Puertos', 'Mappers'],
+    tech: ['Servicios Angular', 'Controladores Express', 'Puertos', 'Mappers'],
     icon: '◆',
   },
   {
@@ -74,11 +74,11 @@ const LAYERS: HexLayer[] = [
     short: 'UI',
     accent: '#f472b6',
     description:
-      'SPA Angular 21 con zoneless. Input del usuario: formularios, routing, pipes y componentes. No sabe qué base de datos hay detrás, solo llama a los casos de uso.',
+      'Capa de interfaz y experiencia de usuario. Formularios reactivos, enrutamiento y componentes visuales que interactúan con los casos de uso sin acoplarse al almacenamiento.',
     responsibilities: [
       'Componentes standalone + signals',
       'Formularios reactivos y validación UX',
-      'Consumo de API REST / adaptador HTTP',
+      'Consumo de API REST / cliente HTTP',
       'Theming claro/oscuro y accesibilidad',
     ],
     tech: ['Angular 21', 'Signals', 'Tailwind 4', 'GSAP'],
@@ -91,14 +91,14 @@ const LAYERS: HexLayer[] = [
     short: 'Infra',
     accent: '#34d399',
     description:
-      'Implementación de los puertos de salida. Aquí viven los adaptadores que tocan MySQL, Dolibarr y servicios externos — el dominio lo ignora por completo.',
+      'Adaptadores de salida (driven adapters). Implementan las interfaces del dominio para comunicarse con bases de datos, APIs de terceros y servicios de infraestructura.',
     responsibilities: [
-      'Repositorios MySQL (implementaciones)',
-      'Cliente Dolibarr / endpoints ERP',
-      'Autenticación y sesiones',
+      'Implementación de repositorios (SQL, MySQL)',
+      'Clientes API y servicios externos',
+      'Autenticación, persistencia y sesiones',
       'Logging y observabilidad',
     ],
-    tech: ['PHP 8', 'Express', 'MySQL', 'Dolibarr API'],
+    tech: ['PHP', 'Express', 'SQL / MySQL', 'APIs REST'],
     icon: '⬢',
   },
   {
@@ -108,14 +108,14 @@ const LAYERS: HexLayer[] = [
     short: 'QA',
     accent: '#facc15',
     description:
-      'Pirámide inversa: tests de dominio sin mocks (rápidos, estables), tests de aplicación con puertos mockeados, tests de arquitectura (archlint).',
+      'Pirámide de pruebas: tests de dominio rápidos sin mocks, tests de aplicación con dobles de prueba para los puertos, y pruebas de integración sobre adaptadores.',
     responsibilities: [
-      'Unit tests sobre entidades y VO',
-      'Contratos entre puerto → adaptador',
-      'Arquitectura: UI no puede importar Infra',
-      'Smoke tests críticos end-to-end',
+      'Tests unitarios de entidades y reglas',
+      'Tests de integración puerto → adaptador',
+      'Reglas de arquitectura y linting de capas',
+      'Smoke tests y validación end-to-end',
     ],
-    tech: ['Jest', 'Vitest', 'Archlint', 'Playwright'],
+    tech: ['Vitest', 'Jest', 'Playwright', 'ESLint'],
     icon: '✧',
   },
   {
@@ -125,14 +125,14 @@ const LAYERS: HexLayer[] = [
     short: 'Ops',
     accent: '#fb923c',
     description:
-      'Despliegue y calidad. CI/CD en GitLab, buenas prácticas con trunk-based y revisiones. El objetivo: código que llega a producción sin sorpresas.',
+      'Automatización y despliegue continuo. Flujo de integración en Git, ramas por funcionalidad y revisiones de código orientadas a entregar software confiable.',
     responsibilities: [
-      'GitLab CI: build, lint, test, deploy',
-      'Branching por feature → squash merge',
-      'Conventional commits',
-      'Code review obligatorio',
+      'CI/CD: build, lint y pruebas automatizadas',
+      'Flujo de ramas (feature branching / squash)',
+      'Conventional commits y versionado',
+      'Revisiones de código y calidad',
     ],
-    tech: ['GitLab', 'Docker (exploring)', 'Lint-staged', 'Prettier'],
+    tech: ['GitLab / GitHub', 'Docker (exploring)', 'CI/CD Pipelines'],
     icon: '⚙',
   },
 ];
@@ -167,9 +167,9 @@ const FLOWS: HexFlow[] = [
           Cómo organizo el <span class="text-gradient">código real</span>
         </h2>
         <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
-          En <b>Onna Digital</b> migramos el portal de distribuidores de un diseño por capas
-          (DAL / Domain) hacia <b>arquitectura hexagonal</b>. Haz clic en cada capa — el dominio
-          nunca depende de lo de fuera.
+          Estructuración de software basada en <b>arquitectura hexagonal</b> (puertos y adaptadores).
+          Separación clara de responsabilidades: el dominio y la lógica de negocio nunca dependen
+          de la infraestructura ni de los frameworks externos.
         </p>
       </header>
 
@@ -372,8 +372,8 @@ const FLOWS: HexFlow[] = [
                 Pulsa una capa para explorarla
               </h3>
               <p class="mt-2 max-w-sm text-sm leading-relaxed text-ink-muted">
-                Las flechas siempre van hacia adentro: el dominio es independiente del framework,
-                la base de datos y el ERP. <b>Dependency Rule</b> de Robert C. Martin.
+                Las dependencias siempre apuntan hacia adentro: el dominio es independiente del framework,
+                la base de datos y las herramientas externas. <b>Dependency Rule</b>.
               </p>
 
               <div class="mt-6 grid grid-cols-2 gap-3 w-full max-w-sm">
@@ -402,9 +402,9 @@ const FLOWS: HexFlow[] = [
           >
             <span class="flex items-center gap-2">
               <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse-dot"></span>
-              ANTES: capas DAL / Domain → HOY: Hexágonos
+              Patrón Ports & Adapters · Código desacoplado y testeable
             </span>
-            <span class="font-mono tracking-wide">Δ 6 meses</span>
+            <span class="font-mono tracking-wide">Clean Architecture</span>
           </div>
         </aside>
       </div>

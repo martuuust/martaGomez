@@ -107,34 +107,6 @@ export const EXPERIENCE: TimelineEntry[] = [
       'Participo en el desarrollo de una aplicación orientada al acceso para distribuidores. Trabajo con Dolibarr como ERP para la gestión y almacenamiento de la información. Colaboro en GitLab con ramas y buenas prácticas de control de versiones. Stack: Angular 21, PHP, Express y SQL; desarrollo y consumo de endpoints entre servicios. Evolución de la arquitectura desde un enfoque por capas (DAL y Domain) hacia arquitectura hexagonal, mejorando organización, escalabilidad y mantenibilidad.',
     type: 'work',
     tags: ['Angular 21', 'PHP', 'Express', 'SQL', 'Dolibarr', 'GitLab'],
-    achievements: [
-      { text: 'Migré endpoints legacy de PHP hacia Express con contrato tipado entre servicios', metric: '+3 endpoints' },
-      { text: 'Apliqué arquitectura hexagonal: separación Dominio · Aplicación · Infraestructura', metric: 'Δ 6 meses' },
-      { text: 'Desarrollé pantallas de distribuidor en Angular 21 con signals y zoneless', metric: '4 vistas' },
-      { text: 'Integración continua con GitLab CI: build, lint y merge squash por feature', metric: '0 rollbacks' },
-    ],
-    snippet: {
-      lang: 'typescript',
-      title: 'Puerto de dominio (Driving Port) — Caso de uso',
-      code: `// Caso de uso: orquesta dominio, no conoce la BD
-export class AltaDistribuidorUseCase {
-  constructor(
-    private readonly repo: DistribuidorRepository,
-    private readonly emailer: EmailPort,
-  ) {}
-
-  async execute(cmd: AltaDistribuidorCommand) {
-    const distribuidor = Distribuidor.crear({
-      nombre: cmd.nombre,
-      cif: new Cif(cmd.cif),
-      email: new Email(cmd.email),
-    });
-    await this.repo.guardar(distribuidor);
-    await this.emailer.enviarBienvenida(distribuidor);
-    return distribuidor.id;
-  }
-}`,
-    },
   },
   {
     period: 'mar. 2024 — jun. 2024',
@@ -144,11 +116,6 @@ export class AltaDistribuidorUseCase {
       'Gestión y resolución de incidencias técnicas, montaje y reparación de equipos, instalación y configuración de sistemas operativos y software corporativo, administración de usuarios en SAP y configuración de videoconferencia en salas.',
     type: 'work',
     tags: ['SAP', 'Sistemas operativos', 'Hardware', 'Soporte'],
-    achievements: [
-      { text: 'Gestioné +120 incidencias de hardware y software durante el periodo de prácticas', metric: '+120 tickets' },
-      { text: 'Implanté plantilla de inventario de equipos, agilizando auditorías internas', metric: '-30% tiempo' },
-      { text: 'Formé a 3 compañeros en uso de SAP Business One y salas de videoconferencia', metric: '3 sesiones' },
-    ],
   },
 ];
 
@@ -161,32 +128,6 @@ export const EDUCATION: TimelineEntry[] = [
       'Formación profesional de grado superior en desarrollo de aplicaciones web: programación, bases de datos, entornos de desarrollo y diseño de interfaces.',
     type: 'education',
     tags: ['Java', 'JavaScript', 'PHP', 'SQL', 'HTML/CSS'],
-    achievements: [
-      { text: 'Proyecto intermodular full-stack (frontend + backend + BD) aprobado con matrícula', metric: '9.2' },
-      { text: 'CineMatch: app de recomendaciones con TypeScript + Vercel', metric: 'Repo público' },
-      { text: 'Autodidacta: Angular 21, GSAP y arquitectura hexagonal fuera del temario oficial', metric: '+' },
-    ],
-    snippet: {
-      lang: 'sql',
-      title: 'Modelo relacional — proyecto académico',
-      code: `CREATE TABLE distribuidor (
-  id            INT AUTO_INCREMENT PRIMARY KEY,
-  nombre        VARCHAR(120) NOT NULL,
-  cif           VARCHAR(12)  UNIQUE NOT NULL,
-  email         VARCHAR(180) UNIQUE NOT NULL,
-  fecha_alta    DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  estado        ENUM('activo','inactivo','pendiente') NOT NULL,
-  INDEX idx_estado (estado)
-);
-
-CREATE TABLE distribuidor_contacto (
-  id              INT AUTO_INCREMENT PRIMARY KEY,
-  distribuidor_id INT NOT NULL REFERENCES distribuidor(id),
-  tipo            ENUM('envio','facturacion') NOT NULL,
-  direccion       VARCHAR(240) NOT NULL,
-  cp              VARCHAR(10)  NOT NULL
-);`,
-    },
   },
   {
     period: '2022 — 2024',
@@ -196,10 +137,6 @@ CREATE TABLE distribuidor_contacto (
       'Formación profesional de grado medio en sistemas microinformáticos y redes: montaje de equipos, sistemas operativos, redes y seguridad.',
     type: 'education',
     tags: ['Redes', 'Sistemas operativos', 'Hardware', 'Seguridad'],
-    achievements: [
-      { text: 'Montaje y configuración de red LAN con Windows Server + DNS + DHCP en clase', metric: 'proyecto' },
-      { text: 'Restauración de equipos legacy con clonación de imágenes y backup', metric: '12 equipos' },
-    ],
   },
 ];
 

@@ -23,18 +23,6 @@ export interface Stat {
 
 export type TimelineType = 'work' | 'education';
 
-export interface TimelineAchievement {
-  text: string;
-  /** Opcional: código/valor asociado al logro */
-  metric?: string;
-}
-
-export interface TimelineCodeSnippet {
-  lang: string;
-  title: string;
-  code: string;
-}
-
 export interface TimelineEntry {
   period: string;
   title: string;
@@ -42,10 +30,6 @@ export interface TimelineEntry {
   description: string;
   type: TimelineType;
   tags: string[];
-  /** Puntos clave expandibles (no generados, solo hechos reales). */
-  achievements?: TimelineAchievement[];
-  /** Fragmento representativo (sin datos confidenciales). */
-  snippet?: TimelineCodeSnippet;
 }
 
 export type SkillCategory = 'frontend' | 'backend' | 'tools' | 'ai';

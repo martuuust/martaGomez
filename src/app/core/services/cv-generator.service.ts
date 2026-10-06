@@ -94,15 +94,10 @@ export class CvGeneratorService {
     // Experiencia
     this.drawHeading(ctx, 'Experiencia profesional', '#6d28d9');
     for (const e of EXPERIENCE) {
-      this.ensureSpace(ctx, 44);
+      this.ensureSpace(ctx, 36);
       this.drawText(ctx, e.title, 12, '#0f172a', 'bold');
       this.drawInlinePair(ctx, e.company, e.period, '#6d28d9', '#475569');
       this.drawTextWrapped(ctx, e.description, 9.5, '#334155', 0, 4);
-      if (e.achievements?.length) {
-        for (const a of e.achievements) {
-          this.drawBullet(ctx, a.text + (a.metric ? `  ·  ${a.metric}` : ''), '#334155');
-        }
-      }
       ctx.y += 3.2;
     }
 
@@ -120,13 +115,10 @@ export class CvGeneratorService {
     // Educación
     this.drawHeading(ctx, 'Formación académica', '#6d28d9');
     for (const e of EDUCATION) {
-      this.ensureSpace(ctx, 30);
+      this.ensureSpace(ctx, 24);
       this.drawText(ctx, e.title, 11.5, '#0f172a', 'bold');
       this.drawInlinePair(ctx, e.company, e.period, '#6d28d9', '#475569');
       this.drawTextWrapped(ctx, e.description, 9.5, '#334155', 0, 4);
-      if (e.achievements?.length) {
-        for (const a of e.achievements) this.drawBullet(ctx, a.text + (a.metric ? `  ·  ${a.metric}` : ''), '#334155');
-      }
       ctx.y += 3;
     }
 
@@ -197,13 +189,10 @@ export class CvGeneratorService {
     // EXPERIENCIA compacta
     this.drawHeading(ctx, 'Experiencia', accent);
     for (const e of EXPERIENCE) {
-      this.ensureSpace(ctx, 36);
+      this.ensureSpace(ctx, 30);
       this.drawText(ctx, `${e.title} — ${e.company}`, 11.5, '#0f172a', 'bold');
       this.drawText(ctx, e.period, 9.5, accent, 'normal', 0, 2);
       this.drawTextWrapped(ctx, e.description, 9.5, '#334155', 0, 4);
-      if (e.achievements?.length) {
-        for (const a of e.achievements.slice(0, 4)) this.drawBullet(ctx, a.text + (a.metric ? `  [${a.metric}]` : ''), '#334155');
-      }
       if (e.tags?.length) {
         this.drawText(ctx, 'Stack: ' + e.tags.join(' · '), 8.5, '#475569', 'italic');
         ctx.y += 0.5;
@@ -313,16 +302,11 @@ export class CvGeneratorService {
 
     this.drawCreativeHeading(ctx, MAIN_X, MAIN_W, 'EXPERIENCIA', accent);
     for (const e of EXPERIENCE) {
-      this.ensureSpace(ctx, 38);
+      this.ensureSpace(ctx, 32);
       this.drawCreativeRow(ctx, MAIN_X, e.title, e.period, accent, 12);
       this.drawTextAt(ctx, MAIN_X, e.company, 10, accent, 'normal');
       ctx.y += 1.2;
       this.drawTextWrapped(ctx, e.description, 9.5, '#334155', MAIN_X - savedMarginL, 4, MAIN_W);
-      if (e.achievements?.length) {
-        for (const a of e.achievements.slice(0, 3)) {
-          this.drawBullet(ctx, a.text + (a.metric ? `  ·  ${a.metric}` : ''), '#334155', MAIN_X - savedMarginL, MAIN_W);
-        }
-      }
       ctx.y += 3;
     }
 

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
 import { EDUCATION, EXPERIENCE, PERSON } from '../../shared/data/portfolio.data';
-import { TimelineComponent } from './timeline.component';
 
 @Component({
   selector: 'app-about',
-  imports: [GsapRevealDirective, TimelineComponent],
+  imports: [GsapRevealDirective],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

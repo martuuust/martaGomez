@@ -73,7 +73,7 @@ Eliminado por innecesario:
 - Filtros de proyectos (solo había categoría web) + `ProjectCategory` + badges de categoría
 - Badges "Experiencia"/"Formación" redundantes con los títulos de sección
 - Sección testimonios ficticios (ya fuera del tree)
-- Datos inventados previos (email, %, proyectos relleno, VMware, Scroll indicator)
+- Datos inventados previos (email, %, proyectos relleno, VMware, Scroll indicator, logros/métricas ficticias y snippets de código inventados en el timeline de About)
 
 ## Fase 1 — Bugs (2026-09-24)
 

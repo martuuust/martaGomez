@@ -180,10 +180,12 @@ export class HeroComponent implements AfterViewInit {
     const context = gsap.context(() => {
       const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
       timeline
+        .from('.hero-badge', { opacity: 0, y: -12, duration: 0.5 }, 0.05)
         .from('.hero-word', { opacity: 0, yPercent: 110, duration: 0.8, stagger: 0.08 }, 0.15)
         .from('.hero-role', { opacity: 0, y: 16, duration: 0.55 }, 0.55)
         .from('.hero-sub', { opacity: 0, y: 20, duration: 0.6 }, 0.7)
-        .from('.hero-cta', { opacity: 0, y: 20, duration: 0.5, stagger: 0.08 }, 0.9);
+        .from('.hero-cta', { opacity: 0, y: 20, duration: 0.5, stagger: 0.08 }, 0.9)
+        .from('.hero-highlights', { opacity: 0, y: 16, duration: 0.5 }, 1.05);
     }, this.host.nativeElement);
 
     this.destroyRef.onDestroy(() => context.revert());

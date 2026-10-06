@@ -113,8 +113,20 @@ Eliminado por innecesario:
 - CineMatch e Intermodular: `complete: false` hasta que Marta aporte texto + captura en `public/projects/`
 - Portfolio personal como caso corto completo
 
-## Fase 4 — Pulido (2026-09-24)
+## Fase 4 — Pulido y Elevación Editorial (2026-10-06)
 
+- Estandarización de jerarquía editorial con numeración técnica en todos los encabezados:
+  • `01 / Sobre mí`: Trayectoria técnica & visión
+  • `02 / Arquitectura`: Cómo estructuro el software (Clean Architecture interactiva)
+  • `03 / Tech Stack`: Habilidades & ecosistema
+  • `04 / Proyectos`: Casos de estudio & código
+  • `05 / Contacto`: ¿Iniciamos una conversación?
+- Hero elevado a nivel senior/high-end (estilo Linear/Vercel):
+  • Status pill de disponibilidad activa con pulso (`● Disponible para proyectos & incorporación · Valencia, ES`).
+  • Titular centrado en Angular 21, Clean Architecture e IA aplicada.
+  • CTAs triples claros (Explorar proyectos, Descargar CV PDF, Arquitectura).
+  • Grid de 4 pilares técnicos de ingeniería (`01 · Frontend Angular 21`, `02 · Arquitectura Clean Arch`, `03 · Acelerador IA Integrada`, `04 · Backend Full-Stack`).
+  • Terminal interactivo desacoplado de marcas comerciales.
 - Meta description coherente (sin empresa); Open Graph + Twitter Card
 - Preview `public/og-image.png` (provisional; ideal 1200×630 propia)
 - Contraste AA: `--ink-muted` / `--primary` / `--button-text`; títulos con `text-ink`

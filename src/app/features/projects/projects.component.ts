@@ -9,12 +9,13 @@ import {
 } from '@angular/core';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
+import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
 import { PROJECTS } from '../../shared/data/portfolio.data';
 import type { Project } from '../../shared/models/portfolio.model';
 
 @Component({
   selector: 'app-projects',
-  imports: [GsapHoverDirective],
+  imports: [GsapHoverDirective, GsapRevealDirective],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
   host: {

@@ -49,10 +49,10 @@ const COMMANDS: TerminalCommand[] = [
   {
     input: 'architecture show --current',
     lines: [
-      { type: 'output', content: '→ Portal distribuidores Onna Digital' },
-      { type: 'success', content: '  ✓ Migración DAL/Domain → Hexagonal' },
-      { type: 'success', content: '  ✓ Separación Dominio · Infra · Presentación' },
-      { type: 'info', content: '  ℹ Scroll down para ver diagrama interactivo' },
+      { type: 'output', content: '→ Clean Architecture & Ports/Adapters' },
+      { type: 'success', content: '  ✓ Dominio puro sin dependencias de frameworks' },
+      { type: 'success', content: '  ✓ Separación Dominio · Aplicación · Infraestructura' },
+      { type: 'info', content: '  ℹ Explora el diagrama interactivo en la sección Arquitectura' },
     ],
   },
   {

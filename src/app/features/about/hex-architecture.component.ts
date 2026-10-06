@@ -160,11 +160,13 @@ const FLOWS: HexFlow[] = [
       ></div>
 
       <header class="mx-auto max-w-3xl text-center" appGsapReveal>
-        <span class="font-display text-xs font-semibold tracking-[0.25em] text-primary uppercase">
-          Arquitectura
-        </span>
-        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl">
-          Cómo organizo el <span class="text-gradient">código real</span>
+        <div class="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-[0.2em] text-cyan-400">
+          <span>02</span>
+          <span class="opacity-40">/</span>
+          <span>Arquitectura</span>
+        </div>
+        <h2 class="mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl">
+          Cómo estructuro el <span class="text-gradient">software</span>
         </h2>
         <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
           Estructuración de software basada en <b>arquitectura hexagonal</b> (puertos y adaptadores).

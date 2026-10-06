@@ -56,7 +56,8 @@ Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/mar
 
 - Si quitas **GSAP** → se rompen `gsap-reveal` / `gsap-hover` y contadores about.
 - Si cambias **Tailwind 4 / PostCSS** → se rompe el pipeline de estilos (`postcss.config.json` + `styles.css`).
-- Si editas **`portfolio.data.ts` / modelos** → se actualiza el contenido de todas las features que lo consumen.
+- Si editas **`portfolio.data.ts` / modelos (`Project`, `Skill`, `SOCIALS`)** → se actualizan las features y se rompe `cv-generator.service.ts` si no se sincronizan los campos consumidos (problem/whatIDid/tagline, group, href).
+- Si alteras el input `compact` de `DownloadCvComponent` sin `booleanAttribute` → se rompe la invocación sin binding explícito `<app-download-cv compact />` en templates.
 - Si quitas **zoneless** o reintroduces Zone.js → hay que alinear detección de cambios y providers en `app.config.ts`.
 - Si fusionas EXPERIENCE/EDUCATION de nuevo → hay que volver a unificar el template about (hoy son dos timelines).
 

@@ -195,71 +195,55 @@ export const STATS: Stat[] = [];
  */
 export const PROJECTS: Project[] = [
   {
-    id: 'onna-distribuidores',
-    title: 'Portal de distribuidores',
-    tagline: 'Caso laboral · Onna Digital',
+    id: 'bookvibes',
+    title: 'BookVibes',
+    tagline: 'Plataforma Literaria & Playlists con IA',
     problem:
-      'Hacía falta una aplicación de acceso para distribuidores, con la información gestionada en un ERP y una base técnica por capas (DAL y Domain) que complicaba la evolución del producto.',
+      'Anotar lecturas suele limitarse a listas estáticas sin conexión emocional ni ambiental con las historias, desaprovechando la inmersión sonora y contextual de cada obra.',
     whatIDid:
-      'Participo en el desarrollo full-stack: frontend con Angular 21, servicios en PHP y Express, SQL, y Dolibarr como ERP. Trabajo en GitLab con ramas y buenas prácticas. Contribuyo a la migración hacia arquitectura hexagonal para separar mejor dominio, infraestructura y presentación.',
+      'Desarrollo integral en PHP y MySQL con arquitectura desacoplada basada en contenedor de dependencias (DI). Creación de un sistema híbrido de recomendación musical combinando LLM (IA), Spotify Search API y resolución en YouTube. Diario interactivo con cuaderno 3D y maquetación con Tailwind CSS.',
     result:
-      'Una base más organizada y mantenible: comunicación clara entre servicios vía endpoints y una arquitectura preparada para escalar sin acoplar de más las capas.',
-    stack: ['Angular 21', 'PHP', 'Express', 'SQL', 'Dolibarr', 'GitLab'],
-    gradient: 'from-violet-700 via-purple-600 to-indigo-500',
-    glyph: 'OD',
+      'Plataforma completa para lectores con generación automatizada de bandas sonoras contextuales, análisis del tono emocional de lecturas, recuperación segura de contraseñas vía Brevo y alta resiliencia ante caídas de servicios externos.',
+    stack: ['PHP', 'MySQL', 'Tailwind CSS', 'Spotify API', 'LLM / IA', 'YouTube API'],
+    gradient: 'from-amber-600 via-orange-500 to-rose-600',
+    glyph: 'BV',
     year: '2026',
+    github: 'https://github.com/martuuust/BookVibes',
     complete: true,
   },
   {
-    id: 'cinematch',
-    title: 'CineMatch',
-    tagline: 'Web App · TypeScript & Vercel',
+    id: 'raices',
+    title: 'Raíces',
+    tagline: 'Preservación de Memoria Familiar & Cápsulas del Tiempo',
     problem:
-      'Aplicación orientada al descubrimiento y recomendación interactiva de películas con catálogo dinámico y flujo de autenticación.',
+      'La pérdida progresiva de recuerdos multimedia, historias orales y legado genealógico entre generaciones por falta de espacios digitales privados, intuitivos y seguros.',
     whatIDid:
-      'Desarrollo de la aplicación web en TypeScript con interfaz moderna y despliegue continuo en Vercel, optimizando la selección y filtrado de contenidos.',
+      'Arquitectura y desarrollo full-stack: aplicación SPA en Angular 18 con TypeScript y metodología SASS (BEM/ITCSS), y backend RESTful en Node.js y Express con Sequelize ORM y MySQL. Implementación de autenticación JWT y gestión de cápsulas temporales.',
     result:
-      'Aplicación web funcional y responsive desplegada públicamente en Vercel con integración a repositorio GitHub.',
-    stack: ['TypeScript', 'Vercel', 'HTML5', 'CSS3'],
-    gradient: 'from-violet-600 via-purple-500 to-cyan-400',
-    glyph: 'CM',
-    github: 'https://github.com/martuuust/cineMatch',
-    demo: 'https://cine-match-psi.vercel.app',
+      'Plataforma colaborativa, accesible y responsive para preservar la memoria familiar, con despliegue frontend en Vercel y arquitectura desacoplada cliente-servidor.',
+    stack: ['Angular 18', 'TypeScript', 'Node.js', 'Express', 'MySQL', 'JWT', 'SASS'],
+    gradient: 'from-emerald-700 via-teal-600 to-amber-700',
+    glyph: 'RÍ',
     year: '2026',
+    github: 'https://github.com/martuuust/Raices',
+    demo: 'https://raices-tau.vercel.app',
     complete: true,
   },
   {
-    id: 'proyecto-intermodular',
-    title: 'Proyecto Intermodular',
-    tagline: 'Proyecto académico DAW · CIPFP Cheste',
+    id: 'vlccamp',
+    title: 'VLC Camp',
+    tagline: 'Gestión y Reserva de Campamentos con IA',
     problem:
-      'Proyecto integrador del ciclo DAW: desarrollo de una aplicación web modular integrando frontend, backend y persistencia relacional.',
+      'Dispersión y sobrecarga en la búsqueda, tramitación de reservas y comunicación diaria de actividades de campamentos entre familias, monitores y administradores.',
     whatIDid:
-      'Diseño de arquitectura de componentes, estructuración de lógica de negocio en TypeScript, control de versiones en GitHub y modelos de persistencia.',
+      'Arquitectura multiservicio con Docker Compose: frontend público en React + Vite para reservas, sub-aplicación social para la comunidad de monitores y familias, backend en Express, persistencia en Supabase (PostgreSQL con RLS) y chatbot inteligente "Eugenio" con Groq AI SDK.',
     result:
-      'Base de código modular y versionada que consolida las competencias técnicas de grado superior en desarrollo web.',
-    stack: ['TypeScript', 'Git', 'SQL', 'HTML5'],
-    gradient: 'from-emerald-600 via-teal-500 to-cyan-400',
-    glyph: 'PI',
-    github: 'https://github.com/martuuust/ProyectoIntermodular',
-    year: '2025',
-    complete: true,
-  },
-  {
-    id: 'martagomez',
-    title: 'Portfolio personal',
-    tagline: 'Este sitio · Angular 21',
-    problem:
-      'Necesitaba un portfolio propio, honesto y mantenible, sin datos inventados y con una base técnica actual (Angular zoneless, Tailwind, GSAP).',
-    whatIDid:
-      'Diseñé e implementé la SPA: secciones, tema claro/oscuro, formularios con Web3Forms, casos de estudio y datos centralizados en TypeScript.',
-    result:
-      'Un sitio desplegable que presenta experiencia, stack y proyectos reales, con accesibilidad básica y animaciones respetuosas con reduced-motion.',
-    stack: ['Angular 21', 'Tailwind CSS', 'GSAP', 'Web3Forms'],
-    gradient: 'from-fuchsia-600 via-purple-500 to-violet-400',
-    glyph: 'MG',
-    github: 'https://github.com/martuuust/martaGomez',
+      'Ecosistema web unificado y contenedorizado con catálogo en tiempo real, confirmaciones transaccionales vía Brevo, muro social comunitario y asistente virtual asistido por IA.',
+    stack: ['React', 'Node.js', 'Express', 'Supabase', 'Groq AI', 'Docker', 'Tailwind CSS'],
+    gradient: 'from-cyan-600 via-blue-600 to-indigo-600',
+    glyph: 'VC',
     year: '2026',
+    github: 'https://github.com/martuuust/vlcCamp',
     complete: true,
   },
 ];

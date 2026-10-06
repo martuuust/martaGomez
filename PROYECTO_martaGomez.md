@@ -52,7 +52,12 @@ Fuente: [linkedin.com/in/marta-gómez-41a4a72a9](https://www.linkedin.com/in/mar
   • **Bases de Datos y ERP**: MySQL, MongoDB, Dolibarr
   • **Herramientas y DevOps**: Git, GitLab, Docker, Figma, VirtualBox
   (Se eliminó AWS por solicitud). Tarjetas completas con efecto hover 3D y badge 'IA' para herramientas generativas.
-- Proyectos: casos de estudio (problema → qué hice → stack → resultado). Primero Onna (portal distribuidores). CineMatch e Intermodular pendientes de contenido/capturas.
+- Proyectos (SSOT verificada con repositorios locales de Marta):
+  • Lista exclusiva de 3 proyectos solicitados con repositorios propios:
+    1. **BookVibes** (`https://github.com/martuuust/BookVibes`): App PHP + MySQL con recomendación musical híbrida (LLM + Spotify API + YouTube), diario 3D y Tailwind CSS.
+    2. **Raíces** (`https://github.com/martuuust/Raices` / demo: `https://raices-tau.vercel.app`): Preservación familiar y cápsulas del tiempo (Angular 18, SASS BEM/ITCSS, Node.js, Express, Sequelize/MySQL, JWT).
+    3. **VLC Camp** (`https://github.com/martuuust/vlcCamp`): Plataforma de gestión y reservas de campamentos (React, Vite, Node/Express, Supabase PostgreSQL, chatbot Groq AI "Eugenio", Brevo y Docker Compose).
+  • Grid simétrico de 3 columnas (`md:grid-cols-2 lg:grid-cols-3`) con tarjetas interactivas completas y modal técnico de caso de estudio en 4 secciones.
 - Stats: solo cifras verificables (FP, repos, proyectos mostrados, nº skills).
 - Contacto: sin email inventado → LinkedIn.
 
@@ -127,10 +132,11 @@ Eliminado por innecesario:
   • CTAs triples claros (Explorar proyectos, Descargar CV PDF, Arquitectura).
   • Grid de 4 pilares técnicos de ingeniería (`01 · Frontend Angular 21`, `02 · Arquitectura Clean Arch`, `03 · Acelerador IA Integrada`, `04 · Backend Full-Stack`).
   • Terminal interactivo desacoplado de marcas comerciales.
-- Bento Grid Asimétrico en Proyectos:
-  • Tarjeta destacada `lg:col-span-2` para `Portal de distribuidores` con esquema visual de capas (Angular 21 ⇄ Endpoints ⇄ Hexagonal Ports ⇄ Dolibarr ERP).
-  • Casos reales sincronizados y verificados (`CineMatch` con demo en Vercel, `Portfolio personal` y `Proyecto Intermodular` DAW).
-  • Modal de caso de estudio reestructurado en 4 secciones numeradas (`01 Reto & Contexto`, `02 Solución Técnica & Qué Hice`, `03 Stack & Ecosistema`, `04 Resultado & Mantenibilidad`).
+- Selección exclusiva de 3 proyectos solicitados (BookVibes, Raíces y VLC Camp):
+  • Todos ellos con repositorios GitHub propios, información técnica verificada y sin contenido inventado.
+  • Grid simétrico de 3 columnas (`md:grid-cols-2 lg:grid-cols-3`) perfectamente equilibrado en pantallas grandes.
+  • Enlace directo a demo en Vercel para Raíces (`raices-tau.vercel.app`) y botones de GitHub para los tres repositorios.
+  • Modal de caso de estudio reestructurado en 4 secciones numeradas (`01 Reto & Contexto`, `02 Solución Técnica & Qué Hice`, `03 Stack & Tecnologías`, `04 Resultado & Mantenibilidad`).
 - Optimización de espaciado y márgenes:
   • Reducción de márgenes laterales (vacíos a los lados): ampliación del contenedor principal de `max-w-6xl` (1152px) a `max-w-7xl` (1280px) en navbar, hero, about, arquitectura, skills, proyectos, contacto y footer.
   • Reducción del padding horizontal de `px-5 sm:px-8` a `px-4 sm:px-6` (y `px-3 sm:px-4` en navbar).

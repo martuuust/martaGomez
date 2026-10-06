@@ -152,7 +152,7 @@ const FLOWS: HexFlow[] = [
   template: `
     <section
       id="arquitectura"
-      class="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28"
+      class="relative mx-auto max-w-6xl scroll-mt-20 px-5 py-12 sm:px-8 sm:py-16"
     >
       <div
         class="absolute top-24 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-[130px]"
@@ -165,17 +165,17 @@ const FLOWS: HexFlow[] = [
           <span class="opacity-40">/</span>
           <span>Arquitectura</span>
         </div>
-        <h2 class="mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl">
+        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl">
           Cómo estructuro el <span class="text-gradient">software</span>
         </h2>
-        <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
+        <p class="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">
           Estructuración de software basada en <b>arquitectura hexagonal</b> (puertos y adaptadores).
           Separación clara de responsabilidades: el dominio y la lógica de negocio nunca dependen
           de la infraestructura ni de los frameworks externos.
         </p>
       </header>
 
-      <div class="mt-14 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+      <div class="mt-8 sm:mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
         <div
           #diagramRef
           class="relative grid min-h-[420px] place-items-center rounded-3xl border border-line bg-surface/40 p-6 sm:min-h-[480px] sm:p-8"

@@ -131,6 +131,10 @@ Eliminado por innecesario:
   • Tarjeta destacada `lg:col-span-2` para `Portal de distribuidores` con esquema visual de capas (Angular 21 ⇄ Endpoints ⇄ Hexagonal Ports ⇄ Dolibarr ERP).
   • Casos reales sincronizados y verificados (`CineMatch` con demo en Vercel, `Portfolio personal` y `Proyecto Intermodular` DAW).
   • Modal de caso de estudio reestructurado en 4 secciones numeradas (`01 Reto & Contexto`, `02 Solución Técnica & Qué Hice`, `03 Stack & Ecosistema`, `04 Resultado & Mantenibilidad`).
+- Optimización de espaciado y márgenes:
+  • Reducción de padding vertical entre secciones de `py-20 sm:py-28` a `py-12 sm:py-16` para eliminar vacíos de scroll excesivos.
+  • Ajuste de márgenes superiores de contenidos (`mt-14`/`mt-12` a `mt-8 sm:mt-10`), espaciado en Hero (`pt-20 sm:pt-24`, gaps compactos) y footer (`py-8 sm:py-10`).
+  • `scroll-mt-20` sincronizado para alineación perfecta con la navbar flotante.
 - Meta description coherente (sin empresa); Open Graph + Twitter Card
 - Preview `public/og-image.png` (provisional; ideal 1200×630 propia)
 - Contraste AA: `--ink-muted` / `--primary` / `--button-text`; títulos con `text-ink`

@@ -127,6 +127,10 @@ Eliminado por innecesario:
   • CTAs triples claros (Explorar proyectos, Descargar CV PDF, Arquitectura).
   • Grid de 4 pilares técnicos de ingeniería (`01 · Frontend Angular 21`, `02 · Arquitectura Clean Arch`, `03 · Acelerador IA Integrada`, `04 · Backend Full-Stack`).
   • Terminal interactivo desacoplado de marcas comerciales.
+- Bento Grid Asimétrico en Proyectos:
+  • Tarjeta destacada `lg:col-span-2` para `Portal de distribuidores` con esquema visual de capas (Angular 21 ⇄ Endpoints ⇄ Hexagonal Ports ⇄ Dolibarr ERP).
+  • Casos reales sincronizados y verificados (`CineMatch` con demo en Vercel, `Portfolio personal` y `Proyecto Intermodular` DAW).
+  • Modal de caso de estudio reestructurado en 4 secciones numeradas (`01 Reto & Contexto`, `02 Solución Técnica & Qué Hice`, `03 Stack & Ecosistema`, `04 Resultado & Mantenibilidad`).
 - Meta description coherente (sin empresa); Open Graph + Twitter Card
 - Preview `public/og-image.png` (provisional; ideal 1200×630 propia)
 - Contraste AA: `--ink-muted` / `--primary` / `--button-text`; títulos con `text-ink`

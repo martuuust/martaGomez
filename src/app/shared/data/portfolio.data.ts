@@ -213,33 +213,37 @@ export const PROJECTS: Project[] = [
   {
     id: 'cinematch',
     title: 'CineMatch',
-    tagline: 'Proyecto personal · TypeScript',
-    // TODO(Marta): problema que resuelve, qué hiciste, resultado y captura
-    problem: '',
-    whatIDid: '',
-    result: '',
-    stack: ['TypeScript'],
+    tagline: 'Web App · TypeScript & Vercel',
+    problem:
+      'Aplicación orientada al descubrimiento y recomendación interactiva de películas con catálogo dinámico y flujo de autenticación.',
+    whatIDid:
+      'Desarrollo de la aplicación web en TypeScript con interfaz moderna y despliegue continuo en Vercel, optimizando la selección y filtrado de contenidos.',
+    result:
+      'Aplicación web funcional y responsive desplegada públicamente en Vercel con integración a repositorio GitHub.',
+    stack: ['TypeScript', 'Vercel', 'HTML5', 'CSS3'],
     gradient: 'from-violet-600 via-purple-500 to-cyan-400',
     glyph: 'CM',
     github: 'https://github.com/martuuust/cineMatch',
     demo: 'https://cine-match-psi.vercel.app',
     year: '2026',
-    complete: false,
+    complete: true,
   },
   {
     id: 'proyecto-intermodular',
     title: 'Proyecto Intermodular',
-    tagline: 'Proyecto académico · TypeScript',
-    // TODO(Marta): problema que resuelve, qué hiciste, resultado y captura
-    problem: '',
-    whatIDid: '',
-    result: '',
-    stack: ['TypeScript'],
+    tagline: 'Proyecto académico DAW · CIPFP Cheste',
+    problem:
+      'Proyecto integrador del ciclo DAW: desarrollo de una aplicación web modular integrando frontend, backend y persistencia relacional.',
+    whatIDid:
+      'Diseño de arquitectura de componentes, estructuración de lógica de negocio en TypeScript, control de versiones en GitHub y modelos de persistencia.',
+    result:
+      'Base de código modular y versionada que consolida las competencias técnicas de grado superior en desarrollo web.',
+    stack: ['TypeScript', 'Git', 'SQL', 'HTML5'],
     gradient: 'from-emerald-600 via-teal-500 to-cyan-400',
     glyph: 'PI',
     github: 'https://github.com/martuuust/ProyectoIntermodular',
     year: '2025',
-    complete: false,
+    complete: true,
   },
   {
     id: 'martagomez',

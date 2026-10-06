@@ -17,7 +17,7 @@
       Casos de estudio & <span class="text-gradient">código</span>
     </h2>
     <p class="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">
-      Reto de ingeniería, decisiones de arquitectura, stack tecnológico y resultados reales.
+      Retos de ingeniería reales, decisiones de arquitectura hexagonal, stack full-stack y entregables verificados.
     </p>
   </header>
 
@@ -26,123 +26,247 @@
       <article
         appGsapHover
         [appGsapHoverGlare]="false"
-        [appGsapHoverTilt]="4"
-        class="glass group relative flex flex-col overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-2xl"
+        [appGsapHoverTilt]="3"
+        class="glass group relative flex flex-col overflow-hidden rounded-3xl transition-all duration-300 hover:border-primary/40 hover:shadow-2xl"
+        [class.lg:col-span-2]="project.id === 'portal-distribuidores'"
       >
+        <!-- Overlay botón para abrir caso de estudio completo -->
         <button
           type="button"
           class="absolute inset-0 z-10 cursor-pointer rounded-3xl text-left"
           (click)="openProject(project, $event)"
-          [attr.aria-label]="'Ver caso de estudio: ' + project.title"
+          [attr.aria-label]="'Ver caso de estudio detallado: ' + project.title"
         ></button>
 
-        <div class="relative aspect-[16/10] overflow-hidden" aria-hidden="true">
-          @if (project.image) {
-            <img
-              [src]="project.image"
-              [alt]="'Captura de ' + project.title"
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              loading="lazy"
-            />
-          } @else {
-            <div
-              class="flex h-full w-full flex-col justify-between bg-gradient-to-br p-6 text-white"
-              [class]="project.gradient"
-            >
-              <div class="flex items-start justify-between">
-                <span
-                  class="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 font-display text-lg font-bold backdrop-blur"
-                >
-                  {{ project.glyph }}
-                </span>
-                <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold backdrop-blur">
+        @if (project.id === 'portal-distribuidores') {
+          <!-- Layout destacado para el caso de estudio laboral y arquitectura -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[380px]">
+            <!-- Columna visual: Mockup de Arquitectura y Flujo -->
+            <div class="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-violet-950/70 via-purple-900/40 to-slate-950/80 p-6 sm:p-8 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-line">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-amber-400/80"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/80"></span>
+                  <span class="ml-2 font-mono text-[11px] uppercase tracking-wider text-primary font-semibold">
+                    Caso Laboral
+                  </span>
+                </div>
+                <span class="rounded-full border border-primary/30 bg-primary/20 px-3 py-1 font-mono text-xs font-semibold text-primary">
                   {{ project.year }}
                 </span>
               </div>
-              <p class="text-sm font-medium opacity-90">
-                {{ project.complete ? 'Ver caso completo' : 'Enlace al repo · caso pendiente' }}
+
+              <!-- Diagrama esquemático en miniatura de la solución técnica -->
+              <div class="my-6 space-y-2.5 rounded-2xl border border-line bg-surface/50 p-4 font-mono text-xs backdrop-blur-md">
+                <div class="flex items-center justify-between text-ink-muted">
+                  <span class="flex items-center gap-1.5 font-semibold text-primary">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Arquitectura Hexagonal
+                  </span>
+                  <span class="text-[10px] opacity-70">En producción</span>
+                </div>
+                <div class="rounded-xl border border-line/60 bg-base/60 p-2 text-ink">
+                  <div class="text-[10px] text-primary uppercase font-bold tracking-wider">Presentación</div>
+                  <div class="font-medium">Angular 21 SPA · Reactive UI</div>
+                </div>
+                <div class="flex justify-center text-primary/60 text-xs">↕ Endpoints / REST API</div>
+                <div class="rounded-xl border border-primary/30 bg-primary-soft/30 p-2 text-ink">
+                  <div class="text-[10px] text-primary uppercase font-bold tracking-wider">Dominio & Servicios</div>
+                  <div class="font-medium">PHP & Express · Hexagonal Ports</div>
+                </div>
+                <div class="flex justify-center text-primary/60 text-xs">↕ Adaptadores de Persistencia</div>
+                <div class="rounded-xl border border-line/60 bg-base/60 p-2 text-ink">
+                  <div class="text-[10px] text-primary uppercase font-bold tracking-wider">Infraestructura & ERP</div>
+                  <div class="font-medium">Dolibarr ERP · SQL Database</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs text-ink-muted">
+                <span class="grid h-7 w-7 place-items-center rounded-lg bg-primary/20 font-mono font-bold text-primary">
+                  OD
+                </span>
+                <span>Onna Digital · Portal de distribuidores</span>
+              </div>
+            </div>
+
+            <!-- Columna de contenido del caso de estudio -->
+            <div class="relative z-20 flex flex-1 flex-col justify-between p-6 sm:p-8 lg:col-span-7 pointer-events-none">
+              <div>
+                <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Caso de estudio destacado
+                </div>
+                <h3 class="mt-3 font-display text-2xl font-bold text-ink sm:text-3xl">
+                  {{ project.title }}
+                </h3>
+                <p class="mt-1 text-sm font-semibold text-primary">{{ project.tagline }}</p>
+
+                <div class="mt-4 space-y-3">
+                  <div>
+                    <h4 class="font-mono text-[11px] font-semibold tracking-wider uppercase text-primary">
+                      Reto de ingeniería
+                    </h4>
+                    <p class="mt-1 text-sm leading-relaxed text-ink-muted">
+                      {{ project.problem }}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 class="font-mono text-[11px] font-semibold tracking-wider uppercase text-primary">
+                      Aporte técnico & qué hice
+                    </h4>
+                    <p class="mt-1 text-sm leading-relaxed text-ink-muted line-clamp-3">
+                      {{ project.whatIDid }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <div class="flex flex-wrap gap-1.5">
+                  @for (tech of project.stack; track tech) {
+                    <span class="rounded-full border border-line bg-surface/60 px-3 py-1 font-mono text-xs font-medium text-ink">
+                      {{ tech }}
+                    </span>
+                  }
+                </div>
+
+                <div class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-4 pointer-events-auto">
+                  <div class="flex items-center gap-2 text-xs font-mono text-ink-muted">
+                    <span class="inline-block h-2 w-2 rounded-full bg-primary"></span>
+                    <span>Entorno laboral confidencial</span>
+                  </div>
+                  <button
+                    type="button"
+                    (click)="openProject(project, $event)"
+                    class="btn-cream inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-transform hover:scale-[1.02]"
+                  >
+                    <span>Ver caso completo</span>
+                    <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        } @else {
+          <!-- Layout de tarjeta estándar para los demás proyectos -->
+          <!-- Visual header estilizado -->
+          <div class="relative aspect-[16/9] overflow-hidden bg-gradient-to-br p-6 text-white flex flex-col justify-between border-b border-line" [class]="project.gradient">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-white/50"></span>
+                <span class="h-2 w-2 rounded-full bg-white/50"></span>
+                <span class="h-2 w-2 rounded-full bg-white/50"></span>
+                <span class="ml-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-white/80">
+                  {{ project.id === 'martagomez' ? 'SPA · Zoneless' : (project.id === 'cinematch' ? 'Web App · Vercel' : 'DAW Capstone') }}
+                </span>
+              </div>
+              <span class="rounded-full bg-black/25 px-2.5 py-0.5 font-mono text-[11px] font-semibold backdrop-blur-md">
+                {{ project.year }}
+              </span>
+            </div>
+
+            <div class="my-auto flex items-center gap-4">
+              <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/20 font-display text-xl font-bold backdrop-blur-md border border-white/20">
+                {{ project.glyph }}
+              </span>
+              <div>
+                <span class="inline-block rounded-md bg-black/30 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-white/90">
+                  {{ project.stack[0] }}
+                </span>
+                <h4 class="mt-1 font-display text-xl font-bold text-white drop-shadow-sm">
+                  {{ project.title }}
+                </h4>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-white/80 font-mono">
+              <span class="flex items-center gap-1.5">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-300"></span>
+                {{ project.demo ? 'Live en Vercel' : 'Repo disponible' }}
+              </span>
+              <span class="text-[11px] underline opacity-90">Explorar detalles →</span>
+            </div>
+          </div>
+
+          <!-- Contenido de la tarjeta -->
+          <div class="relative z-20 flex flex-1 flex-col justify-between p-6 pointer-events-none">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="font-display text-xl font-bold text-ink">
+                  {{ project.title }}
+                </h3>
+              </div>
+              <p class="mt-1 text-xs font-semibold text-primary font-mono">{{ project.tagline }}</p>
+              <p class="mt-3 text-sm leading-relaxed text-ink-muted line-clamp-2">
+                {{ project.problem }}
               </p>
             </div>
-          }
-        </div>
 
-        <div class="relative z-20 flex flex-1 flex-col p-6 pointer-events-none">
-          <div class="flex flex-wrap items-center gap-2">
-            <h3 class="font-display text-lg font-semibold text-ink sm:text-xl">
-              {{ project.title }}
-            </h3>
-            @if (!project.complete) {
-              <span class="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-700 uppercase dark:text-amber-300">
-                Pendiente
-              </span>
-            }
+            <div class="mt-6">
+              <div class="flex flex-wrap gap-1.5">
+                @for (tech of project.stack; track tech) {
+                  <span class="rounded-full border border-line bg-surface/50 px-2.5 py-1 font-mono text-[11px] font-medium text-ink">
+                    {{ tech }}
+                  </span>
+                }
+              </div>
+
+              <div class="mt-5 flex items-center gap-2 pt-4 border-t border-line pointer-events-auto">
+                @if (project.github) {
+                  <a
+                    [href]="project.github"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-line bg-surface/80 px-3 py-2 text-xs font-semibold text-ink transition-colors hover:border-primary hover:text-primary"
+                    (click)="$event.stopPropagation()"
+                  >
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                  </a>
+                }
+                @if (project.demo) {
+                  <a
+                    [href]="project.demo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-cream inline-flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition-transform hover:scale-[1.02]"
+                    (click)="$event.stopPropagation()"
+                  >
+                    <span>Demo</span>
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                    </svg>
+                  </a>
+                }
+                <button
+                  type="button"
+                  (click)="openProject(project, $event)"
+                  class="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-3 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
+                >
+                  Detalles
+                </button>
+              </div>
+            </div>
           </div>
-          <p class="mt-1 text-sm font-medium text-primary">{{ project.tagline }}</p>
-
-          @if (project.complete) {
-            <p class="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-muted">
-              {{ project.problem }}
-            </p>
-          } @else {
-            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              Repositorio público. El caso de estudio (problema, qué hice, resultado y
-              captura) se completará con contenido real.
-            </p>
-          }
-
-          <div class="mt-4 flex flex-wrap gap-1.5">
-            @for (tech of project.stack.slice(0, 4); track tech) {
-              <span class="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium">
-                {{ tech }}
-              </span>
-            }
-            @if (project.stack.length > 4) {
-              <span class="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium text-ink-muted">
-                +{{ project.stack.length - 4 }}
-              </span>
-            }
-          </div>
-
-          <div class="mt-5 flex items-center gap-3 pt-4 pointer-events-auto">
-            @if (project.github) {
-              <a
-                [href]="project.github"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
-                (click)="$event.stopPropagation()"
-              >
-                GitHub
-              </a>
-            }
-            @if (project.demo) {
-              <a
-                [href]="project.demo"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
-                (click)="$event.stopPropagation()"
-              >
-                Demo
-              </a>
-            }
-            @if (!project.github && !project.demo) {
-              <span class="text-xs text-ink-muted">Caso laboral · sin repo público</span>
-            }
-          </div>
-        </div>
+        }
       </article>
     }
   </div>
 </section>
 
+<!-- Modal detallado de Caso de Estudio -->
 @if (selectedProject(); as project) {
   <div
     class="fixed inset-0 z-[70] flex items-end justify-center sm:items-center sm:p-6"
     (click)="closeProject()"
   >
     <div
-      class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+      class="absolute inset-0 bg-black/70 backdrop-blur-sm"
       style="animation: fade-in 0.25s ease forwards"
       aria-hidden="true"
     ></div>
@@ -153,134 +277,119 @@
       aria-modal="true"
       [attr.aria-labelledby]="'project-title-' + project.id"
       tabindex="-1"
-      class="glass relative z-10 max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl bg-base/95 shadow-2xl outline-none sm:rounded-3xl"
+      class="glass relative z-10 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl bg-base shadow-2xl outline-none sm:rounded-3xl border border-line"
       style="animation: zoom-in 0.35s ease forwards"
       (click)="$event.stopPropagation()"
     >
-      <div class="relative overflow-hidden">
-        @if (project.image) {
-          <img
-            [src]="project.image"
-            [alt]="'Captura de ' + project.title"
-            class="h-48 w-full object-cover sm:h-56"
-          />
-        } @else {
-          <div
-            class="relative flex h-44 flex-col justify-between bg-gradient-to-br p-6 text-white sm:h-52"
-            [class]="project.gradient"
-          >
-            <div class="flex items-start justify-between">
-              <span
-                class="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 font-display text-lg font-bold backdrop-blur"
-              >
-                {{ project.glyph }}
-              </span>
-              <button
-                type="button"
-                (click)="closeProject()"
-                class="grid h-10 w-10 place-items-center rounded-full bg-white/20 text-white backdrop-blur transition-transform hover:rotate-90"
-                aria-label="Cerrar detalles"
-              >
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                  <path d="M18 6 6 18M6 6l12 12"></path>
-                </svg>
-              </button>
-            </div>
-            <span class="rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold backdrop-blur self-start">
-              {{ project.year }}
+      <!-- Header del modal -->
+      <div
+        class="relative flex min-h-[140px] flex-col justify-between bg-gradient-to-br p-6 text-white sm:p-8"
+        [class]="project.gradient"
+      >
+        <div class="flex items-start justify-between">
+          <div class="flex items-center gap-3">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 font-display text-xl font-bold backdrop-blur border border-white/20">
+              {{ project.glyph }}
             </span>
+            <div>
+              <span class="rounded-full bg-black/30 px-2.5 py-0.5 font-mono text-[11px] font-semibold backdrop-blur">
+                {{ project.year }}
+              </span>
+              <h3
+                [id]="'project-title-' + project.id"
+                class="mt-1 font-display text-2xl font-bold text-white drop-shadow-sm sm:text-3xl"
+              >
+                {{ project.title }}
+              </h3>
+            </div>
           </div>
-        }
 
-        @if (project.image) {
           <button
             type="button"
             (click)="closeProject()"
-            class="absolute top-4 right-4 grid h-10 w-10 place-items-center rounded-full bg-black/50 text-white backdrop-blur transition-transform hover:rotate-90"
-            aria-label="Cerrar detalles"
+            class="grid h-10 w-10 place-items-center rounded-full bg-white/20 text-white backdrop-blur transition-transform hover:rotate-90 hover:bg-white/30"
+            aria-label="Cerrar detalles del proyecto"
           >
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
               <path d="M18 6 6 18M6 6l12 12"></path>
             </svg>
           </button>
-        }
+        </div>
+
+        <p class="mt-4 text-sm font-medium text-white/90">{{ project.tagline }}</p>
       </div>
 
-      <div class="p-6 sm:p-8">
-        <h3
-          [id]="'project-title-' + project.id"
-          class="font-display text-2xl font-bold sm:text-3xl"
-        >
-          {{ project.title }}
-        </h3>
-        <p class="mt-1 text-sm font-medium text-primary">{{ project.tagline }}</p>
+      <!-- Cuerpo del caso de estudio -->
+      <div class="p-6 sm:p-8 space-y-7">
+        <!-- 01 Contexto & Problema -->
+        <section class="rounded-2xl border border-line bg-surface/50 p-5">
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-xs font-bold text-primary">01 /</span>
+            <h4 class="font-mono text-xs font-semibold tracking-[0.15em] text-primary uppercase">
+              Reto & Contexto
+            </h4>
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-ink sm:text-base">
+            {{ project.problem }}
+          </p>
+        </section>
 
-        @if (project.complete) {
-          <div class="mt-8 space-y-6">
-            <section>
-              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-                Problema
-              </h4>
-              <p class="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">
-                {{ project.problem }}
-              </p>
-            </section>
-            <section>
-              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-                Qué hice
-              </h4>
-              <p class="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">
-                {{ project.whatIDid }}
-              </p>
-            </section>
-            <section>
-              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-                Stack
-              </h4>
-              <div class="mt-3 flex flex-wrap gap-2">
-                @for (tech of project.stack; track tech) {
-                  <span class="rounded-full border border-line px-3 py-1 text-xs font-medium">
-                    {{ tech }}
-                  </span>
-                }
-              </div>
-            </section>
-            <section>
-              <h4 class="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-                Resultado
-              </h4>
-              <p class="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">
-                {{ project.result }}
-              </p>
-            </section>
+        <!-- 02 Solución Técnica & Qué Hice -->
+        <section class="rounded-2xl border border-line bg-surface/50 p-5">
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-xs font-bold text-primary">02 /</span>
+            <h4 class="font-mono text-xs font-semibold tracking-[0.15em] text-primary uppercase">
+              Solución Técnica & Qué hice
+            </h4>
           </div>
-        } @else {
-          <div
-            class="mt-6 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-200"
-            role="status"
-          >
-            <!-- TODO(Marta): completa problem / whatIDid / result / image en portfolio.data.ts -->
-            Caso de estudio pendiente. Por ahora solo hay el enlace al repositorio
-            (y demo si existe). Necesito: qué hace, qué problema resuelve y una captura.
+          <p class="mt-2 text-sm leading-relaxed text-ink sm:text-base">
+            {{ project.whatIDid }}
+          </p>
+        </section>
+
+        <!-- 03 Stack Tecnológico -->
+        <section class="rounded-2xl border border-line bg-surface/50 p-5">
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-xs font-bold text-primary">03 /</span>
+            <h4 class="font-mono text-xs font-semibold tracking-[0.15em] text-primary uppercase">
+              Stack & Ecosistema
+            </h4>
           </div>
-          <div class="mt-6 flex flex-wrap gap-2">
+          <div class="mt-3 flex flex-wrap gap-2">
             @for (tech of project.stack; track tech) {
-              <span class="rounded-full border border-line px-3 py-1 text-xs font-medium">
+              <span class="rounded-full border border-primary/30 bg-primary-soft/40 px-3 py-1 font-mono text-xs font-semibold text-primary">
                 {{ tech }}
               </span>
             }
           </div>
-        }
+        </section>
 
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <!-- 04 Resultado & Impacto -->
+        <section class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5">
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">04 /</span>
+            <h4 class="font-mono text-xs font-semibold tracking-[0.15em] text-emerald-600 uppercase dark:text-emerald-400">
+              Resultado & Mantenibilidad
+            </h4>
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-ink sm:text-base">
+            {{ project.result }}
+          </p>
+        </section>
+
+        <!-- Acciones externas -->
+        <div class="flex flex-col gap-3 pt-2 sm:flex-row">
           @if (project.github) {
             <a
               [href]="project.github"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
+              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
             >
-              Ver en GitHub
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>Explorar en GitHub</span>
             </a>
           }
           @if (project.demo) {
@@ -290,8 +399,16 @@
               rel="noopener noreferrer"
               class="btn-cream inline-flex flex-1 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
             >
-              Live Demo
+              <span>Probar Live Demo</span>
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
             </a>
+          }
+          @if (!project.github && !project.demo) {
+            <div class="flex-1 rounded-full border border-line bg-surface/50 py-3 text-center text-xs font-mono text-ink-muted">
+              Código propietario corporativo · Acceso privado
+            </div>
           }
         </div>
       </div>

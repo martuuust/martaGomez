@@ -1,54 +1,58 @@
 import { Component } from '@angular/core';
-import { GsapHoverDirective } from '../../core/directives/gsap-hover.directive';
 import { GsapRevealDirective } from '../../core/directives/gsap-reveal.directive';
 import { SKILLS } from '../../shared/data/portfolio.data';
 import type { Skill, SkillCategory } from '../../shared/models/portfolio.model';
 
-interface SkillSection {
-  id: SkillCategory;
-  title: string;
-  description: string;
-  skills: Skill[];
-}
-
 @Component({
   selector: 'app-skills',
-  imports: [GsapHoverDirective, GsapRevealDirective],
+  imports: [GsapRevealDirective],
   templateUrl: './skills.html',
 })
 export class SkillsComponent {
-  protected readonly sections: SkillSection[] = [
-    {
-      id: 'ai',
-      title: 'Inteligencia Artificial',
-      description: 'Asistentes de código, modelos fundacionales y herramientas de diseño generativo.',
-      skills: SKILLS.filter((s) => s.category === 'ai'),
-    },
-    {
-      id: 'languages',
-      title: 'Lenguajes',
-      description: 'Bases sólidas para lógica de negocio, tipado y maquetación web.',
-      skills: SKILLS.filter((s) => s.category === 'languages'),
-    },
-    {
-      id: 'frameworks',
-      title: 'Frameworks y Librerías',
-      description: 'Ecosistemas para el desarrollo de interfaces y servicios web modernos.',
-      skills: SKILLS.filter((s) => s.category === 'frameworks'),
-    },
-    {
-      id: 'database',
-      title: 'Bases de Datos y ERP',
-      description: 'Almacenamiento relacional, NoSQL y gestión empresarial.',
-      skills: SKILLS.filter((s) => s.category === 'database'),
-    },
-    {
-      id: 'tools',
-      title: 'Herramientas y DevOps',
-      description: 'Control de versiones, contenedores, virtualización y diseño de interfaces.',
-      skills: SKILLS.filter((s) => s.category === 'tools'),
-    },
-  ];
+  /**
+   * Orden alternado y armónico de todo el stack (23 tecnologías) para que
+   * en una sola línea no coincidan tecnologías de la misma categoría consecutivas.
+   */
+  protected readonly skills: Skill[] = [
+    SKILLS.find((s) => s.name === 'Angular')!,
+    SKILLS.find((s) => s.name === 'Cursor')!,
+    SKILLS.find((s) => s.name === 'JavaScript')!,
+    SKILLS.find((s) => s.name === 'Claude')!,
+    SKILLS.find((s) => s.name === 'Express')!,
+    SKILLS.find((s) => s.name === 'MySQL')!,
+    SKILLS.find((s) => s.name === 'Antigravity')!,
+    SKILLS.find((s) => s.name === 'PHP')!,
+    SKILLS.find((s) => s.name === 'Docker')!,
+    SKILLS.find((s) => s.name === 'Stitch AI')!,
+    SKILLS.find((s) => s.name === 'Java')!,
+    SKILLS.find((s) => s.name === 'MongoDB')!,
+    SKILLS.find((s) => s.name === 'OpenAI')!,
+    SKILLS.find((s) => s.name === 'HTML5')!,
+    SKILLS.find((s) => s.name === 'Dolibarr')!,
+    SKILLS.find((s) => s.name === 'Gemini')!,
+    SKILLS.find((s) => s.name === 'CSS3')!,
+    SKILLS.find((s) => s.name === 'Git')!,
+    SKILLS.find((s) => s.name === 'Bootstrap')!,
+    SKILLS.find((s) => s.name === 'Google AI Studio')!,
+    SKILLS.find((s) => s.name === 'GitLab')!,
+    SKILLS.find((s) => s.name === 'Figma')!,
+    SKILLS.find((s) => s.name === 'VirtualBox')!,
+  ].filter(Boolean);
+
+  protected categoryBadge(cat: SkillCategory): { label: string; class: string } {
+    switch (cat) {
+      case 'ai':
+        return { label: 'IA', class: 'border-fuchsia-400/30 bg-fuchsia-400/10 text-fuchsia-400' };
+      case 'languages':
+        return { label: 'Lenguaje', class: 'border-amber-400/30 bg-amber-400/10 text-amber-600 dark:text-amber-300' };
+      case 'frameworks':
+        return { label: 'Framework', class: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-600 dark:text-cyan-300' };
+      case 'database':
+        return { label: 'BBDD / ERP', class: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-600 dark:text-emerald-300' };
+      case 'tools':
+        return { label: 'DevOps / Tool', class: 'border-blue-400/30 bg-blue-400/10 text-blue-600 dark:text-blue-300' };
+    }
+  }
 
   protected iconColor(hex: string): string {
     const r = Number.parseInt(hex.slice(0, 2), 16);

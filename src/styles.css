@@ -23,7 +23,7 @@
   --animate-blob: blob 20s ease-in-out infinite;
   --animate-blob-slow: blob 26s ease-in-out infinite reverse;
   --animate-gradient-pan: gradient-pan 10s ease infinite;
-  --animate-marquee: marquee 36s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
   --animate-spin-slow: spin 24s linear infinite;
   --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
   --animate-bounce-soft: bounce-soft 2.2s ease-in-out infinite;
@@ -100,6 +100,17 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 @keyframes pulse-dot {
